@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../db.confiq.js')
 
-const PricePlan = sequelize.define('pricePlan',{
+const PricePlan = sequelize.define('service-prices',{
     title: {
         type:DataTypes.STRING,
         allowNull:false
