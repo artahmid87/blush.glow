@@ -20,10 +20,11 @@ const { galleryRouter } = require('../routers/GalleryRouter.js');
 const app = express(); 
 const cookieParser = require('cookie-parser'); 
 const {serviceRouter} = require('../routers/ServiceRouter.js');
-const  {Categories , PricePlan}  = require('../database/model/serviceModel.js');
+const  {Categories }  = require('../database/model/serviceModel.js');
 const {priceRouter} = require('../routers/PriceRouter.js');
 const  BlogCategory  = require('../database/model/BlogCategory.js');
 const { BlogCategoryRouter } = require('../routers/BlogCategoryRouter.js');
+const { PricePlan } = require('../database/model/price.db.js');
 
 app.use(cors());
 app.use(hpp()); 

@@ -1,8 +1,8 @@
-const {Categories, PricePlan} = require('../database/model/serviceModel')
-
+const {Categories} = require('../database/model/serviceModel')
 const fs = require('fs'); 
 const sharp = require("sharp");
 const path = require("path");
+const { PricePlan } = require('../database/model/price.db');
 
 const CreateCategories =async (req, res, next) =>{
     try {
