@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: "Noto Sans", sans-serif;
+ 
+}
+
+.cssPath{
+    clip-path: polygon(26% 4%, 70% 0%, 100% 27%, 100% 69%, 67% 94%, 11% 86%, 0 39%);
+    background-color: #fff;
+
+}
+
+.circular-text{
+    animation: circularText 12s linear infinite;
+}
+/* @keyframes circularText {
+    to{
+        transform: rotate(-360deg);
+    }
+}
+
+.pulse span{
+    animation-delay: calc(2s * var(--i));
+} */
+
+@keyframes fadeSpin {
+    0% {
+      opacity: 1;
+      transform: scale(1.2) rotate(-90deg);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.25) rotate(-180deg);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.5) rotate(-360deg);
+    }
+  }
+  
+  .animate-spinFade {
+    animation: fadeSpin 3s linear infinite;
+  }
+  

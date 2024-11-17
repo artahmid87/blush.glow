@@ -1,0 +1,4 @@
+PORT = 5000 
+DBNAME = "blush"
+DBUSERNAME = 'root'
+DBPASSWORD = ''
