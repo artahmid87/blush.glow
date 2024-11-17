@@ -61,7 +61,7 @@ const Appointment = () => {
 
 
       <Container>
-        <div className='flex flex-col lg:flex-row justify-between gap-4 items-center mt-5 p-6 border-8 border-gray-100'
+        <div className='flex flex-col lg:flex-row justify-between gap-4 items-center mt-5 p-1 md:p-6 border-8 border-gray-100'
           style={{
             backgroundImage: 'url(images/home/13.png)',
             backgroundRepeat: 'no-repeat',
@@ -70,7 +70,7 @@ const Appointment = () => {
           }}
         >
           {/* Form Section */}
-          <div ref={formRef} className='bg-[#fff6f4] p-8 w-full lg:w-[58%] border-8 border-white'>
+          <div ref={formRef} className='bg-[#fff6f4] p-2 md:p-8 w-full lg:w-[58%] border-8 border-white'>
             <h1 className='text-3xl lg:text-4xl text-tertiary font-secondery py-6'>
               Make Appointment
             </h1>

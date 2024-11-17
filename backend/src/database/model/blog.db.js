@@ -14,10 +14,7 @@ const Blog = sequelize.define('blog', {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    BlogCategoryId: {
-      type: DataTypes.INTEGER,
-      allowNull: true, 
-    }
+    
    
   });
 

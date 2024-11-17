@@ -28,12 +28,13 @@ const BlogPostForm = () => {
     formData.append('file', file);
     formData.append('title', title);
     formData.append('description', description);
-    formData.append('BlogCategoryId', BlogCategoryId);
+    formData.append('CategoryId', BlogCategoryId);
 
     try {
       setError(null);
       setSuccess(false);
-
+      // https://blush.glow.api.ara-dreamhome.com/
+      // http://localhost:5000/
       const response = await axios.post('https://blush.glow.api.ara-dreamhome.com/uploadBlog', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

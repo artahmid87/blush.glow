@@ -73,13 +73,13 @@ Categories.hasMany(PricePlan, {
 
 
 BlogCategory.hasMany(Blog, {
-    foreignKey: 'BlogCategoryId',
+    foreignKey: 'CategoryId',
     onDelete: 'SET NULL',
     as: 'blogs',
   });
   
   Blog.belongsTo(BlogCategory, {
-    foreignKey: 'BlogCategoryId',
+    foreignKey: 'CategoryId',
     onDelete: 'SET NULL',
     as: 'blogCategory',
   });

@@ -5,7 +5,7 @@ import { Button } from 'antd/dist/antd';
 const BookingButton = () => {
 
   return (
-    <div>
+    <div className='flex justify-center items-center md:justify-normal'>
 
       <button className="group hover:bg-white bg-primary transition-all py-2 mt-10 px-8 flex gap-2 justify-center items-center rounded-full"
         style={{

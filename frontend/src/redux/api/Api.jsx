@@ -3,7 +3,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const Api = createApi({
   reducerPath: 'postApi',
   baseQuery: fetchBaseQuery({
+    // baseUrl: 'https://blush.glow.api.ara-dreamhome.com/'
     baseUrl: 'https://blush.glow.api.ara-dreamhome.com/'
+
   }),
   endpoints: (builder) => ({
     // Appointment booking api
