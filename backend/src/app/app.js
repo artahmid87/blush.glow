@@ -22,7 +22,7 @@ const cookieParser = require('cookie-parser');
 const {serviceRouter} = require('../routers/ServiceRouter.js');
 const  {Categories }  = require('../database/model/serviceModel.js');
 const {priceRouter} = require('../routers/PriceRouter.js');
-const  BlogCategory  = require('../database/model/BlogCategory.js');
+const  {CategoryBlog}  = require('../database/model/BlogCategory.js');
 const { BlogCategoryRouter } = require('../routers/BlogCategoryRouter.js');
 const { PricePlan } = require('../database/model/price.db.js');
 
@@ -72,21 +72,21 @@ Categories.hasMany(PricePlan, {
 
 
 
-BlogCategory.hasMany(Blog, {
+CategoryBlog.hasMany(Blog, {
     foreignKey: 'CategoryId',
     onDelete: 'SET NULL',
-    as: 'blogs',
+    as: 'blog',
   });
   
-  Blog.belongsTo(BlogCategory, {
+  Blog.belongsTo(CategoryBlog, {
     foreignKey: 'CategoryId',
     onDelete: 'SET NULL',
-    as: 'blogCategory',
+    as: 'categories',
   });
 
 (async () => {
     try {
-       await BlogCategory.sync({force:false})
+       await CategoryBlog.sync({force:false})
        await Blog.sync({ alter: false, force: false }); 
        await Appointment.sync({ alter: false, force: false }); 
        await Admin.sync({ force: false }); 

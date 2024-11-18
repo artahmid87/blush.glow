@@ -1,58 +1,40 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
-import { useFindAllBlogCategoriesQuery } from '@/redux/api/Api';
+import { useCreatePostMutation, useFindAllBlogCategoriesQuery } from '@/redux/api/Api';
 
 const BlogPostForm = () => {
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [file, setFile] = useState(null);
-  const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [BlogCategoryId, setBlogCategoryId] = useState("")
+  const [CategoryId, setCategoryId] = useState("")
   const formRef = useRef()
 
-
+  const [postCreate ,{isLoading:loading , isSuccess , isError:isIssue}] = useCreatePostMutation()
 
   const {data, isLoading, isError} =  useFindAllBlogCategoriesQuery()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!file) {
-      setError('Please select a file to upload.');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('CategoryId', BlogCategoryId);
-
     try {
-      setError(null);
-      setSuccess(false);
-      // https://blush.glow.api.ara-dreamhome.com/
-      // http://localhost:5000/
-      const response = await axios.post('https://blush.glow.api.ara-dreamhome.com/uploadBlog', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        onUploadProgress: (progressEvent) => {
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
-          );
-          setProgress(percentCompleted);
-        },
-      });
+      e.preventDefault();
 
-      setSuccess(true);
-      console.log('File uploaded successfully:', response.data);
-      formRef.current.reset()
+      if (!file) {
+        setError('Please select a file to upload.');
+        return;
+      }
+
+      const formData = new FormData();
+  
+      formData.append('title', title);
+      formData.append('file', file);
+      formData.append('description', description);
+      formData.append('CategoryId', CategoryId);
+
+      await postCreate(formData).unwrap();
+
     } catch (error) {
-      setError('Failed to upload the file.');
-      console.error('Error uploading file:', error);
+      console.error('Booking failed', error);
     }
   };
 
@@ -96,19 +78,17 @@ const BlogPostForm = () => {
             />
 
             {/* Success message */}
-            {progress > 0 && <p className="text-sm text-blue-600 mt-2">Upload Progress: {progress}%</p>}
-            {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
-            {success && <p className="text-sm text-green-600 mt-2">File uploaded successfully!</p>}
+     
+         
           </div>
 
           <div>
         <label className="block text-gray-700 font-semibold mb-2">Category</label>
         <select
           name="category"
-       
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none"
           required
-          onChange={(e) => setBlogCategoryId(e.target.value)}
+          onChange={(e) => setCategoryId(e.target.value)}
         >
           <option value="">Select Category</option>
           {
@@ -122,14 +102,22 @@ const BlogPostForm = () => {
          
        
         </select>
+   
       </div>
 
           <button
             type="submit"
             className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          >
-            Submit
+          > {
+            loading ? <> Uploading....</> : <>Submit</>
+          }
+        
           </button>
+
+         <div>
+         {isError && <p className="text-sm text-red-600 mt-2">Something went wrong!</p>}
+         {isSuccess && <p className="text-sm text-green-600 mt-2">File uploaded successfully!</p>}
+         </div>
         </form>
       </div>
     </div>

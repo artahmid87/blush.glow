@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const Api = createApi({
   reducerPath: 'postApi',
   baseQuery: fetchBaseQuery({
-    // baseUrl: 'https://blush.glow.api.ara-dreamhome.com/'
+    // baseUrl: 'http://localhost:5000/'
     baseUrl: 'https://blush.glow.api.ara-dreamhome.com/'
 
   }),
@@ -27,9 +27,28 @@ export const Api = createApi({
       }),
     }),
 
+    //Booking post api
+    createBooking: builder.mutation({
+      query: (booking) => ({
+        url: '/appointment/booking',
+        method: 'POST',
+        body: booking,
+      }),
+    }),
+
     // review get api
     review: builder.query({
       query: () => '/review'
+    }),
+
+
+    //Blog post api
+    createPost: builder.mutation({
+      query: (postCreate) => ({
+        url: '/uploadBlog',
+        method: 'POST',
+        body: postCreate,
+      }),
     }),
 
     // All Blog
@@ -40,15 +59,6 @@ export const Api = createApi({
     // single blog by id
     getBlogById: builder.query({
       query: (id) => `/getById/${id}`,
-    }),
-
-    //Booking post api
-    createBooking: builder.mutation({
-      query: (booking) => ({
-        url: '/appointment/booking',
-        method: 'POST',
-        body: booking,
-      }),
     }),
 
     //Blog post api
@@ -89,11 +99,6 @@ export const Api = createApi({
         method: 'DELETE',
       }),
     }),
-
-
-
-
-
 
     //Category post api
     createCategory: builder.mutation({
@@ -262,6 +267,7 @@ export const {
   useDeleteBlogCategoryMutation,
   useFindAllBlogCategoriesQuery,
   useGetBlogCategoryByIdQuery,
+  useCreatePostMutation
   
 } = Api
 

@@ -6,13 +6,13 @@ import { DropdownIcon } from "../ui/icon";
 
 const BlogSidebar = () => {
   const { data: blogs, isLoading: blogsLoading, isError: blogsError } = useGetBlogQuery();
-  const { data: categories, isLoading: categoriesLoading, isError: categoriesError } = useFindAllBlogCategoriesQuery();
+  const { data:categories, isLoading:categoriesLoading, isError: categoriesError } = useFindAllBlogCategoriesQuery();
   const [openCategory, setOpenCategory] = useState(null);
 
   // Group blogs by category
   const groupedBlogs = categories?.map((category) => ({
     ...category,
-    blogs: blogs?.filter((blog) => blog.BlogCategoryId === category.id),
+    blogs: blogs?.filter((blog) => blog.CategoryId === category.id),
   }));
 
   const toggleCategory = (categoryId) => {

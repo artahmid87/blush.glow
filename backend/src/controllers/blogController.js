@@ -3,7 +3,7 @@ const Blog = require("../database/model/blog.db");
 const fs = require('fs'); 
 const sharp = require("sharp");
 const path = require("path");
-const BlogCategory = require("../database/model/BlogCategory");
+const {CategoryBlog }= require("../database/model/BlogCategory");
 
 
 const CreateCategories =async (req, res, next) =>{
@@ -14,7 +14,7 @@ const CreateCategories =async (req, res, next) =>{
           return res.status(404).send('Category data not Found')
       }
 
-      const data =  await BlogCategory.create({title})
+      const data =  await CategoryBlog.create({title})
       return res.status(200).send(data)
       
   } catch (error) {
@@ -24,7 +24,7 @@ const CreateCategories =async (req, res, next) =>{
 
 const getCategories =async (req, res, next)=>{
   try {
-      const categories = await BlogCategory.findAll()
+      const categories = await CategoryBlog.findAll()
       return res.status(200).send(categories)
   } catch (error) {
       next(error)
@@ -33,7 +33,7 @@ const getCategories =async (req, res, next)=>{
 const singleCategory =async (req, res, next)=>{
   try {
       const {id} = req.params
-      const categories = await BlogCategory.findOne({
+      const categories = await CategoryBlog.findOne({
           where:{
               id:id
           }
@@ -57,7 +57,7 @@ const deleteCategories = async (req, res, next) => {
           return res.status(400).send("Category ID is required.");
       }
 
-    await BlogCategory.destroy({
+    await CategoryBlog.destroy({
           where: {
               id: id,
           },
@@ -73,11 +73,11 @@ const deleteCategories = async (req, res, next) => {
 
 const blogController = async (req, res, next) => {
   try {
-    const { title, description, BlogCategoryId } = req?.body;
-    console.log(BlogCategoryId) 
+    const { title, description, CategoryId } = req?.body;
+  
 
     
-    if (!title || !description || !BlogCategoryId || req?.file?.path === undefined) {
+    if (!title || !description || !CategoryId || req?.file?.path === undefined) {
       if (req?.file?.path) fs.unlinkSync(req?.file?.path); 
       return res.status(404).send({
         message: "Something went wrong!"
@@ -95,7 +95,7 @@ const blogController = async (req, res, next) => {
        title, 
        description,
        file: 'op-' + req.file.originalname,
-       BlogCategoryId,  
+       CategoryId,  
     });
 
    
@@ -121,8 +121,8 @@ const getBlogController = async (req, res, next) => {
       const blog = await Blog.findAll({
         order: [['createdAt', 'DESC']],
           include: [{
-              model: BlogCategory,
-              as: 'blogCategory', 
+              model: CategoryBlog,
+              as: 'categories', 
               attributes: ['id', 'title'], 
           }],
           
@@ -143,8 +143,8 @@ const getById = async (req, res, next) => {
    
     const singleBlog = await Blog.findOne({
       include: [{
-        model: BlogCategory,
-        as: 'blogCategory', 
+        model: CategoryBlog,
+        as: 'categories', 
         attributes: ['id', 'title'], 
     }],
     where:{
@@ -162,7 +162,7 @@ const getById = async (req, res, next) => {
 const updateBlogController = async (req, res, next) => {
   try {
     const { id } = req.params; 
-    const { title, description , BlogCategoryId } = req?.body;
+    const { title, description , CategoryId } = req?.body;
 
 
 
@@ -179,7 +179,7 @@ const updateBlogController = async (req, res, next) => {
     }
 
   
-    if (!title || !description || !BlogCategoryId || !req?.file?.path) {
+    if (!title || !description || !CategoryId || !req?.file?.path) {
       fs.unlinkSync(req?.file?.path); 
       return res.status(404).send({
           message: "Something went wrong!"
@@ -193,7 +193,7 @@ const updateBlogController = async (req, res, next) => {
   .toFile(req.file.destination + '/up-'  + req.file.originalname);
 
 const data =  await Blog.update(
-  { title, description, BlogCategoryId, file:'up-' + req.file.originalname},
+  { title, description, CategoryId, file:'up-' + req.file.originalname},
   { where: { id } }
 );
 

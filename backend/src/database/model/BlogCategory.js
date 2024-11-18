@@ -1,12 +1,12 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../db.confiq.js')
 
-const BlogCategory = sequelize.define('blogCategory', {
-   
+const CategoryBlog = sequelize.define('blogcategorydb',{
     title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  });
+        type:DataTypes.STRING,
+        allowNull:false
+    }
+   
+})
 
-module.exports = BlogCategory
+module.exports = {CategoryBlog}
