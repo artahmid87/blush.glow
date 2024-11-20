@@ -19,12 +19,16 @@ const Review = () => {
       headline :"Review",
       title1 :"Client",
       title2:"Feedback",
-      description:`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo  maecenas accumsan lacus vel facilisis.`
+      description:` Your thoughts and opinions mean the world to us. They help us grow, improve, and serve you better. Whether it's a suggestion, a compliment, or something we could do better, we’re all ears!
+      Please take a moment to share your valuable feedback. Your input will help us create an even better experience for you and others.
+      `
     }
   ] 
   return (
     <div className ="py-20">
-  <HeadingComponent headingData ={headingData}/>
+
+ <HeadingComponent headingData ={headingData} />
+
     <Swiper
       slidesPerView={1}
       autoplay={{ delay: 4000, }}

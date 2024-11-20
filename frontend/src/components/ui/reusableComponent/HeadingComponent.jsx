@@ -44,15 +44,15 @@ const HeadingComponent = (props) => {
       {headingData?.map((item, index) => (
         <div
           key={item.headline}
-          className="text-center py-5 flex flex-col justify-center items-center"
+          className="text-center py-5 flex flex-col justify-center items-center w-full"
           ref={addToRefs} 
         >
-          <h1 className="text-xl text-primary italic font-secondery">{item.headline}</h1>
+          <h1 className="text-2xl text-primary italic font-secondery">{item.headline}</h1>
           <h1 className="text-4xl md:text-6xl font-bold font-secondery py-4">
             <span>{item.title1} </span> 
             <span className="text-primary">{item.title2}</span>
           </h1>
-          <p className="text-secondery font-loraFont text-center text-[14px] lg:text-[18px] pb-4 md:w-[70%] flex">
+          <p className="text-secondery font-loraFont text-center text-[14px] lg:text-[20px] pb-4 md:w-[60%] flex">
             {item.description}
           </p>
         </div>

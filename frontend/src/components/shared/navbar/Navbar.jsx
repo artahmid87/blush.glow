@@ -67,10 +67,10 @@ const Navbar = () => {
           <div className="container mx-auto flex justify-between items-center">
             <div>
               <Link href="/">
-                <img className='invisible md:visible w-[200px] md:w-[250px] md:-ml-10 lg:-ml-0 h-14' src="/images/home/logo.png" alt="Logo" />
+                <img className='invisible md:visible w-[300px] md:w-full md:-ml-4 lg:-ml-0 h-14' src="/images/home/logo.png" alt="Logo" />
               </Link>
             </div>
-            <div className="hidden md:flex mr-10 space-x-4 text-xl">
+            <div className="hidden md:flex mr-4 space-x-4 text-xl">
               <Link className={` hover:text-primary transition-all p-2 rounded ${isActiveLink('/') ? 'text-primary' : 'text-tertiary'}`} href="/">Home</Link>
             
               <Link className={` hover:text-primary transition-all p-2 rounded ${isActiveLink('/services') ? 'text-primary' : 'text-tertiary'}`} href="/services">Services</Link>

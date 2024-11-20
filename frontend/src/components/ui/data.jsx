@@ -10,24 +10,45 @@ export const HomeServiceData = [
     {
         id: 2,
         icon: <MakeupIcon />,
-        title: 'Makeup',
+        title: 'Threading',
         details:"Flawless, long-lasting makeup for any occasion, from natural looks to glamorous transformations."
 
     },
     {
         id: 3,
         icon: <HairIcon />,
-        title: 'Hair Styling',
+        title: 'Waxing',
          details:"From elegant updos to casual waves, we create hairstyles that complement your style and personality."
 
     },
     {
         id: 4,
         icon: <WaxingIcon />,
-        title: 'Waxing & Threading',
+        title: 'Microblading',
          details:"Smooth, precise hair removal for silky, soft skin."
 
-    }
+    },
+    {
+        id: 5,
+        icon: <WaxingIcon />,
+        title: 'Botox',
+         details:"Smooth, precise hair removal for silky, soft skin."
+
+    },
+    {
+        id: 6,
+        icon: <WaxingIcon />,
+        title: 'Fillers',
+         details:"Smooth, precise hair removal for silky, soft skin."
+
+    },
+    {
+        id: 7,
+        icon: <WaxingIcon />,
+        title: 'Laser Hair Removal',
+         details:"Smooth, precise hair removal for silky, soft skin."
+
+    },
 ]
 
 export const ServiceData = [

@@ -4,7 +4,11 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { HomeServiceData } from "../ui/data";
 import Container from "../ui/Container";
 import HeadingComponent from "../ui/reusableComponent/HeadingComponent";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import Link from "next/link";
 
 
 const Services = () => {
@@ -56,9 +60,9 @@ const Services = () => {
   const headingData = [
     {
       headline: "What we provide",
-      title1: "Services",
-      title2: "Plan",
-      description: "",
+      title1: "Services For ",
+      title2: "Your Skin",
+      description: "Tired of waiting on hold to schedule an appointment? Our online booking system lets you secure your spot in just a few clicks! Whether you're scheduling a consultation, reserving a service, or booking a follow-up, our user-friendly platform makes the process seamless.",
     },
   ];
 
@@ -75,7 +79,7 @@ const Services = () => {
           }}>
             <img  src="/images/home/11.png" alt="" />
           </div>
-      <Container className="pt-44">
+      <Container className="pt-20">
         <div ref={headingRef} className="relative py-20">
           <HeadingComponent headingData={headingData} />
                 
@@ -86,36 +90,64 @@ const Services = () => {
             <img className="opacity-20" src="/images/home/2.png" alt="" />
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
-          {
-            HomeServiceData?.map((item, i) => (
-              <div
-                ref={serviceRef}
-                key={item.id}
-                className="group flex flex-col  items-center p-6 bg-red transition-transform transform  overflow-hidden text-justify"
 
-              >
-               <div className="cssPath group-hover:bg-primary transition-all group-hover:text-white  text-primary py-10 px-10 relative">
-               <i className=" opacity-20 text-[120px]">
+     {/* home service data  slider  */}
+     <div className="pb-20">
+    
+      <Swiper
+        spaceBetween={20} 
+        pagination = {{clickable: true}}
+        autoplay={{ delay: 3000, disableOnInteraction: false }} 
+        modules={[Autoplay, Pagination, Navigation]} 
+        breakpoints={{
+      
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        }}
+    
+      >
+        {HomeServiceData?.map((item, i) => (
+          <SwiperSlide key={item.id} >
+            
+          <Link href={'/services/#price'}>      
+    
+            <div
+              className="group flex flex-col items-center p-6 bg-red transition-transform transform overflow-hidden text-justify"
+            >
+              <div className="cssPath group-hover:bg-primary transition-all group-hover:text-white text-primary py-10 px-10 relative">
+                <i className="opacity-20 text-[120px]">
                   {item.icon}
                 </i>
-               <i className="absolute top-[14%] left-1/2  transform -translate-x-1/2 translate-y-1/2 text-[70px] ">
+                <i className="absolute top-[14%] left-1/2 transform -translate-x-1/2 translate-y-1/2 text-[70px] ">
                   {item.icon}
                 </i>
-               </div>
-                <div>
-                  <h1 className="text-3xl text-center text-tertiary font-secondery py-6">
-                    {item.title}
-                  </h1>
-                  {/* Added details paragraph */}
-                  <p className=" text-secondery justify-center mb-10 pb-20">{item.details}</p>
-                </div>
-
               </div>
-            ))
-          }
-        </div>
+              <div>
+                <h1 className="text-3xl text-center text-tertiary font-secondery py-6">
+                  {item.title}
+                </h1>
+                <p className="text-secondery justify-center mb-10 pb-20">{item.details}</p>
+              </div>
+            </div>
+            </Link>  
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+
+
       </Container>
+      
 
       <div className='invisible lg:visible banner animate-slide-left-right absolute top-0 left-1/2 w-full h-full -ml-10' style={{
         zIndex: -1
@@ -126,6 +158,7 @@ const Services = () => {
         zIndex: 99
       }}> <img className='w-full h-44' src="/images/home/9.png" alt="" /></div>
     </div>
+
   );
 };
 

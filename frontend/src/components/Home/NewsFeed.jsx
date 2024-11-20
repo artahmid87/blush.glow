@@ -28,9 +28,9 @@ const NewsFeed = () => {
   const headingData = [
     {
       headline: "Beauty Bar News",
-      title1: "News",
-      title2: "Feed",
-      description: "Stay up-to-date with the latest trends, beauty tips, and exclusive offers from Makeover Beauty Bar! Here’s what’s happening in the world of beauty."
+      title1: "World of ",
+      title2: "beauty",
+      description: "Stay up-to-date with the latest trends, beauty tips, and exclusive offers from Blush & Glow Beauty Bar Here’s what’s happening in the world of beauty."
     }
   ];
 
@@ -108,6 +108,8 @@ const NewsFeed = () => {
                 ref={addToBlogRefs}
               >
                 <img className='w-full h-[400px]' src={"https://blush.glow.api.ara-dreamhome.com/images/blog_img/" + item?.file} alt={item?.title} />
+
+                <Link href={`blog/${item.id}/#blog`}>
                 <div className='absolute bottom-[-10%] left-0 w-[80%] h-[300px] bg-white p-6'>
                   <p className="text-[16px] text-primary pt-4 ">
                     {new Date(item.createdAt).toLocaleDateString('en-US', {
@@ -119,10 +121,11 @@ const NewsFeed = () => {
                   <h1 className='mt-4 text-tertiary text-2xl font-secondery pb-8'>
                     {item.title.slice(0, 70)}...
                   </h1>
-                  <Link href={`blog/${item.id}/#blog`} className='underline text-gray-400 font-secondery'>
+                  <Link href={`blog/${item.id}/#blog`} className='underline text-gray-400 font-secondery text-2xl'>
                     Learn More
                   </Link>
                 </div>
+                </Link>
               </div>
             ))}
           </div>

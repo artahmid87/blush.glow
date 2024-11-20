@@ -7,8 +7,8 @@
 
 
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
 body{
@@ -25,15 +25,7 @@ body{
 .circular-text{
     animation: circularText 12s linear infinite;
 }
-/* @keyframes circularText {
-    to{
-        transform: rotate(-360deg);
-    }
-}
 
-.pulse span{
-    animation-delay: calc(2s * var(--i));
-} */
 
 @keyframes fadeSpin {
     0% {
@@ -54,3 +46,29 @@ body{
     animation: fadeSpin 3s linear infinite;
   }
   
+
+.swiper-pagination {
+  bottom: 10px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; 
+}
+
+
+.swiper-pagination-bullet {
+  margin-bottom: 20px;
+  width: 12px;
+  height: 12px;
+  background-color: #d1d5db; 
+  border-radius: 50%;
+  opacity: 1; 
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.swiper-pagination-bullet-active {
+  margin-bottom: 20px;
+  background-color: #f87171; 
+  transform: scale(1.3); 
+}

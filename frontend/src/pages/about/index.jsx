@@ -5,6 +5,8 @@ import Review from '@/components/Home/Review'
 import Youtube from '@/components/About/YoutubeVideo'
 import Header from '@/components/ui/reusableComponent/Header'
 import FacebookPage from '@/components/About/Facebook.Page'
+import WhoAmI from '@/components/About/WhoAmI'
+import ProfessionalGoal from '@/components/About/ProfessionalGoal'
 
 const about = () => {
 
@@ -12,11 +14,13 @@ const about = () => {
   <section className='mt-20'>
       <Header title = "About us" />
       <About_us/>
+      <WhoAmI/>
+      <ProfessionalGoal/>
+      <Certificate/>
       <Feature/>
       <Youtube/>
-      <FacebookPage/>
-    
-      <Certificate/>
+      {/* <FacebookPage/> */}
+
   </section>
   )
 }

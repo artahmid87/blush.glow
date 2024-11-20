@@ -42,6 +42,7 @@ const Services = () => {
         backgroundPosition: 'bottom',
         backgroundAttachment: 'fixed',
       }}
+      id='price'
         >
            
           {groupedPrices?.map(category => (

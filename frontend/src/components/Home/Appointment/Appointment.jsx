@@ -72,7 +72,7 @@ const Appointment = () => {
           {/* Form Section */}
           <div ref={formRef} className='bg-[#fff6f4] p-2 md:p-8 w-full lg:w-[58%] border-8 border-white'>
             <h1 className='text-3xl lg:text-4xl text-tertiary font-secondery py-6'>
-              Make Appointment
+              Make An Appointment
             </h1>
             <p className='text-secondery mb-6'>
               Submit your details & You will get a confirmation Mail.

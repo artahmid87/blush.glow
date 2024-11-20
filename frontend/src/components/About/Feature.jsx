@@ -18,7 +18,10 @@ const Feature = () => {
     ]
 
     return (
-        <div className='bg-[#fff0f0] py-10'>
+        <div className='bg-[#fff0f0] pb-20 pt-24 relative'>
+                <div className='w-[100%] absolute top-0 left-0 ' style={{ zIndex: 99
+      }}> <img className='w-full h-44' src="/images/home/9.png" alt="" />
+      </div>
             <Container>
                 <div className="relative">
                     {/* headline */}
@@ -58,6 +61,9 @@ const Feature = () => {
                     </div>
                 </div>
             </Container>
+            <div className='w-[100%] absolute bottom-0 left-0 rotate-180' style={{ zIndex: 99
+      }}> <img className='w-full h-44' src="/images/home/9.png" alt="" />
+      </div>
         </div>
     )
 }

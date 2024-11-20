@@ -203,7 +203,7 @@ const Form = () => {
       <div className="py-2">
         <textarea
           className="py-4 px-5 w-full border-b border-primary text-secondery outline-none"
-          rows="4"
+          rows="2"
           cols="50"
           onChange={(e) => setDescription(e.target.value)}
           required

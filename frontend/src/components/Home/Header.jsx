@@ -54,23 +54,23 @@ const Header = () => {
     autoplay={{ delay: 5000 }}
     loop={true}
     speed={1200}
-    pagination={{ clickable: true }}
     navigation={true}
     modules={[Autoplay, Pagination, Navigation]}>
       {data.map((item, index) => (
         <SwiperSlide key={item.id}>
             <Container>
-          <div className="relative  md:py-20 bg-cover bg-top overflow-hidden ">
+          <div className="relative    md:py-20 bg-cover bg-top overflow-hidden ">
             <div className="flex justify-center lg:justify-between lg:items-start" ref={el => (slidesRef.current[index] = el)}>
-              <div className="flex flex-col justify-center items-center w-full lg:w-[40%]">
-                <h1 className="font-secondery md:text-[70px] xl:text-[90px] text-[35px] font-bold leading-[45px] md:leading-[70px]" ref={titleRef}>
+              <div className="flex flex-col justify-center items-start w-full lg:w-[40%]">
+                <h1 className="font-secondery md:text-[70px] xl:text-[90px] lg:text-[65px] text-[50px] font-bold leading-[45px] md:leading-[70px]" ref={titleRef}>
                   <span>{item.title1}</span>
                   <span className="text-primary ml-4">{item.title2}</span>
                 </h1>
-                <p className="mt-8 text-md md:text-xl text-tertiary" ref={descriptionRef}>
+                <p className="mt-8 text-md md:text-xl lg:text-lg text-tertiary" ref={descriptionRef}>
                   {item.describe}
                 </p>
-                <Link href="#appointment"  className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-center items-center mt-10 py-2  px-8  rounded-full shadow-lg cursor-pointer" ref={buttonRef}>
+                
+                <Link href="#appointment"  className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-center items-center mt-10 py-2  px-8  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
                 
                     <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full -ml-4">
                       <CalenderIcon/>
@@ -84,8 +84,8 @@ const Header = () => {
 
     
               <div className="relative z-[9] lg:w-full h-[600px] -mb-60 invisible lg:visible">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white flex justify-center items-center">
-                  <img src={item.images} alt="Person" className="rounded-full" />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white flex justify-center items-center overflow-hidden">
+                  <img src={item.images} alt="Person" className="rounded-full w-full h-full mt-2" />
                 </div>
 
                
