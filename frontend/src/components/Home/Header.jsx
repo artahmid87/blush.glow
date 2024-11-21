@@ -22,6 +22,9 @@ const Header = () => {
       title2: "Beauty Bar",
       images: '/images/home/Nazma_Jahan-1.jpg',
       describe: "Captivate Your Beauty Journey at Blush & Glow: Toronto's Premier Beauty Destination.",
+      link:"#appointment",
+      icon: <CalenderIcon/>,
+      span:"Appointment"
     },
     {
       id: 2,
@@ -29,6 +32,9 @@ const Header = () => {
       title2: "Beauty Bar",
       images: '/images/home/banner_layer.png',
       describe: "Love Yourself By Caring For Your Skin.",
+      link:"about",
+      icon: <CalenderIcon/>,
+      span:"About"
     },
     {
       id: 3,
@@ -36,6 +42,9 @@ const Header = () => {
       title2: "Beauty Bar",
       images: '/images/home/banner_layer.png',
       describe: "Elevate Your Aura at Blush & Glow Beauty Bar - Your Toronto Haven for Timeless Glamour.",
+      link:"about",
+      icon: <CalenderIcon/>,
+      span:"About"
     },
   ];
 
@@ -70,13 +79,13 @@ const Header = () => {
                   {item.describe}
                 </p>
                 
-                <Link href="#appointment"  className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-center items-center mt-10 py-2  px-8  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
+                <Link href={item?.link || "#"} className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-center items-center mt-10 py-2  px-8  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
                 
                     <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full -ml-4">
-                      <CalenderIcon/>
+                      {item.icon}
                     </span>
                     <span className="text-md md:text-xl transition-all group-hover:text-white text-primary font-secondery">
-                      Make An Appointment
+                      {item.span}
                     </span>
              
                 </Link>

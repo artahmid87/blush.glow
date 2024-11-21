@@ -71,13 +71,13 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="hidden md:flex mr-4 space-x-4 text-xl">
-              <Link className={` hover:text-primary transition-all p-2 rounded ${isActiveLink('/') ? 'text-primary' : 'text-tertiary'}`} href="/">Home</Link>
+              <Link className={` hover:text-primary transition-all duration-300 ease-in-out p-2 rounded ${isActiveLink('/') ? 'text-primary' : 'text-tertiary'}`} href="/">Home</Link>
             
-              <Link className={` hover:text-primary transition-all p-2 rounded ${isActiveLink('/services') ? 'text-primary' : 'text-tertiary'}`} href="/services">Services</Link>
+              <Link className={` hover:text-primary transition-all duration-300 ease-in-out p-2 rounded ${isActiveLink('/services') ? 'text-primary' : 'text-tertiary'}`} href="/services">Services</Link>
           
            
-              <Link className={` hover:text-primary transition-all p-2 rounded ${isActiveLink('/appointment') ? 'text-primary' : 'text-tertiary'}`} href="/appointment">Appointment</Link>
-              <Link className={` hover:text-primary transition-all p-2 rounded ${isActiveLink('/contact') ? 'text-primary' : 'text-tertiary'}`} href="/contact">Contact</Link>
+              <Link className={` hover:text-primary transition-all duration-300 ease-in-out p-2 rounded ${isActiveLink('/appointment') ? 'text-primary' : 'text-tertiary'}`} href="/appointment">Appointment</Link>
+              <Link className={` hover:text-primary transition-all duration-300 ease-in-out p-2 rounded ${isActiveLink('/contact') ? 'text-primary' : 'text-tertiary'}`} href="/contact">Contact</Link>
               <ToggleBar />
             </div>
             <div className="md:hidden  w-full h-6 flex justify-between">
@@ -97,12 +97,12 @@ const Navbar = () => {
           >
             <div className="space-y-2 w-full flex flex-col justify-center items-center">
               <img className='w-[200px] md:hidden md:w-[250px] h-14' src="/images/home/logo.png" alt="Logo" />
-              <Link onClick={toggleMenu} className={`block text-tertiary hover:text-primary transition-all p-2 rounded ${isActiveLink('/') ? 'text-primary' : ''}`} href="/">Home</Link>
+              <Link onClick={toggleMenu} className={`block text-tertiary hover:text-primary transition-all duration-300 ease-in-out p-2 rounded ${isActiveLink('/') ? 'text-primary' : ''}`} href="/">Home</Link>
           
-              <Link onClick={toggleMenu} className={`block text-tertiary hover:text-primary transition-all p-2 rounded ${isActiveLink('/services') ? 'text-primary' : ''}`} href="/services">Services</Link>
+              <Link onClick={toggleMenu} className={`block text-tertiary hover:text-primary transition-all duration-300 ease-in-out p-2 rounded ${isActiveLink('/services') ? 'text-primary' : ''}`} href="/services">Services</Link>
           
          
-              <Link onClick={toggleMenu} className={`block text-tertiary hover:text-primary transition-all p-2 rounded ${isActiveLink('/contact') ? 'text-primary' : ''}`} href="/contact">Contact</Link>
+              <Link onClick={toggleMenu} className={`block text-tertiary hover:text-primary transition-all duration-300 ease-in-out p-2 rounded ${isActiveLink('/contact') ? 'text-primary' : ''}`} href="/contact">Contact</Link>
             </div>
 
 

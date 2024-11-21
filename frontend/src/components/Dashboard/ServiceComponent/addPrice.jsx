@@ -6,6 +6,7 @@ const AddPrice = () => {
   const [title, setTitle] = useState('')
   const [price, setPrice] = useState('')
   const [CategoryId, setCategoryId] = useState("")
+  const [shortInfo, setShortInfo] = useState("")
   const [image, setImage] = useState(null);
 
 
@@ -23,6 +24,8 @@ const AddPrice = () => {
       formData.append('image', image);
       formData.append('price', price);
       formData.append('CategoryId', CategoryId);
+      formData.append('shortInfo', shortInfo);
+    
 
       await pricePlan(formData).unwrap();
 
@@ -68,6 +71,18 @@ const AddPrice = () => {
               required
               className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
+          </div>
+
+          <div>
+            <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description:</label>
+            <textarea
+              rows="4" cols="50"
+              id="description"
+              name="description"
+              onChange={(e) => setShortInfo(e.target.value)}
+              placeholder="Description"
+              className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            ></textarea>
           </div>
 
       <div>

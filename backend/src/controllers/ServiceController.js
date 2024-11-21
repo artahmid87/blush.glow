@@ -59,8 +59,6 @@ const updateCategories =async (req, res, next)=>{
       }
     });
 
-
-        // console.log(categories)
         if(!categories){
             return res.status(404).send("Categories Not found!")
         }
@@ -94,7 +92,7 @@ const deleteCategories = async (req, res, next) => {
      
         return res.status(200).send("Category deleted successfully!");
     } catch (error) {
-        next(error); // Pass the error to the error handling middleware
+        next(error); 
     }
 };
 
@@ -102,11 +100,10 @@ const deleteCategories = async (req, res, next) => {
 
 const CreatePricePlan =async (req, res, next) =>{
     try {
-        const { title, price,CategoryId } = req?.body; 
-        console.log(CategoryId)
+        const { title, price, shortInfo, CategoryId } = req?.body; 
+      
     
-        
-        if (!title || !price || req?.file?.path === undefined) {
+        if (!title || !price  || !CategoryId || !shortInfo || req?.file?.path === undefined) {
           if (req?.file?.path) fs.unlinkSync(req?.file?.path); 
           return res.status(404).send({
             message: "Something went wrong!"
@@ -124,6 +121,7 @@ const CreatePricePlan =async (req, res, next) =>{
            title, 
            price,
            image:'op-' + req.file.originalname,
+           shortInfo,
            CategoryId,
         });
     
@@ -188,17 +186,13 @@ const updatePricePlan = async (req, res, next) => {
     try {
         const { id } = req.params; 
     
-        const { title, price,CategoryId } = req?.body;
-       const image = req?.file?.originalname
-    
+        const { title, price,shortInfo, CategoryId } = req?.body;
     
         const pricepaln = await PricePlan.findOne({
           where: {
             id: id
           }
         });
-
-      console.log(pricepaln)
 
 
         if (!title || !price || !pricepaln || !req?.file?.path) {
@@ -216,7 +210,7 @@ const updatePricePlan = async (req, res, next) => {
             .toFile(req.file.destination + '/up-' + req.file.originalname);
 
         await PricePlan.update(
-            { title, price, image:'up-' +  req.file.originalname, CategoryId },
+            { title, price, image:'up-' +  req.file.originalname, shortInfo, CategoryId },
             { where: { id } }
         );
 

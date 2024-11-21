@@ -56,6 +56,7 @@ const DisplayService = () => {
                 className="w-full h-32 object-cover rounded-md mb-2"
               />
               <p className="text-gray-700">{item.price}</p>
+              <p className="text-gray-700">{item.shortInfo}</p>
               <p className="text-gray-700">{item?.categories?.title}</p>
               <div className="flex justify-between mt-4">
                 <Link href={`/dashboard/updatePrice/${item.id}`}>
@@ -85,6 +86,7 @@ const DisplayService = () => {
                 <th className="px-4 py-2 border border-gray-300">Image</th>
                 <th className="px-4 py-2 border border-gray-300">Title</th>
                 <th className="px-4 py-2 border border-gray-300">price</th>
+                <th className="px-4 py-2 border border-gray-300">Description</th>
                 <th className="px-4 py-2 border border-gray-300">Category</th>
                 <th className="px-4 py-2 border border-gray-300">Action</th>
               </tr>
@@ -102,6 +104,8 @@ const DisplayService = () => {
                   <td className="px-4 py-2 border border-gray-300">{item?.title}</td>
                 
                   <td className="px-4 py-2 border border-gray-300">{item?.price}</td>
+                
+                  <td className="px-4 py-2 border border-gray-300">{item?.shortInfo}</td>
                   <td className="px-4 py-2 border border-gray-300">{item?.categories?.title}</td>
                   <td className="px-4 py-2 border border-gray-300">
                     <div className="flex flex-col items-center space-y-2">

@@ -1,4 +1,4 @@
-import BlogPostForm from '@/components/Dashboard/DashboardComponent/NewPost'
+import BlogPostForm from '@/components/Dashboard/BlogComponent/NewPost'
 import DashboardLayout from '@/layouts/dashboardLayout'
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';

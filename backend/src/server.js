@@ -5,9 +5,6 @@ const  createError =  require("http-errors")
 const Server = http.createServer(app);
 
 
-
-
-
 //Not found error handling
 app.use((req, res, next) => {
     next(createError(401, "Route not found"));

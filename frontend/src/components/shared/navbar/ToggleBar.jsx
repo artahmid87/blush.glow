@@ -13,15 +13,15 @@ export default function ToggleBar() {
   useEffect(() => {
     if (isOpen) {
       gsap.to(sidebarRef.current, {
-        x: 0, 
-        opacity:1,
+        x: 0,
+        opacity: 1,
         duration: 0.5,
         ease: 'power3.out',
       });
     } else {
       gsap.to(sidebarRef.current, {
-        x: -1000, 
-        opacity:0,
+        x: -1000,
+        opacity: 0,
         duration: 0.5,
         ease: 'power3.in',
       });
@@ -92,11 +92,12 @@ export default function ToggleBar() {
       {/* Menu Toggle Button */}
       <button
         onClick={toggleMenu}
-        className={`focus:outline-none text-2xl ${isOpen ? 'text-white z-50 ' : 'text-tertiary'}`}
+        className={`focus:outline-none text-2xl ${isOpen ? 'text-white z-50' : 'text-tertiary hover:bg-primary p-2 w-10 h-10 rounded-full hover:text-white transition-all duration-500 ease-in-out transform hover:rotate-180'}`}
         type="button"
       >
         {isOpen ? <CloseIcon /> : <OpenIcon />}
       </button>
+
 
       {/* Overlay for Mobile */}
       {isOpen && (

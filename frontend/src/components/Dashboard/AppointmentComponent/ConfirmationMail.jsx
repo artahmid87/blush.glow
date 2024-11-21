@@ -1,8 +1,8 @@
 import { useGetBookingByIdQuery, useUpdateBookingMutation } from '@/redux/api/Api';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import Container from '../ui/Container';
 import Link from 'next/link';
+import Container from '@/components/ui/Container';
 
 const ConfirmationMail = () => {
   const [name, setName] = useState('');
@@ -49,7 +49,7 @@ const ConfirmationMail = () => {
 
     try {
       await updateBooking({ id, booking: updateData }).unwrap();
-      router.push('/dashboard');  // Redirect after successful update
+      router.push('/dashboard/appointment');  
     } catch (error) {
       console.error('Update failed:', error);
     }

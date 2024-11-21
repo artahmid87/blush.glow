@@ -11,7 +11,7 @@ const Sidebar = () => {
   };
 
   return (
-    <nav className= "  h-[100dvh] bg-white border-r border-gray-400 text-secondery p-6">
+    <nav className= "  lg:h-[100dvh] bg-white border-r border-gray-400 text-secondery p-6">
       {/* Sidebar for All Views */}
       <div className="flex flex-col items-center lg:w-60">
         {/* Logo */}
@@ -33,11 +33,15 @@ const Sidebar = () => {
               <span className="text-2xl">Appointment</span>
             </Link>
           </li>
+
+
+        
+
           {/* Dropdown Menus */}
           {renderDropdownMenu('blog', 'Blog', BlogIcon, [
-            { name: 'Blog List', href: '/dashboard/blog' },
-            { name: 'Create Post', href: '/dashboard/newPost' },
-            { name: 'Blog Category', href: '/dashboard/blog-category' },
+            { name: 'List of Blog', href: '/dashboard/blog' },
+            { name: 'Create Blog Post ', href: '/dashboard/newPost' },
+            { name: 'Blog Category', href: '/dashboard/blog-category' },
           ])}
           {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
             { name: 'Gallery List', href: '/dashboard/gallery' },
@@ -74,9 +78,9 @@ const Sidebar = () => {
               </li>
               {/* Dropdown Menus */}
               {renderDropdownMenu('blog', 'Blog', BlogIcon, [
-                { name: 'Blog List', href: '/dashboard/blog' },
-                { name: 'Create Post', href: '/dashboard/newPost' },
-                { name: 'Blog Category', href: '/dashboard/blog-category' },
+                { name: 'List of Blog', href: '/dashboard/blog' },
+                { name: 'Create Blog Post', href: '/dashboard/newPost' },
+                { name: 'Blog Category', href: '/dashboard/blog-category' },
               ])}
               {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
                 { name: 'Gallery List', href: '/dashboard/gallery' },

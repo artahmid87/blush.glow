@@ -75,7 +75,7 @@ const blogController = async (req, res, next) => {
   try {
     const { title, description, CategoryId } = req?.body;
   
-
+console.log(title)
     
     if (!title || !description || !CategoryId || req?.file?.path === undefined) {
       if (req?.file?.path) fs.unlinkSync(req?.file?.path); 
@@ -165,6 +165,7 @@ const updateBlogController = async (req, res, next) => {
     console.log(id, title, description , CategoryId)
     const { id } = req.params; 
     const { title, description , CategoryId } = req?.body;
+    
 
     console.log(id, title, description , CategoryId)
 

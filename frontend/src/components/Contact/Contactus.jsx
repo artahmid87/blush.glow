@@ -118,7 +118,7 @@ const ContactUs = () => {
           <div className="w-full md:w-[48%] border-4 border-gray-100 p-6" ref={mapRef}>
           <div  className='bg-[#fff6f4] p-2 md:p-8 w-full border-8 border-white'>
             <h1 className='text-3xl lg:text-4xl text-tertiary font-secondery py-6'>
-              Make An Appointment
+            Appointment
             </h1>
             <Form />
           </div>

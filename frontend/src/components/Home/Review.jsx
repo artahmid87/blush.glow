@@ -27,7 +27,7 @@ const Review = () => {
   return (
     <div className ="py-20">
 
- <HeadingComponent headingData ={headingData} />
+  <Container><HeadingComponent headingData ={headingData} /></Container> 
 
     <Swiper
       slidesPerView={1}
