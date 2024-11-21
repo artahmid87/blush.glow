@@ -1,18 +1,29 @@
 import { useDeleteBlogCategoryMutation, useDeleteCategoryMutation, useFindAllBlogCategoriesQuery, useFindAllCategoriesQuery } from '@/redux/api/Api';
 import { Button, Popconfirm } from 'antd/dist/antd';
+import { useEffect } from 'react';
 
 
 const DisplayBlogCategory = () => {
-  const { data, isLoading, isError } = useFindAllBlogCategoriesQuery();
+  const { data, isLoading, isError, refetch } = useFindAllBlogCategoriesQuery();
   const [deleteCategory] = useDeleteBlogCategoryMutation();
+
+
+  useEffect(() => {
+   const interval = setInterval(() =>{
+    refetch()
+   }, 3000)
+   return () => clearInterval(interval)
+  }, [refetch])
+  
+
 
   const handleDelete = async (id) => {
     try {
       await deleteCategory(id).unwrap()
+      refetch()
     } catch (error) {
       console.log(error)
     }
-    window.location.reload()
   };
 
 

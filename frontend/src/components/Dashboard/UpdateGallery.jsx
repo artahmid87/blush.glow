@@ -13,7 +13,7 @@ const UpdateGallery = () => {
   const [path, setPath] = useState(null);
   const formRef = useRef()
 
-  //store previous data in useState
+
    useEffect(() => {
     if (data) {
       setTitle(data.title);
@@ -21,10 +21,10 @@ const UpdateGallery = () => {
     }
   }, [data]);
 
-  // update mutation form redux
+
   const [updateGallery, { isLoading, isSuccess, isError }] = useUpdateGalleryMutation();
 
-  // update handler
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -44,8 +44,8 @@ const UpdateGallery = () => {
   return (
     <div className="flex justify-center items-center min-h-screen  bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
-      <Link href={'dashboard/gallery'}>Back To Dashboard</Link>
-        <h1 className="text-2xl font-semibold mb-6 text-center">Update Gallery Image</h1>
+      <Link className='py-2 px-3 bg-blue-500 text-white' href={'dashboard/gallery'}>Back To Dashboard</Link>
+        <h1 className="text-2xl font-semibold py-6 text-center">Update Gallery Image</h1>
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
       
           <div>

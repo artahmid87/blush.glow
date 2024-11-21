@@ -61,12 +61,12 @@ export const Api = createApi({
       query: (id) => `/getById/${id}`,
     }),
 
-    //Blog post api
-    blogPost: builder.mutation({
-      query: (post) => ({
-        url: '/uploadBlog',
-        method: 'POST',
-        body: post,
+    //Category Update api
+    updateBlog: builder.mutation({
+      query: ({id, blogUpdate}) => ({
+        url: `/updateBlog/${id}`,
+        method: 'PUT',
+        body: blogUpdate,
       }),
     }),
 
@@ -166,14 +166,6 @@ export const Api = createApi({
         }),
       }),
 
-    //Blog Update api
-    updateBlog: builder.mutation({
-      query: (id, update) => ({
-        url: `/updateBlog/${id}`,
-        method: 'PUT',
-        body: update,
-      }),
-    }),
 
     //Blog delete api
     deleteBlog: builder.mutation({
@@ -244,9 +236,7 @@ export const {
   useReviewQuery,
   useGetBlogByIdQuery,
   useGetBlogQuery,
-  useBlogPostMutation,
   useDeleteBlogMutation,
-  useUpdateBlogMutation,
   useUploadGalleryMutation,
   useGetAllGalleryQuery,
   useUpdateGalleryMutation,
@@ -267,7 +257,8 @@ export const {
   useDeleteBlogCategoryMutation,
   useFindAllBlogCategoriesQuery,
   useGetBlogCategoryByIdQuery,
-  useCreatePostMutation
+  useCreatePostMutation,
+  useUpdateBlogMutation
   
 } = Api
 

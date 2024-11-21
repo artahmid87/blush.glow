@@ -1,80 +1,70 @@
 import React, { useRef, useState, useEffect } from 'react';
-import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useFindAllBlogCategoriesQuery } from '@/redux/api/Api';
+import { useFindAllBlogCategoriesQuery, useUpdateBlogMutation } from '@/redux/api/Api';
 
 const UpdateBlog = (props) => {
+
+
+  const router = useRouter()
+  const id = router.query.id
+
   const { data, isLoading, isError } = props.blogData;
-  console.log(data)
+
+  const { data: caregory, isError: issue } = useFindAllBlogCategoriesQuery()
+
+
+  const [updateBlog, { isLoading:Loading, isSuccess, isError:IsError }] = useUpdateBlogMutation();
+
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [file, setFile] = useState(null);
-  const [progress, setProgress] = useState(0);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [BlogCategoryId, setBlogCategoryId] = useState("")
+  const [CategoryId, setCategoryId] = useState("")
   const formRef = useRef();
-  const router = useRouter()
 
-  const { data: caregory, isError: issue } = useFindAllBlogCategoriesQuery()
 
-  // store previous data in useState
+
+
   useEffect(() => {
     if (data) {
       setTitle(data.title);
-      setDescription(data.description);
-      setBlogCategoryId(data.BlogCategoryId);
+      setFile(data.file)
+      setDescription(data.description)
+      setCategoryId(data.CategoryId)
     }
   }, [data]);
 
-  // update handler
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    try {
     const formData = new FormData();
     if (file) {
       formData.append('file', file);
     }
     formData.append('title', title);
     formData.append('description', description);
-    formData.append('BlogCategoryId', BlogCategoryId);
+    formData.append('CategoryId', CategoryId);
 
-    try {
-      setError(null);
-      setSuccess(false);
-
-      const response = await axios.put(`https://blush.glow.api.ara-dreamhome.com/updateBlog/${data.id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        onUploadProgress: (progressEvent) => {
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
-          );
-          setProgress(percentCompleted);
-        },
-      });
-
-      setSuccess(true);
-      console.log('Blog updated successfully:', response.data);
-      router.push('/dashboard/blog')
+  
+       await updateBlog({ id, blogUpdate: formData }).unwrap(); 
+      router.push('/dashboard/blog');
 
     } catch (error) {
-      setError('Failed to update the blog.');
-      console.error('Error updating blog:', error);
+      console.error('Failed to update the blog.');
     }
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (Loading) return <p>Loading...</p>;
   if (isError) return <p>Error loading blog data.</p>;
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
-        <Link href={'/dashboard/blog'}>Back to Dashboard</Link>
-        <h1 className="text-2xl font-semibold mb-6 text-center">Update Blog Post</h1>
+        <Link className='py-2 px-3 bg-blue-500 text-white' href={'/dashboard/blog'}>Back to Dashboard</Link>
+        <h1 className="text-2xl font-semibold mb-6 text-center pt-4">Update Blog Post</h1>
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
 
           <div>
@@ -112,9 +102,7 @@ const UpdateBlog = (props) => {
               onChange={(e) => setFile(e.target.files[0])}
               className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
-            {progress > 0 && <p className="text-sm text-blue-600 mt-2">Upload Progress: {progress}%</p>}
-            {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
-            {success && <p className="text-sm text-green-600 mt-2">Blog updated successfully!</p>}
+          
           </div>
 
           <div>
@@ -124,10 +112,10 @@ const UpdateBlog = (props) => {
 
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none"
               required
-              onChange={(e) => setBlogCategoryId(e.target.value)}
+              onChange={(e) => setCategoryId(e.target.value)}
             >
-              <option value={data?.blogCategory
-                ?.title}> {data?.blogCategory
+              <option value={data?.categories
+                ?.title}> {data?.categories
                   ?.title}</option>
               {
                 caregory?.map((item) => (
@@ -137,13 +125,9 @@ const UpdateBlog = (props) => {
                     key={item?.id}
                   >{item?.title}</option>
 
-
-
-
                 ))
 
               }
-
 
             </select>
           </div>
@@ -152,9 +136,13 @@ const UpdateBlog = (props) => {
             type="submit"
             className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
-            Update Blog
+           {
+            Loading ? <> Wait...</> : <> Update Blog</>
+           }
           </button>
 
+          {IsError && <p className="text-sm text-red-600 mt-2">Something Went Wrong!</p>}
+          {isSuccess && <p className="text-sm text-green-600 mt-2">Blog updated successfully!</p>}
         </form>
       </div>
     </div>

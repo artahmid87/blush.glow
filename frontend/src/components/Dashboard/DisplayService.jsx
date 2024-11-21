@@ -4,7 +4,14 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const DisplayService = () => {
-  const { data, isLoading, isError } = useFindAllPriceQuery();
+  const { data, isLoading, isError, refetch } = useFindAllPriceQuery();
+
+  useEffect(() => {
+    const interval = setInterval(() =>{
+     refetch()
+    }, 1000)
+    return () => clearInterval(interval)
+   }, [refetch])
  
   const [deletePrice] = useDeletePriceMutation();
   const [isMobile, setIsMobile] = useState(false);
@@ -21,10 +28,11 @@ const DisplayService = () => {
   const handleDelete = async (id) => {
     try {
       await deletePrice(id).unwrap();
+      refetch()
     } catch (error) {
       console.log(error);
     }
-    window.location.reload();
+   
   };
 
   return (
@@ -74,8 +82,8 @@ const DisplayService = () => {
           <table className="min-w-full table-auto border-collapse border border-gray-200">
             <thead>
               <tr className="bg-gray-200">
-                <th className="px-4 py-2 border border-gray-300">Title</th>
                 <th className="px-4 py-2 border border-gray-300">Image</th>
+                <th className="px-4 py-2 border border-gray-300">Title</th>
                 <th className="px-4 py-2 border border-gray-300">price</th>
                 <th className="px-4 py-2 border border-gray-300">Category</th>
                 <th className="px-4 py-2 border border-gray-300">Action</th>

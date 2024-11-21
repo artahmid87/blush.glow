@@ -1,20 +1,28 @@
 import { useDeleteGalleryMutation, useGetAllGalleryQuery } from '@/redux/api/Api'
 import { Popconfirm, Button } from 'antd/dist/antd'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Gallery = () => {
-  const { data, isSuccess, isError, isLoading } = useGetAllGalleryQuery()
+  const { data, isSuccess, isError, isLoading, refetch } = useGetAllGalleryQuery()
+
+  useEffect(() => {
+    const interval = setInterval(() =>{
+     refetch()
+    }, 1000)
+    return () => clearInterval(interval)
+   }, [refetch])
 
   const [deleteGallery] = useDeleteGalleryMutation();
 
   const handleDelete = async (id) => {
     try {
       await deleteGallery(id).unwrap()
+      refetch()
     } catch (error) {
       console.log(error)
     }
-    window.location.reload()
+
   };
 
   return (

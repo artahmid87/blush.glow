@@ -20,7 +20,7 @@ const Header = () => {
       id: 1,
       title1: "Blush & Glow",
       title2: "Beauty Bar",
-      images: '/images/home/banner_layer.png',
+      images: '/images/home/Nazma_Jahan-1.jpg',
       describe: "Captivate Your Beauty Journey at Blush & Glow: Toronto's Premier Beauty Destination.",
     },
     {
@@ -59,7 +59,7 @@ const Header = () => {
       {data.map((item, index) => (
         <SwiperSlide key={item.id}>
             <Container>
-          <div className="relative    md:py-20 bg-cover bg-top overflow-hidden ">
+          <div className="relative md:py-20 bg-cover bg-top overflow-hidden ">
             <div className="flex justify-center lg:justify-between lg:items-start" ref={el => (slidesRef.current[index] = el)}>
               <div className="flex flex-col justify-center items-start w-full lg:w-[40%]">
                 <h1 className="font-secondery md:text-[70px] xl:text-[90px] lg:text-[65px] text-[50px] font-bold leading-[45px] md:leading-[70px]" ref={titleRef}>
@@ -85,7 +85,7 @@ const Header = () => {
     
               <div className="relative z-[9] lg:w-full h-[600px] -mb-60 invisible lg:visible">
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white flex justify-center items-center overflow-hidden">
-                  <img src={item.images} alt="Person" className="rounded-full w-full h-full mt-2" />
+                  <img src={item.images} alt="Person" className="rounded-full w-[650px] h-[650px]" />
                 </div>
 
                

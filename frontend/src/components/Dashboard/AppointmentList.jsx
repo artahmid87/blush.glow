@@ -7,13 +7,19 @@ import { useEffect, useState } from 'react';
 const { Column } = Table;
 
 const AppointmentList = () => {
-  const { data, isLoading, isError } = useBookingListQuery();
+  const { data, isLoading, isError, refetch } = useBookingListQuery();
   const [deleteBooking] = useDeleteBookingMutation();
   const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
 
 
+  useEffect(() => {
+    const interval = setInterval(() =>{
+     refetch()
+    }, 1000)
+    return () => clearInterval(interval)
+   }, [refetch])
 
-  // Check for screen size
+
   useEffect(() => {
     const handleResize = () => {
       setIsTabletOrMobile(window.innerWidth < 1024);
@@ -26,10 +32,11 @@ const AppointmentList = () => {
   const handleDelete = async (id) => {
     try {
       await deleteBooking(id).unwrap();
+      refetch()
     } catch (error) {
       console.log(error);
     }
-    window.location.reload();
+   
   };
 
   return (

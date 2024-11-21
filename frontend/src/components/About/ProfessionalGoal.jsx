@@ -23,7 +23,7 @@ import HeadingComponent from '../ui/reusableComponent/HeadingComponent'
             At Blush & Glow, my mission is to enhance your natural beauty and promote overall well-being through personalized and indulgent spa experiences. I specialize in Facial, Threading, and Waxing services, meticulously crafted to leave you feeling refreshed, confident, and radiantly beautiful.
             <br/>
             <br/>
-            I understand that each woman is unique, and so are her skincare needs. That's why I take a personalized approach to every treatment.
+            I understand that each woman is unique, and so are her skincare needs.That is why I take a personalized approach to every treatment.
             <br/>
             <br/>
             Indulge in the luxury of self-care at Blush & Glow Beauty Bar, where every visit is an opportunity to unwind, revitalize, and embrace your innate beauty. We look forward to welcoming you to our place of relaxation and helping you achieve the blushing glow you deserve.

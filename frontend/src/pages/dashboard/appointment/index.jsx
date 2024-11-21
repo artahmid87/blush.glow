@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Cookies from 'js-cookie';     // For reading cookies
+import Cookies from 'js-cookie';     
 import { jwtDecode } from "jwt-decode"
 import DashboardLayout from '@/layouts/dashboardLayout';
 import AppointmentList from '@/components/Dashboard/AppointmentList';
-import Dashboard from '@/components/Dashboard/Dashboard';
 
-export default function DashboardPage( ) {
+const Index = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -25,9 +24,10 @@ export default function DashboardPage( ) {
   return (
  
     <DashboardLayout>
-    <Dashboard/>
+    <AppointmentList/>
     </DashboardLayout>
    
   );
 }
 
+export default Index

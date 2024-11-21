@@ -1,210 +1,122 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { OpenIcon, DropdownIcon } from '../ui/icon'; // Assuming you have a dropdown icon
+import { OpenIcon, DropdownIcon, BlogIcon, GalleryIcon, MakeUpIcon, AppointmentIcon, DashboardIcon } from '../ui/icon';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null); // Tracks active dropdown menu
+  const [activeMenu, setActiveMenu] = useState(null);
 
   const toggleMenu = (menu) => {
     setActiveMenu(activeMenu === menu ? null : menu);
   };
 
   return (
-    <nav className="bg-gray-800 text-white p-6">
-      {/* Sidebar for Desktop */}
-      <div className="hidden lg:flex flex-col items-center w-60">
-        <h2 className="text-2xl font-bold mb-8">Dashboard</h2>
-        <ul>
-        <li className=''><Link href={'/'}>Home</Link></li>
-        <li className='py-2'><Link href={'/dashboard'}>Appointment</Link></li>
-          {/* Blog Dropdown */}
-          <li className="mb-4">
-            <div
-              className={`flex items-center cursor-pointer ${activeMenu === 'blog' ? 'text-blue-500' : ''}`}
-              onClick={() => toggleMenu('blog')}
-            >
-              Blog
-              <DropdownIcon size={18} className="ml-2" />
-            </div>
-            {activeMenu === 'blog' && (
-              <ul className="ml-6 space-y-2">
-                <li><Link href="/dashboard/blog">Blog List</Link></li>
-                <li><Link href="/dashboard/newPost">Create Post</Link></li>
-                <li><Link href="/dashboard/blog-category">Blog Category</Link></li>
-              </ul>
-            )}
-          </li>
-
-          {/* Gallery Dropdown */}
-          <li className="mb-4">
-            <div
-              className={`flex items-center cursor-pointer ${activeMenu === 'gallery' ? 'text-blue-500' : ''}`}
-              onClick={() => toggleMenu('gallery')}
-            >
-              Gallery
-              <DropdownIcon size={18} className="ml-2" />
-            </div>
-            {activeMenu === 'gallery' && (
-              <ul className="ml-6 space-y-2">
-                <li><Link href="/dashboard/gallery">Gallery List</Link></li>
-                <li><Link href="/dashboard/uploadGallery">Post Gallery</Link></li>
-              </ul>
-            )}
-          </li>
-
-          {/* Services Dropdown */}
-          <li className="mb-4">
-            <div
-              className={`flex items-center cursor-pointer ${activeMenu === 'services' ? 'text-blue-500' : ''}`}
-              onClick={() => toggleMenu('services')}
-            >
-              Services
-              <DropdownIcon size={18} className="ml-2" />
-            </div>
-            {activeMenu === 'services' && (
-              <ul className="ml-6 space-y-2">
-                <li><Link href="/dashboard/displayServices">Service List</Link></li>
-                <li><Link href="/dashboard/addPrice">Add Service</Link></li>
-                <li><Link href="/dashboard/category">Category</Link></li>
-              </ul>
-            )}
-          </li>
-        </ul>
-      </div>
-
-      {/* Sidebar for Tablet */}
-      <div className="hidden md:flex lg:hidden flex-col items-center">
-        <div className="flex justify-between items-center w-full">
-          <h2 className="text-2xl font-bold">Dashboard</h2>
-          <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Sidebar">
-            <OpenIcon size={24} />
-          </button>
+    <nav className="bg-white border-r border-gray-400 text-secondery p-6">
+      {/* Sidebar for All Views */}
+      <div className="flex flex-col items-center lg:w-60">
+        {/* Logo */}
+        <div className="py-10">
+          <img src="/images/home/logo.png" alt="Logo" />
         </div>
 
-        {isOpen && (
-          <ul className="mt-4 space-y-4">
-               <li className='py-2'><Link href={'/'}>Home</Link></li>
-               <li className='py-2'><Link href={'/dashboard'}>Appointment</Link></li>
-            <li>
-              <div
-                className={`flex items-center cursor-pointer ${activeMenu === 'blog' ? 'text-blue-500' : ''}`}
-                onClick={() => toggleMenu('blog')}
-              >
-                Blog
-                <DropdownIcon size={18} className="ml-2" />
-              </div>
-              {activeMenu === 'blog' && (
-                <ul className="ml-6 space-y-2">
-                  <li><Link href="/dashboard/blog">Blog List</Link></li>
-                  <li><Link href="/dashboard/newPost">Create Post</Link></li>
-                  <li><Link href="/dashboard/blog-category">Blog Category</Link></li>
-                </ul>
-              )}
-            </li>
-
-            <li>
-              <div
-                className={`flex items-center cursor-pointer ${activeMenu === 'gallery' ? 'text-blue-500' : ''}`}
-                onClick={() => toggleMenu('gallery')}
-              >
-                Gallery
-                <DropdownIcon size={18} className="ml-2" />
-              </div>
-              {activeMenu === 'gallery' && (
-                <ul className="ml-6 space-y-2">
-                  <li><Link href="/dashboard/gallery">Gallery List</Link></li>
-                  <li><Link href="/dashboard/uploadGallery">Post Gallery</Link></li>
-                </ul>
-              )}
-            </li>
-
-            <li>
-              <div
-                className={`flex items-center cursor-pointer ${activeMenu === 'services' ? 'text-blue-500' : ''}`}
-                onClick={() => toggleMenu('services')}
-              >
-                Services
-                <DropdownIcon size={18} className="ml-2" />
-              </div>
-              {activeMenu === 'services' && (
-                <ul className="ml-6 space-y-2">
-                  <li><Link href="/dashboard/displayServices">Service List</Link></li>
-                  <li><Link href="/dashboard/addPrice">Add Service</Link></li>
-                  <li><Link href="/dashboard/category">Category</Link></li>
-                </ul>
-              )}
-            </li>
-          </ul>
-        )}
-      </div>
-
-      {/* Mobile Navigation */}
-      <div className="md:hidden flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Dashboard</h2>
-        <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Sidebar">
-          <OpenIcon size={24} />
-        </button>
-      </div>
-
-      {/* Mobile Menu Items */}
-      {isOpen && (
-        <ul className="flex flex-col items-center mt-4 space-y-4 md:hidden">
-          <li>
-          <li className='py-2'><Link href={'/'}>Home</Link></li>
-          <li className='py-2'><Link href={'/dashboard'}>Appointment</Link></li>
-            <div
-              className={`flex items-center cursor-pointer ${activeMenu === 'blog' ? 'text-blue-500' : ''}`}
-              onClick={() => toggleMenu('blog')}
-            >
-              Blog
-              <DropdownIcon size={18} className="ml-2" />
-            </div>
-            {activeMenu === 'blog' && (
-              <ul className="ml-6 space-y-2">
-                <li><Link href="/dashboard/blog">Blog List</Link></li>
-                <li><Link href="/dashboard/newPost">Create Post</Link></li>
-                <li><Link href="/dashboard/blog-category">Blog Category</Link></li>
-              </ul>
-            )}
+        {/* Desktop Sidebar */}
+        <ul className="hidden lg:flex flex-col w-full">
+          <li className="text-secondery">
+            <Link className="flex items-center" href="/dashboard">
+              <DashboardIcon className="text-2xl mr-2" />
+              <span className="text-2xl">Dashboard</span>
+            </Link>
           </li>
-
-          <li>
-            <div
-              className={`flex items-center cursor-pointer ${activeMenu === 'gallery' ? 'text-blue-500' : ''}`}
-              onClick={() => toggleMenu('gallery')}
-            >
-              Gallery
-              <DropdownIcon size={18} className="ml-2" />
-            </div>
-            {activeMenu === 'gallery' && (
-              <ul className="ml-6 space-y-2">
-                <li><Link href="/dashboard/gallery">Gallery List</Link></li>
-                <li><Link href="/dashboard/uploadGallery">Post Gallery</Link></li>
-              </ul>
-            )}
+          <li className="py-4 text-secondery">
+            <Link className="flex items-center" href="/dashboard/appointment">
+              <AppointmentIcon className="text-2xl mr-2" />
+              <span className="text-2xl">Appointment</span>
+            </Link>
           </li>
-
-          <li>
-            <div
-              className={`flex items-center cursor-pointer ${activeMenu === 'services' ? 'text-blue-500' : ''}`}
-              onClick={() => toggleMenu('services')}
-            >
-              Services
-              <DropdownIcon size={18} className="ml-2" />
-            </div>
-            {activeMenu === 'services' && (
-              <ul className="ml-6 space-y-2">
-                <li><Link href="/dashboard/displayServices">Service List</Link></li>
-                <li><Link href="/dashboard/addPrice">Add Service</Link></li>
-                <li><Link href="/dashboard/category">Category</Link></li>
-              </ul>
-            )}
-          </li>
+          {/* Dropdown Menus */}
+          {renderDropdownMenu('blog', 'Blog', BlogIcon, [
+            { name: 'Blog List', href: '/dashboard/blog' },
+            { name: 'Create Post', href: '/dashboard/newPost' },
+            { name: 'Blog Category', href: '/dashboard/blog-category' },
+          ])}
+          {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
+            { name: 'Gallery List', href: '/dashboard/gallery' },
+            { name: 'Post Gallery', href: '/dashboard/uploadGallery' },
+          ])}
+          {renderDropdownMenu('services', 'Services', MakeUpIcon, [
+            { name: 'Service List', href: '/dashboard/displayServices' },
+            { name: 'Add Service', href: '/dashboard/addPrice' },
+            { name: 'Category', href: '/dashboard/category' },
+          ])}
         </ul>
-      )}
+
+        {/* Tablet and Mobile Views */}
+        <div className="flex lg:hidden w-full flex-col">
+          <div className="flex justify-between items-center w-full mb-4">
+            <h2 className="text-2xl font-bold">Dashboard</h2>
+            <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Sidebar" className='text-3xl'>
+              <OpenIcon size={24} />
+            </button>
+          </div>
+          {isOpen && (
+            <ul className="space-y-4">
+              <li>
+                <Link className="flex items-center text-2xl" href="/dashboard">
+                  <DashboardIcon className="text-xl mr-2" />
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link className="flex items-center text-2xl" href="/dashboard/appointment">
+                  <AppointmentIcon className="text-2xl mr-2" />
+                  Appointment
+                </Link>
+              </li>
+              {/* Dropdown Menus */}
+              {renderDropdownMenu('blog', 'Blog', BlogIcon, [
+                { name: 'Blog List', href: '/dashboard/blog' },
+                { name: 'Create Post', href: '/dashboard/newPost' },
+                { name: 'Blog Category', href: '/dashboard/blog-category' },
+              ])}
+              {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
+                { name: 'Gallery List', href: '/dashboard/gallery' },
+                { name: 'Post Gallery', href: '/dashboard/uploadGallery' },
+              ])}
+              {renderDropdownMenu('services', 'Services', MakeUpIcon, [
+                { name: 'Service List', href: '/dashboard/displayServices' },
+                { name: 'Add Service', href: '/dashboard/addPrice' },
+                { name: 'Category', href: '/dashboard/category' },
+              ])}
+            </ul>
+          )}
+        </div>
+      </div>
     </nav>
   );
+
+  function renderDropdownMenu(key, label, Icon, links) {
+    return (
+      <li className="mb-4">
+        <div
+          className={`flex items-center cursor-pointer ${activeMenu === key ? 'text-blue-500' : ''}`}
+          onClick={() => toggleMenu(key)}
+        >
+          <Icon className="text-2xl mr-2" />
+          <span className="text-2xl">{label}</span>
+          <DropdownIcon size={18} className="ml-2" />
+        </div>
+        {activeMenu === key && (
+          <ul className="ml-6 space-y-2 text-lg font-semibold text-gray-500">
+            {links.map((link, index) => (
+              <li key={index}>
+                <Link href={link.href}>{link.name}</Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    );
+  }
 };
 
 export default Sidebar;

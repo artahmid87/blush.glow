@@ -4,12 +4,19 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const BlogCrud = () => {
-  const { data, isLoading, isError } = useGetBlogQuery();
+  const { data, isLoading, isError, refetch } = useGetBlogQuery();
   const [deleteBlog] = useDeleteBlogMutation();
   const [isMobile, setIsMobile] = useState(false);
 
- 
-  // Responsive check for mobile
+  console.log(data)
+
+  useEffect(() => {
+    const interval = setInterval(() =>{
+     refetch()
+    }, 1000)
+    return () => clearInterval(interval)
+   }, [refetch])
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -22,10 +29,11 @@ const BlogCrud = () => {
   const handleDelete = async (id) => {
     try {
       await deleteBlog(id).unwrap();
+      refetch()
     } catch (error) {
       console.log(error);
     }
-    window.location.reload();
+
   };
 
   return (
@@ -48,7 +56,7 @@ const BlogCrud = () => {
                 className="w-full h-32 object-cover rounded-md mb-2"
               />
               <p className="text-gray-700">{item.description.slice(0, 100)}...</p>
-              <p className="text-gray-700">{item?.blogCategory?.title}</p>
+              <p className="text-gray-700">{item?.categories?.title}</p>
               <div className="flex justify-between mt-4">
                 <Link href={`/dashboard/updateBlog/${item.id}`}>
                   <Button className="bg-yellow-300 text-blue-500 px-3 py-1 rounded-full hover:bg-yellow-400 text-sm">
@@ -94,7 +102,7 @@ const BlogCrud = () => {
                   </td>
                   <td className="px-4 py-2 border border-gray-300">{item?.description?.slice(0, 100)}</td>
 
-                  <td className="px-4 py-2 border border-gray-300">{item?.blogCategory?.title}</td>
+                  <td className="px-4 py-2 border border-gray-300">{item?.categories?.title}</td>
                   <td className="px-4 py-2 border border-gray-300">
                     <div className="flex flex-col items-center space-y-2">
                       <Link href={`/dashboard/updateBlog/${item.id}`}>

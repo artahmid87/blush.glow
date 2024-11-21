@@ -18,8 +18,6 @@ const UpdatePrice = () => {
     const [CategoryId, setCategoryId] = useState("")
     const [image, setImage] = useState(null);
 
-
-    //store previous data in useState
     useEffect(() => {
         if (data) {
             setTitle(data?.title);
@@ -29,10 +27,9 @@ const UpdatePrice = () => {
         }
     }, [data]);
 
-    // update mutation form redux
+  
     const [updatePrices, { isLoading, isSuccess, isError }] = useUpdatePricesMutation();
 
-    // update handler
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -54,7 +51,7 @@ const UpdatePrice = () => {
     return (
         <div className="flex justify-center items-center min-h-screen  bg-gray-100">
             <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
-                <Link href={'dashboard/gallery'}>Back To Dashboard</Link>
+                <Link href={'/dashboard/gallery'}>Back To Dashboard</Link>
                 <h1 className="text-2xl font-semibold mb-6 text-center">Update Price</h1>
 
                 <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 shadow-md rounded-lg space-y-4">

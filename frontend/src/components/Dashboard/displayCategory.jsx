@@ -1,11 +1,21 @@
 import { useDeleteCategoryMutation, useFindAllCategoriesQuery } from '@/redux/api/Api';
 import { Button, Popconfirm } from 'antd/dist/antd';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const DisplayCategory = () => {
-  const { data, isLoading, isError } = useFindAllCategoriesQuery();
+  const { data, isLoading, isError, refetch } = useFindAllCategoriesQuery();
   const [deleteCategory] = useDeleteCategoryMutation();
+
+
+
+  // useEffect(() => {
+  //  const interval = setInterval(() =>{
+  //   refetch()
+  //  }, 5000)
+  //  return () => clearInterval(interval)
+  // }, [refetch])
+  
 
   const handleDelete = async (id) => {
     try {
@@ -13,7 +23,7 @@ const DisplayCategory = () => {
     } catch (error) {
       console.log(error)
     }
-    window.location.reload()
+    // window.location.reload()
   };
 
 
