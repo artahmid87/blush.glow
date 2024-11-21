@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';     // For reading cookies
 import { jwtDecode } from "jwt-decode"
 import DashboardLayout from '@/layouts/dashboardLayout';
 import AppointmentList from '@/components/Dashboard/AppointmentList';
-import Dashboard from '@/components/Dashboard/Dashboard';
+import Dashboard from '@/components/Dashboard/DashboardComponent/Dashboard';
 
 export default function DashboardPage( ) {
   const router = useRouter();

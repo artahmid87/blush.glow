@@ -1,4 +1,4 @@
-import UpdateBlog from '@/components/Dashboard/UpdateBlog'
+import UpdateBlog from '@/components/Dashboard/BlogComponent/UpdateBlog'
 import { useGetBlogByIdQuery } from '@/redux/api/Api'
 import { useRouter } from 'next/router'
 import React from 'react'

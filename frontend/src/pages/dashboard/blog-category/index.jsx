@@ -1,5 +1,5 @@
 
-import BlogCategor from '@/components/Dashboard/BlogCategory';
+import BlogCategor from '@/components/Dashboard/BlogComponent/BlogCategory';
 import DashboardLayout from '@/layouts/dashboardLayout';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';

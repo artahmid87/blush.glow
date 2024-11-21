@@ -1,4 +1,4 @@
-import BlogCrud from '@/components/Dashboard/BlogCrud';
+import BlogCrud from '@/components/Dashboard/BlogComponent/BlogCrud';
 import DashboardLayout from '@/layouts/dashboardLayout';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
