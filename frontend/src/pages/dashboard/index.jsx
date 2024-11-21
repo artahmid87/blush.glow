@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';     // For reading cookies
 import { jwtDecode } from "jwt-decode"
 import DashboardLayout from '@/layouts/dashboardLayout';
-import AppointmentList from '@/components/Dashboard/AppointmentList';
+import AppointmentList from '@/components/Dashboard/AppointmentComponent/AppointmentList';
 import Dashboard from '@/components/Dashboard/DashboardComponent/Dashboard';
 
 export default function DashboardPage( ) {

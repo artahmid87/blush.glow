@@ -42,9 +42,10 @@ const AppointmentList = () => {
   return (
     <div className="p-4">
       {/* Header */}
-      <div className="w-full h-16 bg-green-600 py-4 mb-4">
+      <div className="w-full h-16 bg-pink-500 py-4 mb-4">
         <h1 className="text-2xl font-bold text-center text-white">
-          {data?.length} Clients Remain...
+          {data?.length} Clients Available
+
         </h1>
       </div>
 

@@ -1,4 +1,4 @@
-import UpdateGallery from '@/components/Dashboard/UpdateGallery'
+import UpdateGallery from '@/components/Dashboard/GalleryComponent/UpdateGallery'
 import DashboardLayout from '@/layouts/dashboardLayout'
 import Cookies from 'js-cookie'
 import { jwtDecode } from 'jwt-decode'

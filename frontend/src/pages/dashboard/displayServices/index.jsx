@@ -1,6 +1,6 @@
 // import DisplayService from '@/components/Dashboard/DisplayService'
 
-import DisplayService from '@/components/Dashboard/DisplayService';
+import DisplayService from '@/components/Dashboard/ServiceComponent/DisplayService';
 import DashboardLayout from '@/layouts/dashboardLayout';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';

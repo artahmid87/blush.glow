@@ -1,4 +1,4 @@
-import UploadImg from '@/components/Dashboard/UploadGallery'
+import UploadImg from '@/components/Dashboard/GalleryComponent/UploadGallery'
 import DashboardLayout from '@/layouts/dashboardLayout'
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';

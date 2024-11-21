@@ -1,4 +1,5 @@
-import ConfirmationMail from "@/components/Dashboard/ConfirmationMail";
+
+import ConfirmationMail from "@/components/Dashboard/AppointmentComponent/ConfirmationMail";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/router";

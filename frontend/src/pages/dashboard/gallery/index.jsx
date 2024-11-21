@@ -1,4 +1,4 @@
-import Gallery from '@/components/Dashboard/Gallery';
+import Gallery from '@/components/Dashboard/GalleryComponent/Gallery';
 import DashboardLayout from '@/layouts/dashboardLayout'
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';

@@ -51,8 +51,8 @@ const UpdatePrice = () => {
     return (
         <div className="flex justify-center items-center min-h-screen  bg-gray-100">
             <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
-                <Link href={'/dashboard/gallery'}>Back To Dashboard</Link>
-                <h1 className="text-2xl font-semibold mb-6 text-center">Update Price</h1>
+                <Link className='py-2 px-3 text-white bg-blue-500' href={'/dashboard/displayServices'}>Back To Dashboard</Link>
+                <h1 className=" text-2xl font-semibold py-6 text-center">Update Price</h1>
 
                 <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 shadow-md rounded-lg space-y-4">
                     <div>
@@ -130,7 +130,7 @@ const UpdatePrice = () => {
                         className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200"
                     >
                         {
-                            loading ? <>Updating...</> : <>Update</>
+                            isLoading ? <>Updating...</> : <>Update</>
                         }
                     </button>
 

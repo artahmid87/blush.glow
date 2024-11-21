@@ -1,5 +1,5 @@
 
-import Category from '@/components/Dashboard/Category';
+import Category from '@/components/Dashboard/ServiceComponent/Category';
 import DashboardLayout from '@/layouts/dashboardLayout';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';

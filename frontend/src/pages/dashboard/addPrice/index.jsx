@@ -1,5 +1,5 @@
 
-import AddPrice from '@/components/Dashboard/addPrice';
+import AddPrice from '@/components/Dashboard/ServiceComponent/addPrice';
 import DashboardLayout from '@/layouts/dashboardLayout';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';

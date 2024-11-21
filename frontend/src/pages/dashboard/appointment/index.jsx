@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';     
 import { jwtDecode } from "jwt-decode"
 import DashboardLayout from '@/layouts/dashboardLayout';
-import AppointmentList from '@/components/Dashboard/AppointmentList';
+import AppointmentList from '@/components/Dashboard/AppointmentComponent/AppointmentList';
 
 const Index = () => {
   const router = useRouter();

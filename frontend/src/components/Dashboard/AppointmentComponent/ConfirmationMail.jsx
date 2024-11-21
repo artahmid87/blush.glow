@@ -16,10 +16,9 @@ const ConfirmationMail = () => {
   const router = useRouter();
   const id = router.query.id;
 
-  // Fetch booking data by ID
+
   const { data, error, isLoading } = useGetBookingByIdQuery(id);
 
-  // Populate form fields with the fetched data
   useEffect(() => {
     if (data) {
       setName(data.name);
@@ -32,10 +31,9 @@ const ConfirmationMail = () => {
     }
   }, [data]);
 
-  // Update booking mutation
+
   const [updateBooking, { isLoading: updateLoading, isSuccess, isError }] = useUpdateBookingMutation();
 
-  // Form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
 

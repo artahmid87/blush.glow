@@ -1,4 +1,4 @@
-import UpdateCategory from '@/components/Dashboard/updateCategory'
+import UpdateCategory from '@/components/Dashboard/ServiceComponent/updateCategory'
 import DashboardLayout from '@/layouts/dashboardLayout'
 import Cookies from 'js-cookie'
 import { jwtDecode } from 'jwt-decode'

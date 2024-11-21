@@ -11,7 +11,7 @@ const Sidebar = () => {
   };
 
   return (
-    <nav className="bg-white border-r border-gray-400 text-secondery p-6">
+    <nav className= "  h-[100dvh] bg-white border-r border-gray-400 text-secondery p-6">
       {/* Sidebar for All Views */}
       <div className="flex flex-col items-center lg:w-60">
         {/* Logo */}
