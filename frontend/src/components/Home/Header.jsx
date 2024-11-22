@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import {Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import Container from '../ui/Container';
-import { CalenderIcon } from '../ui/icon';
+import { CalenderIcon, FacebookIcon } from '../ui/icon';
 import Link from 'next/link';
 
 const Header = () => {
@@ -79,16 +79,20 @@ const Header = () => {
                   {item.describe}
                 </p>
                 
-                <Link href={item?.link || "#"} className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-start items-center mt-10 py-4 w-60 h-12 md:w-72 md:h-16  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
+              <div className='flex'>
+              <Link href={item?.link || "#"} className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-start items-center mt-10 py-4 md:py-7 lg:py-4 w-60 h-12 md:w-72 lg:h-16  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
                 
-                    <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full ml-3 lg:ml-6">
-                      {item.icon}
-                    </span>
-                    <span className="text-md md:text-xl transition-all group-hover:text-white text-primary font-secondery">
-                      {item.span}
-                    </span>
-             
-                </Link>
+                <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full ml-3 lg:ml-6">
+                  {item.icon}
+                </span>
+                <span className="text-md md:text-xl transition-all group-hover:text-white text-primary font-secondery">
+                  {item.span}
+                </span>
+         
+            </Link>
+            <a className='text-[50px] md:text-[55px] mt-10 lg:mt-12 ml-6 text-blue-500' href="https://www.facebook.com/Blushglowbeautybar"><FacebookIcon/></a>
+              </div>
+              
               </div>
 
     

@@ -126,10 +126,10 @@ const ContactUs = () => {
 
             {/* Social Media Section */}
             <div className="py-8">
-            <ul className='flex gap-10 pt-10 ml-10'>
-              <li className='text-3xl hover:text-primary transition-all'><a href="#"><FacebookIcon /></a></li>
-              <li className='text-3xl  hover:text-primary transition-all'><a href="#"><InstagramIcon /></a></li>
-              <li className='text-3xl  hover:text-primary transition-all'><a href="#"><YoutubeIcon /></a></li>
+            <ul className='flex gap-10 pt-10 ml-16'>
+              <li className='text-5xl hover:text-primary transition-all'><a href="https://www.facebook.com/Blushglowbeautybar"><FacebookIcon /></a></li>
+              <li className='text-5xl  hover:text-primary transition-all'><a href="#"><InstagramIcon /></a></li>
+              <li className='text-5xl  hover:text-primary transition-all'><a href="https://www.youtube.com/@BlushGlowBeautyBar"><YoutubeIcon /></a></li>
             </ul>
             </div>
           </div>

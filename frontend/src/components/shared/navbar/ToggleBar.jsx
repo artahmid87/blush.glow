@@ -80,18 +80,18 @@ export default function ToggleBar() {
  
             
               <ul className="flex gap-10 pt-10 lg:ml-24 ml-10">
-                <li className="text-3xl hover:text-primary transition-all">
-                  <a href="#">
+                <li className="text-5xl hover:text-primary transition-all">
+                  <a href="https://www.facebook.com/Blushglowbeautybar">
                     <FacebookIcon />
                   </a>
                 </li>
-                <li className="text-3xl hover:text-primary transition-all">
+                <li className="text-5xl hover:text-primary transition-all">
                   <a href="#">
                     <InstagramIcon />
                   </a>
                 </li>
-                <li className="text-3xl hover:text-primary transition-all">
-                  <a href="#">
+                <li className="text-5xl hover:text-primary transition-all">
+                  <a href="https://www.youtube.com/@BlushGlowBeautyBar">
                     <YoutubeIcon />
                   </a>
                 </li>

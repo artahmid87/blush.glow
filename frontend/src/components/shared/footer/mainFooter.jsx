@@ -26,10 +26,10 @@ export default function MainFooter() {
             <p className="flex  gap-2 py-4 text-sm md:text-xl"><span className="mt-1"><PhoneIcon /></span><a href="tel:+1-647-607-2276"> +1 (647)-607-2276</a></p>
             <p className="flex  gap-2 text-sm md:text-xl"><span className="mt-1"><EmailIcon /></span><a href="mailto:blushglowbar@gmail.com">blushglowbar@gmail.com</a></p>
 
-            <ul className='flex gap-10 pt-10'>
-              <li className='text-3xl hover:text-primary transition-all'><a href="#"><FacebookIcon /></a></li>
-              <li className='text-3xl  hover:text-primary transition-all'><a href="#"><InstagramIcon /></a></li>
-              <li className='text-3xl  hover:text-primary transition-all'><a href="#"><YoutubeIcon /></a></li>
+            <ul className='flex gap-10 pt-10 ml-5'>
+              <li className='text-4xl hover:text-primary transition-all'><a href="https://www.facebook.com/Blushglowbeautybar"><FacebookIcon /></a></li>
+              <li className='text-4xl  hover:text-primary transition-all'><a href="#"><InstagramIcon /></a></li>
+              <li className='text-4xl  hover:text-primary transition-all'><a href="https://www.youtube.com/@BlushGlowBeautyBar"><YoutubeIcon /></a></li>
             </ul>
 
             <Link href="/appointment">
