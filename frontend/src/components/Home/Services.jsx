@@ -136,7 +136,7 @@ const Services = () => {
                 <h1 className="text-3xl text-center text-tertiary font-secondery py-6">
                   {item.title}
                 </h1>
-                <p className="text-secondery justify-center mb-10 pb-20">{item.details}</p>
+                <p className="text-secondery justify-center mb-10 ">{item.details}</p>
               </div>
             </div>
             </Link>  

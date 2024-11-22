@@ -18,6 +18,7 @@ const ConfirmationMail = () => {
 
 
   const { data, error, isLoading } = useGetBookingByIdQuery(id);
+  console.log(data)
 
   useEffect(() => {
     if (data) {
@@ -151,7 +152,6 @@ const ConfirmationMail = () => {
               className="py-4 px-5 w-full border-b border-primary text-secondary outline-none"
               rows="4"
               onChange={(e) => setDescription(e.target.value)}
-              // value={description}
               required
               placeholder="Drop a message for client..."
             ></textarea>

@@ -76,12 +76,12 @@ const ConfirmationMail = async (req, res, next) => {
     const { id } = req.params;
     const { name, email, phone, price, date, time, description } = req.body;
 
-    // Validation: Ensure all fields are provided
+
     if (!name || !email || !phone || !price || !date || !time || !description) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    // Find the booking by ID
+
     const booking = await Appointment.findOne({
       where: {
         id: id,
@@ -94,13 +94,12 @@ const ConfirmationMail = async (req, res, next) => {
       });
     }
 
-    // Update the booking
     await Appointment.update(
       { name, email, phone, price, date, time },
       { where: { id } }
     );
 
-    await sendConfirmationEmail(name, email, date, time, description);
+    await sendConfirmationEmail(name, email, date, time, description, price);
 
     res.status(200).json({ message: "Booking updated successfully" });
   } catch (error) {
@@ -144,27 +143,26 @@ const removeBooking = async(req, res, next) =>{
 
 
 // send confirmation mail
-const sendConfirmationEmail = async (name, email, date, time, description) => {
+const sendConfirmationEmail = async (name, email, date, time, price, description) => {
 
   let transporter = nodemailer.createTransport({
       service: 'gmail', 
       auth: {
-          user: 'artahmid87@gmail.com', 
-          pass: 'czyi mpdz ptic rozv',  
+          user: 'blushglowbar@gmail.com', 
+          pass: 'rkce nbwj bbmf gcve',  
       }
   });
 
   let mailOptions = {
-      from: 'artahmid87@gmail.com', 
+      from: 'blushglowbar@gmail.com', 
       to: email,                     
-      subject: 'Appointment Confirmation', 
+      subject: `${price}`, 
       html: `
           <h2>Hello ${name},</h2>
-          <p>Your appointment has been confirmed for the following date and time:</p>
-          <p><strong>Date: ${date}</strong></p>
-          <p><strong>Time: ${time}</strong></p>
-          <p><strong>${description}</strong></p>
-          <p>Stay with us!</p>
+          <p>Your appointment has been confirmed</p>
+          <p><strong>${date} - ${time} Please! Check the details</strong></p>
+          <p><strong>Service: ${description}</strong></p>
+          <p>Thank you for booking</p>
       `
   };
 

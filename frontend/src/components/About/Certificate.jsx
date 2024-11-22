@@ -14,7 +14,7 @@ const Certificate = () => {
   ]
 
   return (
-    <div className="py-20">
+    <div className="py-10">
       <Container>
         <div className="relative">
           <HeadingComponent headingData={headingData} />

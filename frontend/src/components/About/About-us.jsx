@@ -49,7 +49,7 @@ const About_us = () => {
   }, []);
 
   return (
-    <div id="treatment" className="bg-[#ffffff] py-10 relative overflow-hidden">
+    <div id="treatment" className="bg-[#ffffff] pb-10 relative overflow-hidden">
       <Container className="flex flex-col md:flex-row justify-between items-center ">
         {/* Image Section */}
         <div className="md:w-[49%]">
@@ -77,7 +77,7 @@ const About_us = () => {
             <p className="font-semibold italic text-tertiary font-secondery lg:text-[24px] pt-2">
             -Skincare Specialist
             </p>
-            <p className="text-[20px] text-secondery py-6 leading-9">
+            <p className="text-[20px] text-secondery pt-6 leading-9">
             I am dedicated to providing comprehensive skincare solutions tailored to individual needs. With a deep passion for healthy skin, I aim to educate and assist my clients in achieving their skin goals.
             </p>
            

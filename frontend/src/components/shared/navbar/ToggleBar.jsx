@@ -43,7 +43,7 @@ export default function ToggleBar() {
               We take a bottom-line approach to each project. Our clients consistently see increased traffic, enhanced brand loyalty and new leads thanks to our work.
             </p>
 
-            <div className=" mt-20 w-full md:text-md lg:text-2xl">
+            <div className=" mt-10 w-full md:text-md lg:text-2xl">
             
               <p className="flex gap-4 ">
                 <span className="  xl:text-[80px] text-[60px] font-thin">
@@ -79,7 +79,7 @@ export default function ToggleBar() {
               </p>
  
             
-              <ul className="flex gap-10 pt-10 lg:ml-24 ml-10">
+              <ul className="flex gap-10 pt-6 lg:ml-24 ml-10">
                 <li className="text-5xl hover:text-primary transition-all">
                   <a href="https://www.facebook.com/Blushglowbeautybar">
                     <FacebookIcon />

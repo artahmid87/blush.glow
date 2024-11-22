@@ -25,7 +25,7 @@ const Review = () => {
     }
   ] 
   return (
-    <div className ="py-20">
+    <div className ="py-10">
 
   <Container><HeadingComponent headingData ={headingData} /></Container> 
 

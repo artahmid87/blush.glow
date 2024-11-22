@@ -54,7 +54,7 @@ const Appointment = () => {
   return (
     <div
       id='appointment'
-      className='py-20 overflow-hidden bg-white'
+      className='py-10 overflow-hidden bg-white'
     >
       <Container>
         <div

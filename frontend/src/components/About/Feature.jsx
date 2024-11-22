@@ -17,10 +17,11 @@ const Youtube = () => {
     ]
 
     return (
-        <div className='bg-[#fff0f0] pb-20 pt-24 relative'>
-                <div className='w-[100%] absolute top-0 left-0 ' style={{ zIndex: 99
-      }}> <img className='w-full h-44' src="/images/home/9.png" alt="" />
-      </div>
+        <div className='bg-[#fff0f0] pb-10 pt-24 relative'>
+            <div className='w-[100%] absolute top-0 left-0 ' style={{
+                zIndex: 99
+            }}> <img className='w-full h-44' src="/images/home/9.png" alt="" />
+            </div>
             <Container>
                 <div className="relative">
                     {/* headline */}
@@ -30,24 +31,24 @@ const Youtube = () => {
                     </div>
 
                     <div className='flex flex-col lg:flex-row justify-between items-center gap-4 '>
-                        
-                     
 
-                    <div className="pb-20 w-[100%] py-[20px] mt-[50px] flex justify-center items-center ">
-           <iframe className=" w-[100%] h-[500px] rounded-xl" src="https://www.youtube.com/embed/3pjl4cacA3M?si=kKyb-U1V5dw5XrM7" 
-           title="YouTube video player"
-           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-           referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            >
-                
-            </iframe>
-           </div>
-                        
+
+
+                        <div className="pb-16 w-[100%] py-[20px] mt-[50px] flex justify-center items-center ">
+                            <iframe className=" w-[100%] h-[500px] rounded-xl" src="https://www.youtube.com/embed/3pjl4cacA3M?si=kKyb-U1V5dw5XrM7"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
+                            >
+
+                            </iframe>
+                        </div>
+
                     </div>
                 </div>
             </Container>
-        
+
         </div>
     )
 }

@@ -79,7 +79,7 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="bg-[#ffff] py-10 relative">
+    <div className="bg-[#ffff] -mb-20 relative">
       <Container className="flex flex-col md:flex-row justify-between items-center pb-20">
         {/* Image Division */}
         <div className="md:w-[49%] about-image" ref={imageRef}>
@@ -105,7 +105,7 @@ const AboutUs = () => {
               </h1>
             </div>
 
-            <div className='banner animate-slide-left-right absolute bottom-0 md:bottom-1/3 left-0 md:w-1/2 md:h-1/2 w-full h-full ' style={{
+            <div className='banner animate-slide-left-right absolute bottom-1/3 left-0 md:w-1/2 md:h-1/2 w-1/3 h-1/3' style={{
               zIndex: 999
             }}>
               <img src="/images/home/6.png" alt="" />
@@ -117,7 +117,7 @@ const AboutUs = () => {
 
         {/* About Spa Center Details */}
         <div className="md:w-[49%] about-text" ref={textRef}>
-          <div className="py-10 md:py-0">
+          <div className=" md:py-0">
             <div className='banner animate-slide-left-right absolute -bottom-32 md:-bottom-20 -right-40 w-full h-full ' style={{
               zIndex: -1
             }}>
@@ -157,7 +157,7 @@ const AboutUs = () => {
       <div className='invisible lg:visible banner animate-slide-top-bottom absolute top-24 -right-4 w-60 h-60'>
         <img src="/images/home/ston.png" alt="" />
       </div>
-      <div className='w-[100%] absolute -bottom-280 left-0' style={{
+      <div className='w-[100%] absolute -bottom-28 left-0' style={{
         zIndex: 99
       }}> <img className='w-full h-52' src="/images/home/9.png" alt="" /></div>
 

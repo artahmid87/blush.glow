@@ -82,7 +82,7 @@ const MainLayout = ({ children }) => {
           {/* Floating Button */}
           {showButton && (
             <div
-              className="fixed bottom-8 right-8 border-[4.5px] bg-white text-blue rounded-full cursor-pointer transition-all flex justify-center items-center size-14 lg:size-20 duration-300"
+              className=" fixed bottom-8 right-8 border-[4.5px] bg-white text-blue rounded-full cursor-pointer transition-all flex justify-center items-center size-14 lg:size-20 duration-300"
               style={{ zIndex: 999 }}
               onClick={scrollToTop}
               onMouseEnter={() => setShowMobileNumber(true)} 
