@@ -79,8 +79,8 @@ const Header = () => {
                   {item.describe}
                 </p>
                 
-              <div className='flex'>
-              <Link href={item?.link || "#"} className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-start items-center mt-10 py-4 md:py-7 lg:py-4 w-60 h-12 md:w-72 lg:h-16  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
+              <div className='flex gap-4 flex-col md:flex-row'>
+              <Link href={item?.link || "#"} className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-start items-center mt-10 py-4 md:py-7 lg:py-4 w-60 h-12 md:w-72 lg:h-16  rounded-full shadow-lg cursor-pointer" ref={buttonRef}>
                 
                 <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full ml-3 lg:ml-6">
                   {item.icon}
@@ -90,7 +90,17 @@ const Header = () => {
                 </span>
          
             </Link>
-            <a className='text-[50px] md:text-[55px] mt-10 lg:mt-12 ml-6 text-blue-500' href="https://www.facebook.com/Blushglowbeautybar"><FacebookIcon/></a>
+
+            <a href="https://www.facebook.com/Blushglowbeautybar" className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-start items-center md:mt-10 py-4 md:py-7 lg:py-4 w-40 h-12 md:w-44 lg:h-16  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
+                
+                <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full ml-3 lg:ml-5">
+                <FacebookIcon className ="rounded-full"/>
+                </span>
+                <span className="text-md md:text-xl transition-all group-hover:text-white text-primary font-secondery">
+                  Facebook
+                </span>
+         
+            </a>
               </div>
               
               </div>

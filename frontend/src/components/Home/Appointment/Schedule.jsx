@@ -15,15 +15,15 @@ const Schedule = () => {
       <div className="" >
       <h1 className='flex gap-4 mt-4'><span className='flex justify-center items-center bg-primary w-10 h-10 rounded-full text-2xl text-white '><ClockIcon/></span><span className = "text-tertiary text-2xl md:text-4xl font-bold font-secondery pb-2">Opening hours:</span></h1>
       <div className='ml-14'>
-       <p className ="text-gray-800 text-[18px] md:text-[26px] py-2">Mon to Sun: 9:00 am — 8:00 pm</p>
-        <p className ="text-800 text-[18px] md:text-[26px]">Any Holiday: 9:00 am — 8:00 pm</p>
+       <p className ="text-gray-800 text-[18px] md:text-[28px] py-2 font-secondery ">Mon to Sun: 9:00 am — 8:00 pm</p>
+        <p className ="text-800 text-[18px] md:text-[28px] font-secondery ">Any Holiday: 9:00 am — 8:00 pm</p>
       
        </div>
 
       </div>
       <div className ="py-4">
       <h1 className='flex gap-4'><span className='flex justify-center items-center bg-primary w-10 h-10 rounded-full text-2xl text-white '><LocationIcon/></span><span className = "text-tertiary text-2xl md:text-4xl font-bold font-secondery pb-2">Location:</span></h1>
-      <p className ="text-gray-600 text-[20px] md:text-2xl py-1 font-bold ml-14">5 Massey Square, East York, ON M4C 5L6, canada</p>
+      <p className ="text-gray-600 text-[20px] md:text-3xl py-1 font-bold ml-14 font-secondery ">5 Massey Square, East York, ON M4C 5L6, canada</p>
       </div>
 
 

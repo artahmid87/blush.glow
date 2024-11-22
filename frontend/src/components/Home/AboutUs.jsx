@@ -87,7 +87,7 @@ const AboutUs = () => {
           <div className="relative w-[400px] h-[400px] bg-[#c4ece5] rounded-full md:w-[370px] md:h-[370px] lg:w-[450px] lg:h-[450px] xl:w-[600px] xl:h-[600px]">
             <img
               className="rounded-full w-full h-full border border-primary drop-shadow-2xl pb-[30px] pl-[30px]"
-              src="/images/home/mk2.jpg"
+              src="/images/home/NazmaWork.jpg"
               alt=""
             />
             {/* Upper Content */}
@@ -128,8 +128,8 @@ const AboutUs = () => {
               <div style={{
                 zIndex: 999
               }}>
-                <span className="text-tertiary">Beauty and</span>
-                <span className="text-primary " > Spa <br /> Center</span>
+                <span className="text-tertiary">Blush & Glow </span>
+                <span className="text-primary " > Beauty <br/> Bar</span>
               </div>
               <p className="opacity-20 font-bold text-4xl -rotate-90 absolute top-32 -left-28">About us</p>
             </h1>

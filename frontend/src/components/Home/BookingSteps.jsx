@@ -7,7 +7,7 @@ import HeadingComponent from "../ui/reusableComponent/HeadingComponent";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Header() {
+export default function BookingSteps() {
     const stepRefs = useRef([]);
     const headingRef = useRef(null);
 

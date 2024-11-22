@@ -1,12 +1,9 @@
 import About_us from '@/components/About/About-us'
 import Certificate from '@/components/About/Certificate'
-import Feature from '@/components/About/Feature'
-import Review from '@/components/Home/Review'
-import Youtube from '@/components/About/YoutubeVideo'
 import Header from '@/components/ui/reusableComponent/Header'
-import FacebookPage from '@/components/About/Facebook.Page'
 import WhoAmI from '@/components/About/WhoAmI'
 import ProfessionalGoal from '@/components/About/ProfessionalGoal'
+import Youtube from '@/components/About/Feature'
 
 const about = () => {
 
@@ -17,9 +14,9 @@ const about = () => {
       <WhoAmI/>
       <ProfessionalGoal/>
       <Certificate/>
-      <Feature/>
       <Youtube/>
-      {/* <FacebookPage/> */}
+    
+     
 
   </section>
   )

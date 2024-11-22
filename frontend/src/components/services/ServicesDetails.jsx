@@ -68,7 +68,7 @@ const Services = () => {
                    
                       <div>
                         <h3 className="text-xl font-medium font-secondery capitalize">{price.title}</h3>
-                        <h3 className="text-sm  font-primary text-secondery">20 mins Revitalize {price.title}</h3>
+                        <h3 className="text-sm  font-primary text-secondery">{price.shortInfo} </h3>
                       </div>
                     </div>
 

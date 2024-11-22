@@ -45,7 +45,7 @@ const Appointment = () => {
           trigger: scheduleRef.current,
           start: 'top 80%',
           toggleActions: 'play none none reverse',
-          scrub:true,
+          scrub: true,
         },
       }
     );
@@ -54,37 +54,58 @@ const Appointment = () => {
   return (
     <div
       id='appointment'
-    
       className='py-20 overflow-hidden bg-white'
-      
     >
-
-
       <Container>
-        <div className='flex flex-col lg:flex-row justify-between gap-4  mt-5 p-1 md:p-6 border-8 border-gray-100'
+        <div
+          className="flex flex-col lg:flex-row justify-between gap-4 mt-5 p-1 md:p-6 border-8 border-gray-100 relative"
           style={{
-            backgroundImage: 'url(images/home/13.png)',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'bottom',
+            position: 'relative',
           }}
         >
-          {/* Form Section */}
-          <div ref={formRef} className='bg-[#fff6f4] p-2 md:p-8 w-full lg:w-[58%] border-8 border-white'>
-            <h1 className='text-3xl lg:text-4xl text-tertiary font-secondery py-6'>
-              Appointment
-            </h1>
-            <p className='text-secondery mb-6'>
-              Submit your details & You will get a confirmation Mail.
-            </p>
-            <Form />
-          </div>
 
-          {/* Schedule Section */}
-          <div ref={scheduleRef} className ="w-full lg:w-[48%] ">
-            <Schedule />
+          <div
+            style={{
+              backgroundImage: 'url(images/home/appoinmentImg.jpg)',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(6px)',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 0,
+            }}
+          ></div>
+
+
+          <div
+            className="flex flex-col lg:flex-row justify-between gap-4 relative w-full"
+            style={{ zIndex: 1 }}
+          >
+
+            <div
+              ref={formRef}
+              className="bg-[#fff6f4] p-2 md:p-8 w-full lg:w-[58%] border-8 border-white"
+            >
+              <h1 className="text-3xl lg:text-4xl text-tertiary font-secondery py-6">
+                Appointment
+              </h1>
+              <p className="text-secondery mb-6">
+                Submit your details & You will get a confirmation Mail.
+              </p>
+              <Form />
+            </div>
+
+
+            <div ref={scheduleRef} className="w-full lg:w-[48%]">
+              <Schedule />
+            </div>
           </div>
         </div>
+
       </Container>
     </div>
   );

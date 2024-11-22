@@ -82,7 +82,7 @@ export default function MainFooter() {
       </Container>
       <div className=' w-[100%] absolute -top-[120px] left-0' style={{
                 zIndex:9
-            }}> <img className='w-full md:h-32' src="/images/about/2.png" alt="" /></div>
+            }}> <img className='w-full h-32' src="/images/about/2.png" alt="" /></div>
 
 
       <div className='invisible md:visible banner animate-slide-left-right absolute -top-0 left-0 -ml-20 py-6' style={{

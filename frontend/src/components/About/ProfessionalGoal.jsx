@@ -19,7 +19,7 @@ import HeadingComponent from '../ui/reusableComponent/HeadingComponent'
         <div className='invisible lg:visible banner animate-slide-top-bottom absolute top-0 -right-4 w-60 h-60'>
         <img src="/images/about/Flower_4.png" alt="" />
       </div>
-            <p className='text-2xl text-gray-500'>
+            <p className='text-xl md:text-2xl text-gray-500'>
             At Blush & Glow, my mission is to enhance your natural beauty and promote overall well-being through personalized and indulgent spa experiences. I specialize in Facial, Threading, and Waxing services, meticulously crafted to leave you feeling refreshed, confident, and radiantly beautiful.
             <br/>
             <br/>
