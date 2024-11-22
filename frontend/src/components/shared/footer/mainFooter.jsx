@@ -11,7 +11,7 @@ export default function MainFooter() {
   const path = '/'
 
   return (
-    <footer className={`${pathname !== path ? 'bg-[#252525] text-white' : 'bg-[#ffffff] text-tertiary'}   py-14 relative`}>
+    <footer className= "text-black bg-white py-14 relative">
 
       <Container>
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 lg:h-[60vh]" style={{
@@ -80,16 +80,22 @@ export default function MainFooter() {
 
         </div>
       </Container>
-      <div className='invisible md:visible banner animate-slide-left-right absolute -top-20 left-0 -ml-20 py-6' style={{
+      <div className=' w-[100%] absolute -top-[120px] left-0' style={{
+                zIndex:9
+            }}> <img className='w-full md:h-32' src="/images/about/2.png" alt="" /></div>
+
+
+      <div className='invisible md:visible banner animate-slide-left-right absolute -top-0 left-0 -ml-20 py-6' style={{
         zIndex: 0
       }}>
         <img src="/images/home/footer.png" alt="" />
       </div>
 
       {/* Copyright Section */}
-      <div className="mt-8 border-t border-gray-700 pt-4 text-center text-md">
+      <div className="mt-8 border-t border-gray-700 pt-4 px-4 text-center text-md">
         © All rights reserved. This Website Design & Develop by Paradise Solution
       </div>
+     
     </footer>
   );
 }

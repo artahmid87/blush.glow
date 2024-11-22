@@ -46,9 +46,9 @@ const Header = (props) => {
                 </div>
             </Container>
            
-            <div className='invisible lg:visible w-[100%] absolute -bottom-4 left-0' style={{
+            <div className=' w-[100%] absolute -bottom-0 md:-bottom-6 left-0' style={{
                 zIndex:9
-            }}> <img className='w-full md:h-32' src="/images/about/2.png" alt="" /></div>
+            }}> <img className='w-full h-12 md:h-32' src="/images/about/2.png" alt="" /></div>
         </div>
     )
 }

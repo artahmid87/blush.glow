@@ -23,7 +23,7 @@ const Services = () => {
   ];
 
   return (
-    <div className='overflow-hidden py-20 bg-white mt-20 relative' 
+    <div className='overflow-hidden py-20 bg-white  relative' 
   
     >
 

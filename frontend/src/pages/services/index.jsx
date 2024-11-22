@@ -7,7 +7,7 @@ import Header from '@/components/ui/reusableComponent/Header'
  const Index = () => {
 
   return (
-  <section className='bg-white mt-20 '>
+  <section className='bg-white mt-20 pb-20 '>
     <Header  title ='Services'/>
     <Services/>
     <Appointment/>

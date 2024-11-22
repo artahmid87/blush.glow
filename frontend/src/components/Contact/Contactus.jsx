@@ -124,7 +124,7 @@ const ContactUs = () => {
           </div>
           </div>
         </div>
-       <div className="py-6">
+       <div className="py-10 mb-10">
        <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d721.1727982288214!2d-79.292957!3d43.696183!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d840a6f5aec37%3A0x1292455a177a54ce!2sBlush%20%26%20Glow%20Beauty%20Bar!5e0!3m2!1sen!2sbd!4v1720508571658!5m2!1sen!2sbd"
               className="w-full h-[400px]"

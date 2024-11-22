@@ -7,7 +7,7 @@ const Footer = () => {
 
 
   return (
-    <div className = "overflow-hidden">
+    <div className = "">
 
       <div >
         <MainFooter />

@@ -92,7 +92,7 @@ const Form = () => {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleAppoinment} className=''>
+    <form ref={formRef} onSubmit={handleAppoinment} className='py-6'>
       <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
         {/* Name */}
         <div className="w-full py-2">

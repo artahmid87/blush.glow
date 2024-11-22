@@ -24,7 +24,7 @@ const Header = () => {
       describe: "Captivate Your Beauty Journey at Blush & Glow: Toronto's Premier Beauty Destination.",
       link:"#appointment",
       icon: <CalenderIcon/>,
-      span:"Appointment"
+      span:"Make An Appointment"
     },
     {
       id: 2,
@@ -70,18 +70,18 @@ const Header = () => {
             <Container>
           <div className="relative md:py-20 bg-cover bg-top overflow-hidden ">
             <div className="flex justify-center lg:justify-between lg:items-start" ref={el => (slidesRef.current[index] = el)}>
-              <div className="flex flex-col justify-center items-start w-full lg:w-[40%]">
-                <h1 className="font-secondery md:text-[70px] xl:text-[90px] lg:text-[65px] text-[50px] font-bold leading-[45px] md:leading-[70px]" ref={titleRef}>
+              <div className="py-10 lg:py-0 flex flex-col justify-center lg:items-start items-center w-full lg:w-[40%]">
+                <h1 className="text-center lg:text-start font-secondery md:text-[70px] xl:text-[90px] lg:text-[65px] text-[40px] font-bold leading-[45px] md:leading-[70px]" ref={titleRef}>
                   <span>{item.title1}</span>
                   <span className="text-primary ml-4">{item.title2}</span>
                 </h1>
-                <p className="mt-8 text-md md:text-xl lg:text-lg text-tertiary" ref={descriptionRef}>
+                <p className="mt-8 h-16 text-center lg:text-start md:text-xl lg:text-lg text-tertiary" ref={descriptionRef}>
                   {item.describe}
                 </p>
                 
-                <Link href={item?.link || "#"} className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-center items-center mt-10 py-2  px-8  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
+                <Link href={item?.link || "#"} className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-start items-center mt-10 py-4 w-60 h-12 md:w-72 md:h-16  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
                 
-                    <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full -ml-4">
+                    <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full ml-3 lg:ml-6">
                       {item.icon}
                     </span>
                     <span className="text-md md:text-xl transition-all group-hover:text-white text-primary font-secondery">
@@ -112,7 +112,7 @@ const Header = () => {
           </div>
           </Container>
                
-          <div className='invisible lg:visible w-[100%] absolute -bottom-8 left-0' style={{
+          <div className='invisible md:visible w-[100%] absolute -bottom-6 left-0' style={{
                 zIndex:9
             }}> <img className='w-full md:h-28' src="/images/about/2.png" alt="" /></div>
         </SwiperSlide>

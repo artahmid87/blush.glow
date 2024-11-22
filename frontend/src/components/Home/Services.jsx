@@ -124,7 +124,7 @@ const Services = () => {
             <div
               className="group flex flex-col items-center p-6 bg-red transition-transform transform overflow-hidden text-justify"
             >
-              <div className="cssPath group-hover:bg-primary transition-all group-hover:text-white text-primary py-10 px-10 relative">
+              <div className="cssPath group-hover:bg-primary transition-all duration-500 ease-in-out  group-hover:text-white text-primary py-10 px-10 relative">
                 <i className="opacity-20 text-[120px]">
                   {item.icon}
                 </i>
