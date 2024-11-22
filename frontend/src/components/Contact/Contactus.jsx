@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Container from "../ui/Container";
-import { LocationIcon, PhoneIcon, EmailIcon, FacebookIcon, InstagramIcon, YoutubeIcon } from "../ui/icon";
+import { LocationIcon, PhoneIcon, EmailIcon, FacebookIcon, InstagramIcon, YoutubeIcon, RoadSign } from "../ui/icon";
 import HeadingComponent from "../ui/reusableComponent/HeadingComponent";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -91,22 +91,42 @@ const ContactUs = () => {
             <h1 className="font-secondery text-5xl text-primary font-semibold py-6">
               Blush & Glow Beauty Bar
             </h1>
-            <p className="flex text-secondery gap-2 text-[20px]">
-              <span className="mt-2"><LocationIcon /></span>
-              <span>5 Massey Square, East York,  ON M4C 5L6, Canada</span>
-            </p>
-            <p className="flex text-secondery gap-2 py-2 text-[18px]">
-              <span className="mt-2"><PhoneIcon /></span>
-              <a href="tel:+16476072276">+1 (647)-607-2276</a>
-            </p>
-            <p className="flex text-secondery gap-2 text-[18px]">
-              <span className="mt-2"><EmailIcon /></span>
-              <a href="mailto:blushglowbar@gmail.com">blushglowbar@gmail.com</a>
-            </p>
+            <p className="flex gap-4 py-6">
+                <span className="  xl:text-[60px] text-[50px] font-thin">
+                <PhoneIcon />
+                </span>
+                <span>
+                <h1 className='text-[25px] pb-2 '>Call Us</h1>
+                <a className='xl:text-[20px] text-[20px]' href="tel:+1-647-607-2276">+1 (647)-607-2276</a>
+
+                </span>
+              </p>
+
+              <p className="flex gap-4 py-10 ">
+                <span className="xl:text-[60px] text-[50px] font-thin">
+                <EmailIcon />
+                </span>
+                <span>
+                <h1 className='text-[25px]  pb-2 '>Write Us</h1>
+                <a className='xl:text-[20px] text-[18px]' href="mailto:blushglowbar@gmail.com">blushglowbar@gmail.com</a>
+
+                </span>
+              </p>
+
+              <p className="flex gap-4 ">
+                <span className="  xl:text-[60px] text-[50px] ">
+                <LocationIcon />
+                </span>
+                <span>
+                <h1 className=' text-[25px] pb-2 '>Address</h1>
+                <a className='xl:text-[20px] text-[20px]' href="https://www.google.com/maps/place/Blush+%26+Glow+Beauty+Bar/@43.6961831,-79.2929566,17z/data=!4m14!1m7!3m6!1s0x38d840a6f5aec37:0x1292455a177a54ce!2sBlush+%26+Glow+Beauty+Bar!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v!3m5!1s0x38d840a6f5aec37:0x1292455a177a54ce!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"> 5 Massey Square, East York, ON M4C 5L6, Canada.</a>
+
+                </span>
+              </p>
 
             {/* Social Media Section */}
             <div className="py-8">
-            <ul className='flex gap-10 pt-10'>
+            <ul className='flex gap-10 pt-10 ml-10'>
               <li className='text-3xl hover:text-primary transition-all'><a href="#"><FacebookIcon /></a></li>
               <li className='text-3xl  hover:text-primary transition-all'><a href="#"><InstagramIcon /></a></li>
               <li className='text-3xl  hover:text-primary transition-all'><a href="#"><YoutubeIcon /></a></li>

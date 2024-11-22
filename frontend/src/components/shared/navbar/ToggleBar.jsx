@@ -51,7 +51,7 @@ export default function ToggleBar() {
                 </span>
                 <span>
                 <h1 className='xl:text-[35px] text-[25px] pb-2 xl:mt-2'>Call Us</h1>
-                <a className='xl:text-[20px] text-[18px]' href="tel:+1-647-607-2276">+1 (647)-607-2276</a>
+                <a className='xl:text-[22px] text-[20px]' href="tel:+1-647-607-2276">+1 (647)-607-2276</a>
 
                 </span>
               </p>
@@ -62,7 +62,7 @@ export default function ToggleBar() {
                 </span>
                 <span>
                 <h1 className='xl:text-[35px] text-[25px] pb-2 xl:mt-2'>Write Us</h1>
-                <a className='xl:text-[20px] text-[18px]' href="tel:+1-647-607-2276">blushglowbar@gmail.com</a>
+                <a className='xl:text-[22px] text-[20px]' href="mailto:blushglowbar@gmail.com">blushglowbar@gmail.com</a>
 
                 </span>
               </p>
@@ -73,7 +73,7 @@ export default function ToggleBar() {
                 </span>
                 <span>
                 <h1 className='xl:text-[35px] text-[25px] pb-2 xl:mt-2'>Address</h1>
-                <a className='xl:text-[20px] text-[18px]' href="https://www.google.com/maps/place/Blush+%26+Glow+Beauty+Bar/@43.6961831,-79.2929566,17z/data=!4m14!1m7!3m6!1s0x38d840a6f5aec37:0x1292455a177a54ce!2sBlush+%26+Glow+Beauty+Bar!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v!3m5!1s0x38d840a6f5aec37:0x1292455a177a54ce!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"> 5 Massey Square, East York, ON M4C 5L6, Canada.</a>
+                <a className='xl:text-[22px] text-[20px]' href="https://www.google.com/maps/place/Blush+%26+Glow+Beauty+Bar/@43.6961831,-79.2929566,17z/data=!4m14!1m7!3m6!1s0x38d840a6f5aec37:0x1292455a177a54ce!2sBlush+%26+Glow+Beauty+Bar!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v!3m5!1s0x38d840a6f5aec37:0x1292455a177a54ce!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"> 5 Massey Square, East York, ON M4C 5L6, Canada.</a>
 
                 </span>
               </p>
