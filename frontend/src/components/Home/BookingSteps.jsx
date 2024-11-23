@@ -67,7 +67,7 @@ export default function BookingSteps() {
                                 style={{ clipPath: "polygon(50% 85%, 0 100%, 99% 100%)" }}></div>
                         </div>
 
-                        <h1 className="text-[30px] pt-[50px] text-tertiary font-secondery pb-4">Visit Our Facebook page</h1>
+                        <h1 className="text-[25px] md:text-[30px] pt-[50px] text-tertiary font-secondery pb-4">Visit Our Facebook page</h1>
                         <p className="text-[16px] py-[10px] text-gray-500">
                         Visit our <a href="https://www.facebook.com/Blushglowbeautybar/services" className="font-bold text-[#000001bd] cursor-pointer">facebook page</a>
                         , explore our services, and choose the one that suits your desires.
@@ -87,7 +87,7 @@ export default function BookingSteps() {
                                 style={{ clipPath: "polygon(50% 85%, 0 100%, 99% 100%)" }}></div>
                         </div>
                         <div className="mb-10">
-                            <h1 className="text-[30px] pt-[50px] text-tertiary font-secondery pb-4">Visit Our Facebook Page</h1>
+                            <h1 className="text-[25px] md:text-[30px] pt-[50px] text-tertiary font-secondery pb-4">Visit Our Facebook Page</h1>
                             <p className="text-[16px] py-[10px] text-gray-500">
                                 Visit our <a href="https://github.com" className="font-bold text-[#000001bd]">Facebook page</a> & explore our services, and choose the one that suits your desires.
                             </p>
@@ -105,7 +105,7 @@ export default function BookingSteps() {
                             <div className="w-[80px] h-[80px] bg-[#D49696] rotate-180"
                                 style={{ clipPath: "polygon(50% 85%, 0 100%, 99% 100%)" }}></div>
                         </div>
-                        <h1 className="text-[30px] pt-[50px] font-secondery text-tertiary pb-4">Checkout Our Beauty Bar</h1>
+                        <h1 className="text-[25px] md:text-[30px] pt-[50px] font-secondery text-tertiary pb-4">Checkout Our Beauty Bar</h1>
                         <p className="text-[16px] py-[10px] text-gray-500">
                             Be present at the beauty bar 10 minutes prior to booking
                         </p>
@@ -127,7 +127,7 @@ export default function BookingSteps() {
                                 style={{ clipPath: "polygon(50% 85%, 0 100%, 99% 100%)" }}></div>
                         </div>
                         <div className="mb-10">
-                            <h1 className="text-[30px] pt-[50px] text-tertiary font-secondery pb-4">Visit Our Facebook Page</h1>
+                            <h1 className="text-[25px] md:text-[30px] pt-[50px] text-tertiary font-secondery pb-4">Visit Our Facebook Page</h1>
                             <p className="text-[16px] py-[10px] text-gray-500">
                                 Visit our <a href="https://github.com" className="font-bold text-[#000001bd]">Facebook page</a> & explore our services, and choose the one that suits your desires.
                             </p>

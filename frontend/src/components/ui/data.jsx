@@ -1,4 +1,4 @@
-const { FacialIcon, EyebrowIcon, WaxingIcon, MakeupIcon, HairIcon } = require("./icon");
+const { FacialIcon, EyebrowIcon, WaxingIcon, MakeupIcon, HairIcon, BotoxIcon, FilterICon, HairRemoveIcon } = require("./icon");
 
 export const HomeServiceData = [
     {
@@ -23,28 +23,28 @@ export const HomeServiceData = [
     },
     {
         id: 4,
-        icon: <WaxingIcon />,
+        icon: <EyebrowIcon />,
         title: 'Microblading',
          details:"Smooth, precise hair removal for silky, soft skin."
 
     },
     {
         id: 5,
-        icon: <WaxingIcon />,
+        icon: <BotoxIcon />,
         title: 'Botox',
          details:"Smooth, precise hair removal for silky, soft skin."
 
     },
     {
         id: 6,
-        icon: <WaxingIcon />,
+        icon: <FilterICon />,
         title: 'Fillers',
          details:"Smooth, precise hair removal for silky, soft skin."
 
     },
     {
         id: 7,
-        icon: <WaxingIcon />,
+        icon: <HairRemoveIcon />,
         title: 'Laser Hair Removal',
          details:"Smooth, precise hair removal for silky, soft skin."
 
