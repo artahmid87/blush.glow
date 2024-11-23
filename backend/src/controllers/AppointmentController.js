@@ -31,11 +31,43 @@ const bookingController  = async (req, res, next) => {
       booking
      })
 
+     await NotificationEmail(name, email, date, time, description, price);
+
 
   } catch (error) {
     next(error)
   }
 
+}
+
+
+const NotificationEmail = async (name, email, date, time, price, description) => {
+
+  let transporter = nodemailer.createTransport({
+      service: 'gmail', 
+      auth: {
+          user: 'blushglowbar@gmail.com', 
+          pass: 'rkce nbwj bbmf gcve',  
+      }
+  });
+
+  let mailOptions = {
+      from: 'blushglowbar@gmail.com', 
+      to: "blushglowbar@gmail.com",                     
+      subject: "New Appointment has been booked", 
+      html: `
+          <h2>Name: ${name},</h2>
+          <p><strong>Date: ${date} </strong></p>
+          <p><strong>Time: ${time} </strong></p>
+          <p><strong>Service: ${description}</strong></p>
+          <a href="https://blush.ara-dreamhome.com/dashboard/appointment">See Details...</a>
+  
+      `
+      
+  };
+
+
+  await transporter.sendMail(mailOptions);
 }
 
 
@@ -142,6 +174,8 @@ const removeBooking = async(req, res, next) =>{
 
 
 
+
+
 // send confirmation mail
 const sendConfirmationEmail = async (name, email, date, time, price, description) => {
 
@@ -168,6 +202,12 @@ const sendConfirmationEmail = async (name, email, date, time, price, description
 
 
   await transporter.sendMail(mailOptions);
+
+
+
+  
 };
+
+
 
 module.exports = {bookingController, getBookingContoller , removeBooking ,ConfirmationMail, getSingleBooking}

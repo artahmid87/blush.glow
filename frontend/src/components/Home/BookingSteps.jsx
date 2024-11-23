@@ -76,9 +76,9 @@ export default function BookingSteps() {
                     </div>
 
                     {/* Appointment Booking Step 2 */}
-                    <div className="py-[10px] w-full px-[10px] rounded-[5px] shadow-lg shadow-[#00000038] relative leading-6 lg:mt-[-120px] md:mt-7  basis-2/4"
+                    <div className="py-[10px] w-full px-[10px] rounded-[5px] shadow-lg shadow-[#00000038] relative leading-6 mt-5 lg:mt-[-120px] md:mt-7  basis-2/4"
                         ref={el => stepRefs.current[1] = el}>
-                        <div className="absolute top-[-25%] w-full  flex flex-col justify-center items-center lg:top-[60%] lg:rotate-180">
+                        <div className="absolute top-[-20%] w-full  flex flex-col justify-center items-center lg:top-[60%] lg:rotate-180">
                             <div className="w-[80px] h-[80px] bg-[#D49696] mb-1 rounded-md text-center uppercase lg:rotate-180">
                                 <h1 className="text-[40px] mt-[20px] mb-[10px]">02</h1>
                                 <h1 className="text-[18px] text-center mb-[10px]">step</h1>
@@ -116,7 +116,7 @@ export default function BookingSteps() {
                     </div>
 
                       {/* Appointment Booking Step 4 */}
-                    <div className="py-[10px] w-full px-[10px] rounded-[5px] shadow-lg shadow-[#00000038] relative leading-6 lg:mt-[-120px] mt-20 basis-2/4"
+                    <div className="py-[16px] w-full px-[10px] rounded-[5px] shadow-lg shadow-[#00000038] relative leading-6 lg:mt-[-120px] mt-20 basis-2/4"
                         ref={el => stepRefs.current[3] = el}>
                         <div className="absolute top-[-25%] w-full  flex flex-col justify-center items-center lg:top-[60%] lg:rotate-180">
                             <div className="w-[80px] h-[80px] bg-[#D49696] mb-1 mt-10 lg:mt0 rounded-md text-center uppercase lg:rotate-180">

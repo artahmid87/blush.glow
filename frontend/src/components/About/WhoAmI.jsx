@@ -49,7 +49,7 @@ const WhoAmI = () => {
     }, []);
 
     return (
-        <div id="treatment" className="bg-[#ffffff]  relative overflow-hidden">
+        <div id="treatment" className="bg-[#ffffff] pb-4 relative overflow-hidden">
             <Container className="flex flex-col md:flex-row justify-between items-center ">
 
                 {/* About Beauty Bar Details */}

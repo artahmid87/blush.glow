@@ -11,8 +11,8 @@ const Youtube = () => {
         {
             headline: "Welcome",
             title1: "Our",
-            title2: "Feature",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis."
+            title2: "YouTube",
+            description: ""
         }
     ]
 
@@ -34,7 +34,7 @@ const Youtube = () => {
 
 
 
-                        <div className="pb-16 w-[100%] py-[20px] mt-[50px] flex justify-center items-center ">
+                        <div className="pb-16 w-[100%] py-[20px] flex justify-center items-center ">
                             <iframe className=" w-[100%] h-[500px] rounded-xl" src="https://www.youtube.com/embed/3pjl4cacA3M?si=kKyb-U1V5dw5XrM7"
                                 title="YouTube video player"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

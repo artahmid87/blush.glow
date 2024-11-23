@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router'; // Import useRouter
 import ToggleBar from './ToggleBar';
-import { CloseIcon, EmailIcon, FacebookIcon, InstagramIcon, LocationIcon, OpenIcon, PhoneIcon, YoutubeIcon } from '@/components/ui/icon';
+import { CloseIcon, DownArrowIcon, EmailIcon, FacebookIcon, InstagramIcon, LocationIcon, OpenIcon, PhoneIcon, YoutubeIcon } from '@/components/ui/icon';
 import { gsap } from 'gsap';
 
 gsap.config({ nullTargetWarn: false, trialWarn: false });
@@ -106,49 +106,49 @@ const Navbar = () => {
       className={`flex justify-between items-center w-full text-lg font-medium text-tertiary hover:text-primary py-4 border-b border-gray-200 ${isActiveLink('/') ? 'text-primary' : ''}`}
       href="/"
     >
-      Home <span>⮟</span>
+      Home <span><DownArrowIcon/></span>
     </Link>
     <Link
       onClick={toggleMenu}
       className={`flex justify-between items-center w-full text-lg font-medium text-tertiary hover:text-primary py-4 border-b border-gray-200 ${isActiveLink('/services') ? 'text-primary' : ''}`}
       href="/services"
     >
-      Services <span>⮟</span>
+      Services <span><DownArrowIcon/></span>
     </Link>
     <Link
       onClick={toggleMenu}
       className={`flex justify-between items-center w-full text-lg font-medium text-tertiary hover:text-primary py-4 border-b border-gray-200 ${isActiveLink('/appointment') ? 'text-primary' : ''}`}
       href="/appointment"
     >
-      Appointment <span>⮟</span>
+      Appointment <span><DownArrowIcon/></span>
     </Link>
     <Link
       onClick={toggleMenu}
       className={`flex justify-between items-center w-full text-lg font-medium text-tertiary hover:text-primary py-4 border-b border-gray-200 ${isActiveLink('/about') ? 'text-primary' : ''}`}
       href="/about"
     >
-      About <span>⮟</span>
+      About <span><DownArrowIcon/></span>
     </Link>
     <Link
       onClick={toggleMenu}
       className={`flex justify-between items-center w-full text-lg font-medium text-tertiary hover:text-primary py-4 border-b border-gray-200 ${isActiveLink('/imageShowcase') ? 'text-primary' : ''}`}
       href="/imageShowcase"
     >
-      Gallery <span>⮟</span>
+      Gallery <span><DownArrowIcon/></span>
     </Link>
     <Link
       onClick={toggleMenu}
       className={`flex justify-between items-center w-full text-lg font-medium text-tertiary hover:text-primary py-4 border-b border-gray-200 ${isActiveLink('/blog') ? 'text-primary' : ''}`}
       href="/blog"
     >
-      Blog <span>⮟</span>
+      Blog <span><DownArrowIcon/></span>
     </Link>
     <Link
       onClick={toggleMenu}
       className={`flex justify-between items-center w-full text-lg font-medium text-tertiary hover:text-primary py-4 border-b border-gray-200 ${isActiveLink('/contact') ? 'text-primary' : ''}`}
       href="/contact"
     >
-      Contact <span>⮟</span>
+      Contact <span><DownArrowIcon/></span>
     </Link>
   </div>
 

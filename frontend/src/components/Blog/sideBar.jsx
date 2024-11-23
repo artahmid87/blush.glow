@@ -60,7 +60,7 @@ const BlogSidebar = () => {
 
         {/* Recent Posts Section */}
         <div>
-          <h3 className="font-secondery text-tertiary font-medium text-lg">Recent Posts</h3>
+          <h3 className="font-secondery text-tertiary font-medium text-lg underline decoration-slice decoration-primary underline-offset-8">Recent Posts</h3>
           {blogs?.slice(0, 4).map((item) => (
             <Link key={item.id} href={`/blog/${item.id}/#blog`}>
               <div className="flex gap-4 py-4">

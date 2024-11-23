@@ -18,7 +18,7 @@ const ConfirmationMail = () => {
 
 
   const { data, error, isLoading } = useGetBookingByIdQuery(id);
-  console.log(data)
+
 
   useEffect(() => {
     if (data) {
@@ -118,7 +118,7 @@ const ConfirmationMail = () => {
                 disabled
                 required
               />
-              {/* <option value={subject}>{subject}</option> */}
+          
 
             </div>
           </div>
@@ -156,6 +156,7 @@ const ConfirmationMail = () => {
               placeholder="Drop a message for client..."
             ></textarea>
           </div>
+
 
           <div className='w-full flex justify-center items-center'>
             <button type="submit" className='bg-green-500 py-2 px-7 w-1/2 rounded-full text-white hover:bg-green-200 hover:text-green-700 font-bold'>

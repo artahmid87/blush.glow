@@ -35,7 +35,7 @@ import Link from "next/link"
                                     day: 'numeric'
                                 })}</p>
                  <h1 className='mt-4 text-tertiary text-2xl  font-secondery pb-8'>{item.title.slice(0,70)}...</h1>
-                 <Link href={`blog/${item.id}/#blog`} className=' underline text-gray-400 font-secondery'>Learn More</Link>
+                 <Link href={`blog/${item.id}/#blog`} className=' underline text-gray-400 font-secondery'>Read More</Link>
                  </div>
               </div>
             ))

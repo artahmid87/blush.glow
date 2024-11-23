@@ -40,10 +40,10 @@ const AboutUs = () => {
     // Text animation
     gsap.fromTo(
       textRef.current,
-      { scale: 0.8 },
+      { scale: 0.9 },
       {
         scale: 1,
-        duration: .5,
+        duration: .2,
         ease: "power3.out",
         scrollTrigger: {
           trigger: textRef.current,
@@ -79,7 +79,7 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="bg-[#ffff] -mb-20 relative">
+    <div className="bg-[#ffff] -mb-20 relative pb-5">
       <Container className="flex flex-col md:flex-row justify-between items-center pb-20">
         {/* Image Division */}
         <div className="md:w-[49%] about-image" ref={imageRef}>
@@ -116,7 +116,7 @@ const AboutUs = () => {
 
 
         {/* About Spa Center Details */}
-        <div className="md:w-[49%] about-text" ref={textRef}>
+        <div className="md:w-[49%] about-text mb-5" ref={textRef}>
           <div className=" md:py-0">
             <div className='banner animate-slide-left-right absolute -bottom-32 md:-bottom-20 -right-40 w-full h-full ' style={{
               zIndex: -1
@@ -149,7 +149,7 @@ const AboutUs = () => {
               <span className="bg-primary w-[40px] h-[40px] rounded-full mr-4 ml-[-20px] flex justify-center items-center text-white">
                 <RightArrowIcon />
               </span>
-              Learn More
+              Read More
             </button>
           </div>
         </div>

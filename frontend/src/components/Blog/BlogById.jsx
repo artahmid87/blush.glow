@@ -18,7 +18,10 @@ const BlogById = (props) => {
                 month: 'long',
                 day: 'numeric'
               })}</p>
-              <p className="text-secondery text-justify">{data?.description}</p>
+             
+             <h1 className="text-2xl text-primary italic font-secondery py-6">{data?.title}</h1>
+
+              <p className="text-secondery text-justify pb-6">{data?.description}</p>
             </div>
           }
         </div>
