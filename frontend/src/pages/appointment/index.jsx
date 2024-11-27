@@ -1,3 +1,4 @@
+import { AppointmentBooking } from '@/components/Appointment/AppointmentBook'
 import Appointment from '@/components/Home/Appointment/Appointment'
 import BookingSteps from '@/components/Home/BookingSteps'
 import Header from '@/components/ui/reusableComponent/Header'
@@ -8,7 +9,7 @@ import React from 'react'
     <section className='h-full py-20'>
         <Header title = "Appointment"/>
         <BookingSteps/>
-        <Appointment/>
+        <AppointmentBooking/>
     </section>
   )
 }

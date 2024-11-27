@@ -7,14 +7,14 @@ const BookingButton = () => {
   return (
     <div className='flex justify-center items-center md:justify-normal'>
 
-      <button className="group hover:bg-white bg-primary transition-all py-2 mt-10 px-8 flex gap-2 justify-center items-center rounded-full"
+      <button className="group hover:bg-white bg-primary transition-all duration-400 ease-in-out  py-2 mt-10 px-8 flex gap-2 justify-center items-center rounded-full"
         style={{
           boxShadow: '2px 2px 4px gray'
         }}
       >
-        <span className='flex justify-center items-center text-2xl group-hover:text-white text-primary transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-primary bg-white rounded-full ml-[-20px]'><CalenderIcon /></span>
+        <span className='flex justify-center items-center text-2xl group-hover:text-white text-primary transition-all duration-400 ease-in-out  w-8 h-8 md:w-10 md:h-10 group-hover:bg-primary bg-white rounded-full ml-[-20px]'><CalenderIcon /></span>
 
-        <span className='text-md md:text-xl transition-all group-hover:text-primary  text-white font-secondery'>Make An Appointment</span></button>
+        <span className='text-md md:text-xl transition-all duration-400 ease-in-out group-hover:text-primary  text-white font-secondery'>Make An Appointment</span></button>
 
     </div>
   )

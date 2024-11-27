@@ -91,7 +91,7 @@ const Header = () => {
          
             </Link>
 
-            <a href="https://www.facebook.com/Blushglowbeautybar" className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-center self-center items-center md:mt-10 py-4 md:py-7 lg:py-4 w-40 h-12 md:w-44 lg:h-16  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0" ref={buttonRef}>
+            <a href="https://www.facebook.com/Blushglowbeautybar" className="group hover:bg-primary bg-white  flex  gap-2 justify-center self-center items-center md:mt-10 py-4 md:py-7 lg:py-4 w-40 h-12 md:w-44 lg:h-16  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0 transition-all duration-500 ease-in-out " ref={buttonRef}>
                 
                 <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full  ">
                 <FacebookIcon className ="rounded-full"/>
