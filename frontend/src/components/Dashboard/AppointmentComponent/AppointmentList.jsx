@@ -52,7 +52,7 @@ const AppointmentList = () => {
       {/* Content */}
       <div className={isTabletOrMobile ? 'overflow-x-auto' : ''}>
         {isTabletOrMobile ? (
-          // Mobile view as cards
+     
           <div className="grid gap-4">
             {data?.map((record) => (
               <div key={record.id} className="bg-gray-100 p-4 rounded-lg shadow-md">

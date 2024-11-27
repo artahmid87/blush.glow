@@ -123,7 +123,7 @@ export const AppointmentBooking = () => {
             <DatePicker
               format="YYYY-MM-DD"
               disabledDate={(current) => moment().add(-1, 'days') >= current}
-              className="py-4 px-5 w-full border-b border-primary outline-none"
+              className="py-4 px-5 w-full border-4 border-primary outline-none"
               onChange={dateCollect}
               required
             />
