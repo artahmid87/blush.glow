@@ -22,7 +22,7 @@ const Header = () => {
       title2: "Beauty Bar",
       images: '/images/home/Nazma_Jahan-1.jpg',
       describe: "Captivate Your Beauty Journey at Blush & Glow: Toronto's Premier Beauty Destination.",
-      link:"#appointment",
+      link:"/appointment",
       icon: <CalenderIcon/>,
       span:"Make An Appointment"
     },

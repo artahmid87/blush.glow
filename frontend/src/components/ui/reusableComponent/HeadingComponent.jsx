@@ -23,15 +23,15 @@ const HeadingComponent = (props) => {
     headingRefs.current.forEach((heading, index) => {
       gsap.fromTo(
         heading,
-        { opacity: 0, y: 50 },
+        {  y: 50 },
         {
-          opacity: 1,
+        
           y: 0,
           duration: 1.2,
           ease: "power3.out",
           scrollTrigger: {
             trigger: heading,
-            start: "top 80%",
+            start: "top top",
             toggleActions: "play none none reverse",
           },
         }
@@ -44,7 +44,7 @@ const HeadingComponent = (props) => {
       {headingData?.map((item, index) => (
         <div
           key={item.headline}
-          className="text-center py-5 flex flex-col justify-center items-center w-full"
+          className="text-center py-5 flex flex-col justify-center items-center w-full mb-5"
           ref={addToRefs} 
         >
           <h1 className="text-2xl text-primary italic font-secondery">{item.headline}</h1>

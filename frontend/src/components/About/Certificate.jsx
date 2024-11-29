@@ -23,7 +23,7 @@ const Certificate = () => {
           </div>
 
      
-          <div className='grid grid-cols-1 md:grid-cols-2 place-items-center place-content-center gap-4 mb-6'>
+          <div className='grid grid-cols-1 md:grid-cols-2 place-items-center place-content-center gap-4 mb-6 mt-6'>
             {CertificateData?.slice(0, 2).map((item) => (
               <div key={item.id} className='w-full h-full relative group overflow-hidden'>
                 <img 

@@ -142,7 +142,7 @@ export const AppointmentBooking = () => {
  
               
               </span></h1>
-            <div className="py-4 px-5 w-full border-b border-primary text-secondary outline-none">
+            <div className="py-4 px-5 w-full border-b border-primary text-secondary outline-none h-[500px] overflow-scroll">
               {BookingTime?.map((timeOption) => {
                 const isBooked = Collectdate?.some(
                   (booking) => booking.date === date && booking.time === timeOption

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useGetAllGalleryQuery } from '@/redux/api/Api';
 import { gsap } from 'gsap';
 import Container from '../ui/Container';
+import HeadingComponent from '../ui/reusableComponent/HeadingComponent';
 
 const ImageShowCase = () => {
   const { data,isError, error, isLoading } = useGetAllGalleryQuery();
@@ -17,6 +18,14 @@ const ImageShowCase = () => {
     });
   }, [data]); 
 
+  const headingData = [
+    {
+      headline: "",
+      title1: "Image",
+      title2: "Gallery",
+      description: ""
+    }
+  ];
 
   return (
     <Container>
@@ -26,6 +35,7 @@ const ImageShowCase = () => {
     }{
         isError && (<div className="text-center py-20 text-7xl flex flex-col justify-center items-center"> <h1>Something Went Wrong!</h1> <h1>Please! try again</h1></div>)
     }
+    <HeadingComponent headingData={headingData} />
    
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {data?.map((item, index) => (

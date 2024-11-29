@@ -25,13 +25,13 @@ const Header = (props) => {
                     </div>
 
 
-                    <div className="relative z-[9] lg:w-[40%] h-[500px] -mb-52 invisible lg:visible">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-white flex justify-center items-center">
+                    <div className="relative z-[9] lg:w-[40%] h-[630px] -mb-52 invisible lg:visible">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[630px] h-[630px] rounded-full bg-white flex justify-center items-center">
                   <img src='/images/home/banner_layer.png' alt="Person" className="rounded-full" />
                 </div>
 
                
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] z-[-1]">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] z-[-1]">
                   {[...Array(4)].map((_, i) => (
                     <div
                       key={i}
