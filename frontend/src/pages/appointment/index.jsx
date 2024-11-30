@@ -8,7 +8,7 @@ import React from 'react'
 
  const Index = () => {
   return (
-    <section className='h-full py-20'>
+    <section className=''>
         <Header title = "Appointment"/>
         <BookingSteps/>
         <AppointmentBooking/>

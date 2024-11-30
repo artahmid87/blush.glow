@@ -9,14 +9,14 @@ const Header = (props) => {
 
     const { title } = props
     return (
-        <div className=' relative py-20 bg-headerResponsive bg-cover bg-top md:bg-none overflow-hidden  bg-[#f5f5f5]'>
+        <div className=' relative lg:h-[90dvh] py-20 bg-headerResponsive bg-cover bg-top md:bg-none overflow-hidden  bg-[#f5f5f5]'>
             <div className='invisible lg:visible banner animate-slide-left-right absolute -bottom-10 -left-10 w-60 h-60'>
                 <img src="/images/about/1.png" alt="" />
             </div>
 
             <Container>
                 <div className='flex justify-center md:justify-evenly md:items-center'>
-                    <div className=' flex flex-col justify-center items-center'>
+                    <div className=' flex flex-col justify-center items-center lg:-ml-32 z-40'>
                         <h1 className='w-full lg:text-[70px] text-[60px] text-center text-tertiary font-secondery font-bold'>{title}</h1>
                         <div className='flex gap-4'>
                             <Link className='text-primary font-semibold text-lg ' href={'/'}>HOME /</Link>
@@ -25,9 +25,9 @@ const Header = (props) => {
                     </div>
 
 
-                    <div className="relative z-[9] lg:w-[40%] h-[630px] -mb-52 invisible lg:visible">
+                    <div className="relative z-[9] lg:w-[40%] h-[630px]  invisible lg:visible">
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[630px] h-[630px] rounded-full bg-white flex justify-center items-center">
-                  <img src='/images/home/banner_layer.png' alt="Person" className="rounded-full" />
+                  <img src='/images/home/banner_layer.png' alt="Person" className="rounded-full w-full h-full" />
                 </div>
 
                

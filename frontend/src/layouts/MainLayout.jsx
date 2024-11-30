@@ -66,12 +66,14 @@ const MainLayout = ({ children }) => {
 
   return (
     <>
+   
       {showNavbarFooter && (
         <>
           <div
             className="size-5 fixed hidden lg:block left-0 top-0 bg-blue rounded-full"
-            style={{ zIndex: 99999 }}
+            style={{ zIndex: 999 }}
           />
+         
           <Navbar />
         </>
       )}
@@ -83,7 +85,7 @@ const MainLayout = ({ children }) => {
           {showButton && (
             <div
               className=" fixed bottom-8 right-8 border-[4.5px] bg-white text-blue rounded-full cursor-pointer transition-all flex justify-center items-center size-14 lg:size-20 duration-300"
-              style={{ zIndex: 999 }}
+              style={{ zIndex: 998 }}
               onClick={scrollToTop}
               onMouseEnter={() => setShowMobileNumber(true)} 
             onMouseLeave={() => setShowMobileNumber(false)} 

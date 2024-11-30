@@ -109,7 +109,7 @@ export const AppointmentBooking = () => {
   ];
 
   return (
-    <div className="my-20">
+    <div className="">
       <Container>
         <div >
           <HeadingComponent headingData={headingData} />
@@ -181,7 +181,10 @@ export const AppointmentBooking = () => {
         )}
 
         {isFormVisible && (
-          <div className="fixed top-10 inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 w-full">
+          <div className="fixed top-10 inset-0 flex items-center justify-center bg-black bg-opacity-50  w-full"
+          style={{
+            zIndex: 999
+          }}>
             <div className="bg-white px-6 py-4 rounded shadow-lg max-w-md w-full">
               <h2 className="text-2xl font-semibold mb-4 text-primary font-secondery text-center"> Appointment</h2>
               <p className='text-secondery'>Submit your details & You will get a confirmation Mail.</p>

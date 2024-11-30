@@ -79,7 +79,7 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="bg-[#ffff] -mb-20 relative pb-5">
+    <div className="bg-[#ffff] -mb-20 relative pb-5 px-4">
       <Container className="flex flex-col md:flex-row justify-between items-center pb-20">
         {/* Image Division */}
         <div className="md:w-[49%] about-image" ref={imageRef}>
@@ -136,7 +136,7 @@ const AboutUs = () => {
             <p className="font-semibold italic text-tertiary font-secondery lg:text-[24px] pt-6">
               PROFESSIONAL TREATMENT WITH EXPERT
             </p>
-            <p className="text-[16px] text-secondery py-6 leading-7 ">
+            <p className="text-[18px] text-secondery py-6 leading-7 ">
               Embark on a journey of indulgence with professional treatment
               featuring expert care that transcends ordinary pampering. Elevate
               your wellness experience as skilled professionals tailor each

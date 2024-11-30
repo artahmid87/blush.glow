@@ -5,50 +5,45 @@ export const HomeServiceData = [
         id: 1,
         icon: <FacialIcon />,
         title: 'Facials',
-        details:"Revitalize your skin with our signature facials, tailored to your unique needs for a radiant glow."
+        details: "Revitalize and nourish your skin with our customized facials, designed to enhance your natural glow and leave you feeling refreshed."
     },
     {
         id: 2,
         icon: <MakeupIcon />,
         title: 'Threading',
-        details:"Flawless, long-lasting makeup for any occasion, from natural looks to glamorous transformations."
-
+        details: "Achieve perfectly shaped brows and a polished look with our precise threading services, tailored to suit your style."
     },
     {
         id: 3,
         icon: <HairIcon />,
         title: 'Waxing',
-         details:"From elegant updos to casual waves, we create hairstyles that complement your style and personality."
-
+        details: "Experience smooth, flawless skin with our gentle and effective waxing services for a silky finish."
     },
     {
         id: 4,
         icon: <EyebrowIcon />,
         title: 'Microblading',
-         details:"Smooth, precise hair removal for silky, soft skin."
-
+        details: "Transform your brows with expert microblading, creating natural, defined, and long-lasting arches."
     },
     {
         id: 5,
         icon: <BotoxIcon />,
         title: 'Botox',
-         details:"Smooth, precise hair removal for silky, soft skin."
-
+        details: "Rejuvenate your appearance with our botox treatments, reducing fine lines and wrinkles for a youthful glow."
     },
     {
         id: 6,
         icon: <FilterICon />,
         title: 'Fillers',
-         details:"Smooth, precise hair removal for silky, soft skin."
-
+        details: "Enhance your facial contours with dermal fillers, adding volume and smoothness for a refreshed look."
     },
     {
         id: 7,
         icon: <HairRemoveIcon />,
         title: 'Laser Hair Removal',
-         details:"Smooth, precise hair removal for silky, soft skin."
-
-    },
+        details: "Enjoy long-lasting smoothness with our advanced laser hair removal treatments, designed for all skin types."
+    }
+    
 ]
 
 export const ServiceData = [
