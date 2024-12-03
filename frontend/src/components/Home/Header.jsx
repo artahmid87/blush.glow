@@ -67,7 +67,7 @@ const Header = () => {
       span:"Waxing"
     },
     {
-      id: 5,
+      id: 6,
       title1: "Reach",
       title2: "Out Today",
       images: '/images/home/Contact.png',

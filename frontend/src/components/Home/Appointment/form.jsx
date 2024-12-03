@@ -188,12 +188,12 @@ const Form = () => {
             placeholder="Select Time"
           >
             <option value={""}>Select Time</option>
-            {BookingTime?.map((time) => (
-              <>
-              <option key={time} value={time}>
+            {BookingTime?.map((time, i) => (
+            
+              <option key={i} value={time}>
                 {time}
               </option>
-              </>
+            
             ))}
           </select>
         </div>
