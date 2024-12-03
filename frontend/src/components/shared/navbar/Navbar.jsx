@@ -99,18 +99,18 @@ END:VCARD
       {/* top menu */}
       <div  className="fixed top-0 left-0 w-full h-fit pb-2 md:py-0 lg:h-10 bg-[#d9d2d2] flex flex-col lg:flex-row justify-between px-10 items-center z-[1000]">
 
-        <div className='text-gray-600 text-[12px] md:text-md'>
+        <div className='text-gray-600 text-[12px] md:text-lg'>
           {formattedDate}
         </div>
         <div className='flex flex-col md:flex-row gap-4 justify-center items-center'>
-          <ul className='flex  gap-4 text-gray-600'>
-            <li className='flex gap-2  text-[12px] md:text-md '><span className="mt-1"><PhoneIcon /></span><a href="tel:+1-647-607-2276"> +1 (647)-607-2276</a>
+          <ul className='flex flex-col md:flex-row gap-4 text-gray-600'>
+            <li className='flex gap-1  text-[12px] md:text-lg mt-1 lg:mt-0'><span className="mt-[2px] md:mt-1"><PhoneIcon /></span><a href="tel:+1-647-607-2276"> +1 (647)-607-2276</a>
             </li>
-            <li className='flex  gap-2  text-[12px] md:text-md '> <span className='mt-1'> <EmailIcon /></span><a href="mailto:blushglowbar@gmail.com">blushglowbar@gmail.com</a></li>
+            <li className='flex  gap-1  text-[12px] md:text-lg -mt-2 md:-mt-0'> <span className='mt-[2px] md:mt-1'> <EmailIcon /></span><a href="mailto:blushglowbar@gmail.com">blushglowbar@gmail.com</a></li>
           </ul>
 
           <ul>
-            <li className='md:pb-1'>    <button onClick={saveContact} className='border-primary border px-2 py-0.5   rounded-lg hover:bg-[#e1e1e1] transition-all duration-300 ease-in-out  text-[12px] md:text-md'>
+            <li className='md:pb-1'>    <button onClick={saveContact} className='border-primary border px-2 py-0.5   rounded-lg hover:bg-[#e1e1e1] transition-all duration-300 ease-in-out  text-[12px] md:text-[15px]'>
               Save Contact
             </button></li>
           </ul>
@@ -120,7 +120,7 @@ END:VCARD
    {/* // nav menu */}
       <Container>
 
-        <nav ref={navbarRef} className="bg-transparent text font-secondery w-full md:p-4 fixed lg:top-10 md:top-5 top-20 left-0 pr-4 " style={{ zIndex: 999 }}>
+        <nav ref={navbarRef} className="bg-transparent text font-secondery w-full md:p-4 fixed lg:top-10 md:top-7 top-28 left-0 pr-4 " style={{ zIndex: 999 }}>
 
 
 
