@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { OpenIcon, DropdownIcon, BlogIcon, GalleryIcon, MakeUpIcon, AppointmentIcon, DashboardIcon } from '../ui/icon';
+import { OpenIcon, DropdownIcon, BlogIcon, GalleryIcon, MakeUpIcon, AppointmentIcon, DashboardIcon, HolidayIcon } from '../ui/icon';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,13 +34,18 @@ const Sidebar = () => {
             { name: 'Category', href: '/dashboard/category' },
           ])}
       
-      <li className="py-4 text-secondery">
+      <li className=" text-secondery">
             <Link className="flex items-center" href="/dashboard/appointment">
               <AppointmentIcon className="text-2xl mr-2" />
               <span className="text-2xl">Appointment</span>
             </Link>
             </li>
-
+            <li className=" text-secondery py-2 mt-1 ">
+            <Link className="flex items-center" href="/dashboard/appointment">
+              <HolidayIcon className="text-2xl mr-2" />
+              <span className="text-2xl">Holiday</span>
+            </Link>
+            </li>
           {/* Dropdown Menus */}
           {renderDropdownMenu('blog', 'Blog', BlogIcon, [
             { name: 'List of Blog', href: '/dashboard/blog' },
@@ -48,11 +53,12 @@ const Sidebar = () => {
             { name: 'Blog Category', href: '/dashboard/blog-category' },
           ])}
            
-
-          {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
+         <li className='-mt-1'>
+         {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
             { name: 'Gallery List', href: '/dashboard/gallery' },
             { name: 'Post Gallery', href: '/dashboard/uploadGallery' },
           ])}
+         </li>
          
         </ul>
 
@@ -106,7 +112,7 @@ const Sidebar = () => {
 
   function renderDropdownMenu(key, label, Icon, links) {
     return (
-      <li className="mb-4">
+      <li className="py-2">
         <div
           className={`flex items-center cursor-pointer ${activeMenu === key ? 'text-blue-500' : ''}`}
           onClick={() => toggleMenu(key)}
