@@ -27,15 +27,19 @@ const Sidebar = () => {
               <span className="text-2xl">Dashboard</span>
             </Link>
           </li>
-          <li className="py-4 text-secondery">
+
+          {renderDropdownMenu('services', 'Services', MakeUpIcon, [
+            { name: 'Service List', href: '/dashboard/displayServices' },
+            { name: 'Add Service', href: '/dashboard/addPrice' },
+            { name: 'Category', href: '/dashboard/category' },
+          ])}
+      
+      <li className="py-4 text-secondery">
             <Link className="flex items-center" href="/dashboard/appointment">
               <AppointmentIcon className="text-2xl mr-2" />
               <span className="text-2xl">Appointment</span>
             </Link>
-          </li>
-
-
-        
+            </li>
 
           {/* Dropdown Menus */}
           {renderDropdownMenu('blog', 'Blog', BlogIcon, [
@@ -43,15 +47,13 @@ const Sidebar = () => {
             { name: 'Create Blog Post ', href: '/dashboard/newPost' },
             { name: 'Blog Category', href: '/dashboard/blog-category' },
           ])}
+           
+
           {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
             { name: 'Gallery List', href: '/dashboard/gallery' },
             { name: 'Post Gallery', href: '/dashboard/uploadGallery' },
           ])}
-          {renderDropdownMenu('services', 'Services', MakeUpIcon, [
-            { name: 'Service List', href: '/dashboard/displayServices' },
-            { name: 'Add Service', href: '/dashboard/addPrice' },
-            { name: 'Category', href: '/dashboard/category' },
-          ])}
+         
         </ul>
 
         {/* Tablet and Mobile Views */}
@@ -70,12 +72,20 @@ const Sidebar = () => {
                   Dashboard
                 </Link>
               </li>
-              <li>
+
+              {renderDropdownMenu('services', 'Services', MakeUpIcon, [
+                { name: 'Service List', href: '/dashboard/displayServices' },
+                { name: 'Add Service', href: '/dashboard/addPrice' },
+                { name: 'Category', href: '/dashboard/category' },
+              ])}
+
+<li>
                 <Link className="flex items-center text-2xl" href="/dashboard/appointment">
                   <AppointmentIcon className="text-2xl mr-2" />
                   Appointment
                 </Link>
               </li>
+             
               {/* Dropdown Menus */}
               {renderDropdownMenu('blog', 'Blog', BlogIcon, [
                 { name: 'List of Blog', href: '/dashboard/blog' },
@@ -86,11 +96,7 @@ const Sidebar = () => {
                 { name: 'Gallery List', href: '/dashboard/gallery' },
                 { name: 'Post Gallery', href: '/dashboard/uploadGallery' },
               ])}
-              {renderDropdownMenu('services', 'Services', MakeUpIcon, [
-                { name: 'Service List', href: '/dashboard/displayServices' },
-                { name: 'Add Service', href: '/dashboard/addPrice' },
-                { name: 'Category', href: '/dashboard/category' },
-              ])}
+            
             </ul>
           )}
         </div>

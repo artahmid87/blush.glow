@@ -94,7 +94,7 @@ const AppointmentList = () => {
           // Desktop view as a table
           <Table
             dataSource={data}
-            pagination={{ pageSize: 5 }}
+            pagination={{ pageSize: 20 }}
             className="w-full"
             scroll={{ x: isTabletOrMobile ? '100%' : undefined }}
           >

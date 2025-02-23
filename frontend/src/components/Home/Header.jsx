@@ -78,6 +78,8 @@ const Header = () => {
     },
   ];
 
+  
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -112,7 +114,7 @@ const Header = () => {
                 </p>
                 
               <div className='flex gap-4 flex-col xl:flex-row'>
-              <Link href={item?.link || "#"} className="group hover:bg-primary bg-white transition-all flex  gap-2 justify-center items-center mt-10 py-4 md:py-7 lg:py-4 w-60 h-12 md:w-72 lg:h-16  rounded-full shadow-lg cursor-pointer " ref={buttonRef}>
+              <Link href={item?.link || "#"} className={`group hover:bg-primary bg-white transition-all flex  gap-2  items-center mt-10 py-4 pl-4 ${item.id == 1 ?' w-60 h-12 md:w-[260px] justify-start':'md:w-[170px] justify-start'} md:py-7 lg:h-14 lg:py-4 w-60 h-12 md:w-64 lg:h-16  rounded-full shadow-lg cursor-pointer `} ref={buttonRef}>
                 
                 <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full  ">
                   {item.icon}
@@ -123,7 +125,7 @@ const Header = () => {
          
             </Link>
 
-            <a href="https://www.facebook.com/Blushglowbeautybar" className="group hover:bg-primary bg-white  flex  gap-2 justify-center self-center items-center md:mt-10 py-4 md:py-7 lg:py-4 w-40 h-12 md:w-44 lg:h-16  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0 transition-all duration-500 ease-in-out " ref={buttonRef}>
+            <a href="https://www.facebook.com/Blushglowbeautybar" className="group hover:bg-primary bg-white  flex  gap-2 justify-start self-center items-center md:mt-10 py-4 md:py-7 pl-2 lg:py-4 w-40 h-12 md:w-36 lg:h-14  rounded-full shadow-lg cursor-pointer mb-36 md:mb-0 transition-all duration-500 ease-in-out " ref={buttonRef}>
                 
                 <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full  ">
                 <FacebookIcon className ="rounded-full"/>
