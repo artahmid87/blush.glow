@@ -225,8 +225,35 @@ export const Api = createApi({
       }),
     }),
 
+    //create holiday
+    createHoliday: builder.mutation({
+      query: (holiday) => ({
+        url: '/holiday',
+        method: 'POST',
+        body: holiday,
+      }),
+    }),
+
+    // holiday get api
+    getAllHoliday: builder.query({
+      query: () => '/get/holiday'
+    }),
+    // holiday get By ID api
+    getHolidayById: builder.query({
+      query: (id) => `/get/holiday/${id}`
+    }),
+    
+    //holiday delete api
+    deleteHoliday: builder.mutation({
+      query: (id) => ({
+        url: `/delete/holiday/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+
   })
 })
+
 
 
 export const {
@@ -259,8 +286,11 @@ export const {
   useFindAllBlogCategoriesQuery,
   useGetBlogCategoryByIdQuery,
   useCreatePostMutation,
-  useUpdateBlogMutation
-  
+  useUpdateBlogMutation,
+  useCreateHolidayMutation,
+  useDeleteHolidayMutation,
+  useGetAllHolidayQuery,
+  useGetHolidayByIdQuery,
 } = Api
 
 

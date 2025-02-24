@@ -11,16 +11,21 @@ const Sidebar = () => {
   };
 
   return (
-    <nav className= "  lg:h-[100dvh] bg-white border-r border-gray-400 text-secondery p-6">
-      {/* Sidebar for All Views */}
+    <nav className="lg:h-[100dvh] bg-white border-r border-gray-400 text-secondery p-6">
       <div className="flex flex-col items-center lg:w-60">
-        {/* Logo */}
         <div className="py-10">
           <img src="/images/home/logo.png" alt="Logo" />
         </div>
 
-        {/* Desktop Sidebar */}
-        <ul className="hidden lg:flex flex-col w-full">
+        <button
+          className="lg:hidden mb-4 p-2 border rounded-md text-3xl"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Sidebar"
+        >
+          <OpenIcon size={24} />
+        </button>
+
+        <ul className={`flex-col w-full ${isOpen ? 'flex' : 'hidden'} lg:flex`}>
           <li className="text-secondery">
             <Link className="flex items-center" href="/dashboard">
               <DashboardIcon className="text-2xl mr-2" />
@@ -33,79 +38,32 @@ const Sidebar = () => {
             { name: 'Add Service', href: '/dashboard/addPrice' },
             { name: 'Category', href: '/dashboard/category' },
           ])}
-      
-      <li className=" text-secondery">
+
+          <li className="text-secondery">
             <Link className="flex items-center" href="/dashboard/appointment">
               <AppointmentIcon className="text-2xl mr-2" />
               <span className="text-2xl">Appointment</span>
             </Link>
-            </li>
-            <li className=" text-secondery py-2 mt-1 ">
-            <Link className="flex items-center" href="/dashboard/appointment">
+          </li>
+
+          <li className="text-secondery py-2 mt-1">
+            <Link className="flex items-center" href="/dashboard/holiday">
               <HolidayIcon className="text-2xl mr-2" />
               <span className="text-2xl">Holiday</span>
             </Link>
-            </li>
-          {/* Dropdown Menus */}
+          </li>
+
           {renderDropdownMenu('blog', 'Blog', BlogIcon, [
             { name: 'List of Blog', href: '/dashboard/blog' },
             { name: 'Create Blog Post ', href: '/dashboard/newPost' },
-            { name: 'Blog Category', href: '/dashboard/blog-category' },
+            { name: 'Blog Category', href: '/dashboard/blog-category' },
           ])}
-           
-         <li className='-mt-1'>
-         {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
+
+          {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
             { name: 'Gallery List', href: '/dashboard/gallery' },
             { name: 'Post Gallery', href: '/dashboard/uploadGallery' },
           ])}
-         </li>
-         
         </ul>
-
-        {/* Tablet and Mobile Views */}
-        <div className="flex lg:hidden w-full flex-col">
-          <div className="flex justify-between items-center w-full mb-4">
-            <h2 className="text-2xl font-bold">Dashboard</h2>
-            <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Sidebar" className='text-3xl'>
-              <OpenIcon size={24} />
-            </button>
-          </div>
-          {isOpen && (
-            <ul className="space-y-4">
-              <li>
-                <Link className="flex items-center text-2xl" href="/dashboard">
-                  <DashboardIcon className="text-xl mr-2" />
-                  Dashboard
-                </Link>
-              </li>
-
-              {renderDropdownMenu('services', 'Services', MakeUpIcon, [
-                { name: 'Service List', href: '/dashboard/displayServices' },
-                { name: 'Add Service', href: '/dashboard/addPrice' },
-                { name: 'Category', href: '/dashboard/category' },
-              ])}
-
-<li>
-                <Link className="flex items-center text-2xl" href="/dashboard/appointment">
-                  <AppointmentIcon className="text-2xl mr-2" />
-                  Appointment
-                </Link>
-              </li>
-             
-              {/* Dropdown Menus */}
-              {renderDropdownMenu('blog', 'Blog', BlogIcon, [
-                { name: 'List of Blog', href: '/dashboard/blog' },
-                { name: 'Create Blog Post', href: '/dashboard/newPost' },
-                { name: 'Blog Category', href: '/dashboard/blog-category' },
-              ])}
-              {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
-                { name: 'Gallery List', href: '/dashboard/gallery' },
-                { name: 'Post Gallery', href: '/dashboard/uploadGallery' },
-              ])}
-            
-            </ul>
-          )}
-        </div>
       </div>
     </nav>
   );

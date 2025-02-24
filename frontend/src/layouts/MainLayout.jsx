@@ -60,6 +60,7 @@ const MainLayout = ({ children }) => {
     "/dashboard/updatePrice/[id]",
     "/dashboard/blog-category",
     "/dashboard/appointment",
+    "/dashboard/holiday",
   ];
 
   const showNavbarFooter = !hiddenRoutes.includes(pathname);
