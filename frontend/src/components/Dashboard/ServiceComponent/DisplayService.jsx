@@ -42,6 +42,14 @@ const DisplayService = () => {
         <h1 className="text-2xl font-bold text-center text-white">{data?.length} Services</h1>
       </div>
 
+      <div>
+        <ul className='flex justify-evenly py-2'>
+          <Link href={'/dashboard/displayServices'}><li className="bg-blue-500 rounded-md text-white px-4 py-1 hover:bg-blue-300 transition-all">List</li></Link>
+          <Link href={'/dashboard/category'}><li className="bg-blue-500 rounded-md text-white px-4 py-1 hover:bg-blue-300 transition-all">Category</li></Link>
+          <Link href={'/dashboard/addPrice'}><li className="bg-blue-500 rounded-md text-white px-4 py-1 hover:bg-blue-300 transition-all">Add</li></Link>
+        </ul>
+      </div>
+
       {/* Content */}
       <div className={isMobile ? 'grid gap-4' : 'overflow-x-auto'}>
         {isMobile ? (

@@ -1,6 +1,7 @@
 
 import OffDay from '@/components/Dashboard/Holiday/OffDay';
 import ShowHoliday from '@/components/Dashboard/Holiday/ShowHoliday';
+import TimePickerComponent from '@/components/Dashboard/Holiday/Time';
 import DashboardLayout from '@/layouts/dashboardLayout';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
@@ -27,6 +28,7 @@ import { useEffect } from 'react';
     <DashboardLayout>  
         <OffDay/>
         <ShowHoliday/>
+        <TimePickerComponent/>
     </DashboardLayout>
   
    </section>

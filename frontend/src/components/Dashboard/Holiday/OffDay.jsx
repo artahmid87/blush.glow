@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { DatePicker } from 'antd';
+import { DatePicker,TimePicker } from 'antd';
 import { BookingTime } from '@/components/ui/data';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { useCreateHolidayMutation } from '@/redux/api/Api';
 import { toast } from 'react-toastify';
 import Container from '@/components/ui/Container';
+const format = 'HH:mm';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -14,6 +15,10 @@ const Form = () => {
   const [toTime, setToTime] = useState('');
   const formRef = useRef();
 
+
+  const startTime = dayjs('12:08:23', 'HH:mm:ss');
+  const endTime = dayjs('12:08:23', 'HH:mm:ss');
+
   const [holiday, { isLoading }] = useCreateHolidayMutation();
 
   const handleHoliday = async (e) => {
@@ -22,8 +27,8 @@ const Form = () => {
     try {
       await holiday({
         name,
-        fromDate: fromDate ? moment(fromDate).format('YYYY-MM-DD') : null,
-        toDate: toDate ? moment(toDate).format('YYYY-MM-DD') : null,
+        fromDate: fromDate ? fromDate.format('YYYY-MM-DD') : null,
+        toDate: toDate ? toDate.format('YYYY-MM-DD') : null,
         fromTime,
         toTime,
       }).unwrap();
@@ -51,96 +56,128 @@ const Form = () => {
     }
   };
 
+
+  const disabledTime = () => {
+    const startHour = 9; 
+    const endHour = 20;  
+    const disabledHours = [];
+    const disabledMinutes = [];
+
+    for (let i = 0; i < 24; i++) {
+      if (i < startHour || i > endHour) {
+        disabledHours.push(i);
+      }
+    }
+
+    for (let i = 0; i < 60; i++) {
+      if (i % 30 !== 0) {
+        disabledMinutes.push(i);
+      }
+    }
+
+    return {
+      disabledHours: () => disabledHours,
+      disabledMinutes: () => disabledMinutes,
+    };
+  };
+
+  const FromTimeCollec = (time, timeString) => {
+    setFromTime(timeString);
+};
+  const ToTimeCollec = (time, timeString) => {
+    setToTime(timeString);
+};
+
   return (
    <div>
     <Container>
       <h1 className='bg-primary py-2 text-center text-white text-2xl font-bold'>Holiday</h1>
-    <form ref={formRef} onSubmit={handleHoliday} className='py-6'>
-      <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
-        {/* Name */}
-        <div className="w-full py-2">
-          <input
-            type="text"
-            placeholder="Holiday Name"
-            className="py-4 px-5 w-full border-b border-primary"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
-        {/* Date Pickers */}
-        <div className="w-full py-2">
-          <h1>From</h1>
-          <DatePicker
-            format="YYYY-MM-DD"
-            disabledDate={(current) => moment().add(-1, 'days') >= current}
-            className="py-4 px-5 w-full border-b border-primary outline-none"
-            value={fromDate ? moment(fromDate) : null}
-            onChange={(date) => setFromDate(date)}
-            required
-          />
+      <form ref={formRef} onSubmit={handleHoliday} className='py-6'>
+        <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
+          {/* Name */}
+          <div className="w-full py-2">
+            <input
+              type="text"
+              placeholder="Holiday Name"
+              className="py-4 px-5 w-full border-b border-primary"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+           
+            />
+          </div>
         </div>
 
-        <div className="w-full py-2">
-          <h1>To</h1>
-          <DatePicker
-            format="YYYY-MM-DD"
-            disabledDate={(current) => moment().add(-1, 'days') >= current}
-            className="py-4 px-5 w-full border-b border-primary outline-none"
-            value={toDate ? moment(toDate) : null}
-            onChange={(date) => setToDate(date)}
-            required
-          />
-        </div>
-      </div>
+        <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
+          {/* Date Pickers */}
+          <div className="w-full py-2">
+            <h1>From</h1>
+            <DatePicker
+              format="DD-MM-YYYY"
+              // disabledDate={(current) => moment().add(-1, 'days') >= current}
+              className="py-4 px-5 w-full border-b border-primary outline-none"
+              value={fromDate}
+              onChange={(date) => setFromDate(date)}
+            
+            />
+          </div>
 
-      <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
-        {/* Time Pickers */}
-        <div className="w-full py-2">
-          <h1>From</h1>
-          <select
-            className="py-4 px-5 w-full border-b border-primary text-secondery outline-none"
-            value={fromTime}
-            onChange={(e) => setFromTime(e.target.value)}
-            required
+          <div className="w-full py-2">
+            <h1>To</h1>
+            <DatePicker
+              format="DD-MM-YYYY"
+              // disabledDate={(current) => moment().add(-1, 'days') >= current}
+              className="py-4 px-5 w-full border-b border-primary outline-none"
+              value={toDate}
+              onChange={(date) => setToDate(date)}
+          
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
+          {/* Time Pickers */}
+          <div className="w-full py-2">
+            <h1>From</h1>
+            <TimePicker
+        format="hh:mm A"
+        value={fromTime ? dayjs(fromTime, 'HH:mm') : null}
+        onChange={FromTimeCollec}
+        showNow={false}
+        disabledTime={disabledTime}
+        minuteStep={30}
+         className="py-4 px-5 w-full border-b border-primary outline-none"
+        use12Hours
+        placeholder="Select time"
+      />
+          </div>
+
+          <div className="w-full py-2">
+            <h1>To</h1>
+            <TimePicker
+        format="hh:mm A"
+        value={toTime ? dayjs(toTime, 'HH:mm') : null}
+        onChange={ToTimeCollec}
+        showNow={false}
+        disabledTime={disabledTime}
+        minuteStep={30}
+         className="py-4 px-5 w-full border-b border-primary outline-none"
+        use12Hours
+        placeholder="Select time"
+      />
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <div>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="py-2 px-4 bg-primary text-white rounded-md"
           >
-            <option value={""}>Select Time</option>
-            {BookingTime?.map((time, i) => (
-              <option key={i} value={time}>
-                {time}
-              </option>
-            ))}
-          </select>
+            {isLoading ? "Saving..." : "Submit"}
+          </button>
         </div>
-
-        <div className="w-full py-2">
-          <h1>To</h1>
-          <select
-            className="py-4 px-5 w-full border-b border-primary text-secondery outline-none"
-            value={toTime}
-            onChange={(e) => setToTime(e.target.value)}
-            required
-          >
-            <option value={""}>Select Time</option>
-            {BookingTime?.map((time, i) => (
-              <option key={i} value={time}>
-                {time}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      {/* Submit Button */}
-      <div>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Saving..." : "Submit"}
-        </button>
-      </div>
-    </form>
+      </form>
     </Container>
    </div>
   );

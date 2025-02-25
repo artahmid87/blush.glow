@@ -4,23 +4,23 @@ const sequelize = require('../db.confiq.js')
 const Holiday = sequelize.define('holiday',{
     name: {
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:true
     },
     fromDate:{
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:true
     },
     toDate:{
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:true
     },
     fromTime:{
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:true
     },
     toTime:{
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:true
     },
 })
 

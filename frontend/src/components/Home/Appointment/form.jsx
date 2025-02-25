@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { DatePicker } from 'antd/dist/antd';
-import { BookingTime } from '@/components/ui/data';
-import moment from 'moment';
-import { useCreateBookingMutation, useFindAllCategoriesQuery, useFindAllPriceQuery } from '@/redux/api/Api';
+import { DatePicker, TimePicker } from 'antd';
+import { useCreateBookingMutation, useFindAllCategoriesQuery, useFindAllPriceQuery, useGetAllHolidayQuery } from '@/redux/api/Api';
 import { LoadingButton, BookingButton } from './BookingButton';
 import { toast } from 'react-toastify';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+
+dayjs.extend(isBetween);
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -18,8 +20,11 @@ const Form = () => {
   const [selectedCategoryPrices, setSelectedCategoryPrices] = useState([]);
   const formRef = useRef();
 
+
+
   const { data: categories } = useFindAllCategoriesQuery();
   const { data: prices } = useFindAllPriceQuery();
+  const { data: holiday } = useGetAllHolidayQuery();
 
   useEffect(() => {
     if (subject) {
@@ -29,9 +34,52 @@ const Form = () => {
     }
   }, [subject, prices]);
 
+  const disabledDateRanges = holiday?.map(date => ({
+    start: dayjs(date?.fromDate),
+    end: dayjs(date?.toDate),
+  })) || [];
+
+  const disabledDate = (current) => {
+    const isInDisabledRange = disabledDateRanges.some((range) =>
+      current.isBetween(dayjs(range.start), dayjs(range.end), 'day', '[]')
+    );
+    const isPastDate = current && current.isBefore(dayjs().startOf('day'));
+    return isInDisabledRange || isPastDate;
+  };
+
+  const disabledTime = () => {
+    const startHour = 9; 
+    const endHour = 20;  
+    const disabledHours = [];
+    const disabledMinutes = [];
+
+    for (let i = 0; i < 24; i++) {
+      if (i < startHour || i > endHour) {
+        disabledHours.push(i);
+      }
+    }
+
+    for (let i = 0; i < 60; i++) {
+      if (i % 30 !== 0) {
+        disabledMinutes.push(i);
+      }
+    }
+
+    return {
+      disabledHours: () => disabledHours,
+      disabledMinutes: () => disabledMinutes,
+    };
+  };
+
+
   const dateColllect = (_, dateString) => {
     setDate(dateString);
-  };
+};
+
+const TimeColllect = (time, timeString) => {
+    setTime(timeString);
+};
+
 
   const [booking, { isLoading }] = useCreateBookingMutation();
 
@@ -40,7 +88,6 @@ const Form = () => {
     const selectedPrice = prices?.find(p => p.id === Number(price));
     const priceTitle = selectedPrice ? selectedPrice.title : '';
     try {
-
       await booking({
         name,
         email,
@@ -56,84 +103,57 @@ const Form = () => {
       toast.success('You will receive a confirmation Email!', {
         position: "bottom-right",
         autoClose: 8000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
         theme: "light",
       });
     } catch (err) {
       console.error('Booking failed', err);
-      if (err.originalStatus === 406) {
-        toast.error('This Date & Time is not available', {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-        });
-      } else {
-        toast.error('Something went wrong! Please try again!', {
-          position: "bottom-left",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-        });
-      }
+      const errorMessage = err.originalStatus === 406
+        ? 'This Date & Time is not available'
+        : 'Something went wrong! Please try again!';
+
+      toast.error(errorMessage, {
+        position: "bottom-left",
+        autoClose: 5000,
+        theme: "light",
+      });
     }
   };
 
   return (
     <form ref={formRef} onSubmit={handleAppoinment} className='py-6'>
-      <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
-        {/* Name */}
-        <div className="w-full py-2">
-          <input
-            type="text"
-            placeholder="Name"
-            className="py-4 px-5 w-full border-b border-primary"
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        {/* Phone Number */}
-        <div className="w-full py-2">
-          <input
-            type="text"
-            placeholder="Phone Number"
-            className="py-4 px-5 w-full border-b border-primary"
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
-        </div>
-
-
+    <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
+      <div className="w-full py-2">
+        <input
+          type="text"
+          placeholder="Name"
+          className="py-4 px-5 w-full border-b border-primary"
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
       </div>
-
-      <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
-        {/* Email */}
-        <div className="w-full py-2">
-          <input
-            type="email"
-            placeholder="E-mail"
-            className="py-4 px-5 w-full border-b border-primary"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-
-
+  
+      <div className="w-full py-2">
+        <input
+          type="text"
+          placeholder="Phone Number"
+          className="py-4 px-5 w-full border-b border-primary"
+          onChange={(e) => setPhone(e.target.value)}
+          required
+        />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:flex-row justify-between items-center">
+    </div>
+  
+    <div className="w-full py-2">
+      <input
+        type="email"
+        placeholder="E-mail"
+        className="py-4 px-5 w-full border-b border-primary"
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+    </div>
+  
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:flex-row justify-between items-center">
         {/* Select Subject (Category) */}
         <div className=" py-2">
           <select
@@ -168,54 +188,50 @@ const Form = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
-        {/* Date and Time picker */}
-        <div className="w-full py-2">
-          <DatePicker
-            format="YYYY-MM-DD"
-            disabledDate={(current) => moment().add(-1, 'days') >= current}
-            className="py-4 px-5 w-full border-b border-primary outline-none"
-            onChange={dateColllect}
-            required
-          />
-        </div>
-
-        <div className="w-full py-2">
-          <select
-            className="py-4 px-5 w-full border-b border-primary text-secondery outline-none"
-            onChange={(e) => setTime(e.target.value)}
-            required
-            placeholder="Select Time"
-          >
-            <option value={""}>Select Time</option>
-            {BookingTime?.map((time, i) => (
-            
-              <option key={i} value={time}>
-                {time}
-              </option>
-            
-            ))}
-          </select>
-        </div>
+  
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:flex-row justify-between items-center">
+      <div className="w-full py-2">
+      <DatePicker
+        format="YYYY-MM-DD"
+        disabledDate={disabledDate}
+        className="py-4 px-5 w-full border-b border-primary outline-none"
+        onChange={dateColllect}
+        required
+      />
+    </div>
+  
+    <div className="w-full py-2">
+      <TimePicker
+        format="hh:mm A"
+        value={time ? dayjs(time, 'HH:mm') : null}
+        onChange={TimeColllect}
+        showNow={false}
+        disabledTime={disabledTime}
+        minuteStep={30}
+         className="py-4 px-5 w-full border-b border-primary outline-none"
+        use12Hours
+        placeholder="Select time"
+      />
+    </div>
       </div>
-
-      {/* Text Area */}
-      <div className="py-2">
-        <textarea
-          className="py-4 px-5 w-full border-b border-primary text-secondery outline-none"
-          rows="2"
-          cols="50"
-          onChange={(e) => setDescription(e.target.value)}
-          required
-          placeholder="Please provide details about the service you're looking for..."
-        ></textarea>
-      </div>
-
-      {/* Appointment Button */}
-      <div>
-        {isLoading ? <LoadingButton /> : <BookingButton />}
-      </div>
-    </form>
+  
+  
+  
+    <div className="py-2">
+      <textarea
+        className="py-4 px-5 w-full border-b border-primary outline-none"
+        rows="2"
+        onChange={(e) => setDescription(e.target.value)}
+        required
+        placeholder="Please provide details about the service you're looking for..."
+      ></textarea>
+    </div>
+  
+    <div>
+      {isLoading ? <LoadingButton /> : <BookingButton />}
+    </div>
+  </form>
+  
   );
 };
 

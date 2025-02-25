@@ -13,7 +13,7 @@ import GoogleReview from '@/components/Home/GoogleReview';
 const Home = () => {
   return(
    
-   <section className='mt-20 overflow-hidden'>
+   <section className='mt-20 overflow-hidden bg-white'>
     <Header/>
       <BookingSteps/>
       <AboutUs/>
