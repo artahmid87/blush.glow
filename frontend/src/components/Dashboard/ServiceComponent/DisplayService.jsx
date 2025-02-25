@@ -132,6 +132,7 @@ const DisplayService = () => {
                         <Button className="bg-rose-500 text-white px-2 py-1 rounded-full hover:bg-red-600">
                           Delete
                         </Button>
+                      
                       </Popconfirm>
                     </div>
                   </td>

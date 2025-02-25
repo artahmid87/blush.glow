@@ -28,7 +28,6 @@ import { useEffect } from 'react';
     <DashboardLayout>  
         <OffDay/>
         <ShowHoliday/>
-        <TimePickerComponent/>
     </DashboardLayout>
   
    </section>

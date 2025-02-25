@@ -20,38 +20,46 @@ const Form = () => {
   const [selectedCategoryPrices, setSelectedCategoryPrices] = useState([]);
   const formRef = useRef();
 
-
-
   const { data: categories } = useFindAllCategoriesQuery();
   const { data: prices } = useFindAllPriceQuery();
   const { data: holiday } = useGetAllHolidayQuery();
 
-  useEffect(() => {
-    if (subject) {
-      const categoryPrices = prices?.filter(price => price.CategoryId === Number(subject));
-      setSelectedCategoryPrices(categoryPrices || []);
-      setPrice('');
-    }
-  }, [subject, prices]);
+  const [fromHolidayDate, setFromHolidayDate] = useState([]);
+const [toHolidayDate, setToHolidayDate] = useState([]);
 
-  const disabledDateRanges = holiday?.map(date => ({
-    start: dayjs(date?.fromDate),
-    end: dayjs(date?.toDate),
-  })) || [];
+// Fetching holiday dates
+useEffect(() => {
+  if (holiday) {
+    const fromDates = holiday.map(date => date?.fromDate ? dayjs(date?.fromDate) : null).filter(Boolean);  // Handle undefined or null dates
+    const toDates = holiday.map(date => date?.toDate ? dayjs(date?.toDate) : null).filter(Boolean);  // Handle undefined or null dates
+    setFromHolidayDate(fromDates);
+    setToHolidayDate(toDates);
+  }
+}, [holiday]);
 
-  const disabledDate = (current) => {
-    const isInDisabledRange = disabledDateRanges.some((range) =>
-      current.isBetween(dayjs(range.start), dayjs(range.end), 'day', '[]')
-    );
-    const isPastDate = current && current.isBefore(dayjs().startOf('day'));
-    return isInDisabledRange || isPastDate;
-  };
+// Create an array of date ranges
+const disabledDateRanges = fromHolidayDate.length > 0 && toHolidayDate.length > 0
+  ? fromHolidayDate.map((start, index) => ({
+      start: start,
+      end: toHolidayDate[index],
+  }))
+  : [];  // Ensure this array is only populated when the holiday data is valid
+
+// Disable function
+const disabledDate = (current) => {
+  const isInDisabledRange = disabledDateRanges.some((range) =>
+    current.isBetween(range.start, range.end, 'day', '[]')
+  );
+  const isPastDate = current && current.isBefore(dayjs().startOf('day'));
+
+  return isInDisabledRange || isPastDate;
+};
+
 
   const disabledTime = () => {
-    const startHour = 9; 
-    const endHour = 20;  
+    const startHour = 9; // 9:00 AM
+    const endHour = 20;   // 8:00 PM
     const disabledHours = [];
-    const disabledMinutes = [];
 
     for (let i = 0; i < 24; i++) {
       if (i < startHour || i > endHour) {
@@ -59,27 +67,18 @@ const Form = () => {
       }
     }
 
-    for (let i = 0; i < 60; i++) {
-      if (i % 30 !== 0) {
-        disabledMinutes.push(i);
-      }
-    }
-
     return {
       disabledHours: () => disabledHours,
-      disabledMinutes: () => disabledMinutes,
     };
   };
 
-
   const dateColllect = (_, dateString) => {
     setDate(dateString);
-};
+  };
 
-const TimeColllect = (time, timeString) => {
+  const TimeColllect = (_, timeString) => {
     setTime(timeString);
-};
-
+  };
 
   const [booking, { isLoading }] = useCreateBookingMutation();
 
@@ -118,7 +117,6 @@ const TimeColllect = (time, timeString) => {
       });
     }
   };
-
   return (
     <form ref={formRef} onSubmit={handleAppoinment} className='py-6'>
     <div className="flex flex-col gap-4 md:flex-row justify-between items-center">

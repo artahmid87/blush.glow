@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 const DisplayCategory = () => {
   const { data, isLoading, isError, refetch } = useFindAllCategoriesQuery();
   const [deleteCategory] = useDeleteCategoryMutation();
-
+  // console.log(data)
 
 
   useEffect(() => {
@@ -40,6 +40,8 @@ const DisplayCategory = () => {
         <thead>
           <tr>
             <th className="py-2 px-4 bg-pink-500 text-white text-left text-sm font-semibold">Category Name</th>
+            <th className="py-2 px-4 bg-pink-500 text-white text-left text-sm font-semibold">Icon</th>
+            <th className="py-2 px-4 bg-pink-500 text-white text-left text-sm font-semibold">Description</th>
             <th className="py-2 px-4 bg-pink-500 text-white text-left text-sm font-semibold">Action</th>
           </tr>
         </thead>
@@ -47,6 +49,14 @@ const DisplayCategory = () => {
           {data?.map((category) => (
             <tr key={category.id} className="border-b border-gray-200">
               <td className="py-2 px-4 text-gray-700">{category.title}</td>
+              <td className="px-4 py-2 border border-gray-300">
+                    <img
+                      src={`http://localhost:5000/images/service_img/${category?.icon}`}
+                     alt={category?.title}
+                      className="w-40 h-40 mx-auto object-cover"
+                    />
+                  </td>
+              <td className="py-2 px-4 text-gray-700">{category.shortInto}</td>
               <td className="px-4 flex flex-col md:flex-row justify-end gap-4 py-2">
             
                     <Popconfirm

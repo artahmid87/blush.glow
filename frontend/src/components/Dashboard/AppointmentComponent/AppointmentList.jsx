@@ -10,16 +10,17 @@ const AppointmentList = () => {
   const { data, isLoading, isError, refetch } = useBookingListQuery();
   const [deleteBooking] = useDeleteBookingMutation();
   const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
-
+  // Refetch data every 1 second
   useEffect(() => {
-    const interval = setInterval(() =>{
-     refetch()
-    }, 1000)
-    return () => clearInterval(interval)
-   }, [refetch])
+    const interval = setInterval(() => {
+      refetch();
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [refetch]);
 
-
+  // Handle responsive view
   useEffect(() => {
     const handleResize = () => {
       setIsTabletOrMobile(window.innerWidth < 1024);
@@ -29,39 +30,55 @@ const AppointmentList = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Handle delete action
   const handleDelete = async (id) => {
     try {
       await deleteBooking(id).unwrap();
-      refetch()
+      refetch();
     } catch (error) {
       console.log(error);
     }
-   
   };
+
+
+  const filteredData = data?.filter((record) =>
+    record.email.toLowerCase().includes(searchTerm) ||
+    record.phone.toLowerCase().includes(searchTerm)
+  );
 
   return (
     <div className="p-4">
       {/* Header */}
       <div className="w-full h-16 bg-pink-500 py-4 mb-4">
         <h1 className="text-2xl font-bold text-center text-white">
-          {data?.length} Clients Available
-
+          {filteredData?.length} Clients Available
         </h1>
+      </div>
+
+      {/* Search Input */}
+      <div className="mb-4 flex justify-center">
+        <input
+          type="text"
+          placeholder="Search by email or phone"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+          className="p-2 border rounded-lg w-full max-w-md"
+        />
       </div>
 
       {/* Content */}
       <div className={isTabletOrMobile ? 'overflow-x-auto' : ''}>
         {isTabletOrMobile ? (
-     
+          // Mobile View
           <div className="grid gap-4">
-            {data?.map((record) => (
+            {filteredData?.map((record) => (
               <div key={record.id} className="bg-gray-100 p-4 rounded-lg shadow-md">
                 <h2 className="text-lg font-bold mb-2">{record.name}</h2>
                 <p><strong>Email:</strong> {record.email}</p>
                 <p><strong>Phone:</strong> {record.phone}</p>
                 <p><strong>Date:</strong> {record.date}</p>
                 <p><strong>Time:</strong> {record.time}</p>
-                <p><strong>price:</strong> {record.price}</p>
+                <p><strong>Price:</strong> {record.price}</p>
                 <p><strong>Description:</strong> {record.description}</p>
                 <div className="flex justify-between mt-4">
                   <Popconfirm
@@ -91,19 +108,20 @@ const AppointmentList = () => {
             ))}
           </div>
         ) : (
-          // Desktop view as a table
+          // Desktop View
           <Table
-            dataSource={data}
+            dataSource={filteredData}
             pagination={{ pageSize: 20 }}
             className="w-full"
             scroll={{ x: isTabletOrMobile ? '100%' : undefined }}
+            rowKey="id"
           >
             <Column title="Name" dataIndex="name" key="name" />
             <Column title="Email" dataIndex="email" key="email" />
             <Column title="Phone" dataIndex="phone" key="phone" />
             <Column title="Date" dataIndex="date" key="date" />
             <Column title="Time" dataIndex="time" key="time" />
-            <Column title="Services" dataIndex="price" key="price" />
+            <Column title="Price" dataIndex="price" key="price" />
             <Column title="Description" dataIndex="description" key="description" />
             <Column
               title="Action"

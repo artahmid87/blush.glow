@@ -1,8 +1,8 @@
 const express = require('express')
 
-
-
 const {CreatePricePlan, deletePrice, getPrice, updatePricePlan,singlePricePlan} = require("../controllers/ServiceController")
+
+
 const { service_img } = require('../middleware/multer/multer')
 
 const priceRouter = express.Router()

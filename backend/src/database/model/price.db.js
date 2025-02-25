@@ -17,7 +17,6 @@ const PricePlan = sequelize.define('service-prices',{
     shortInfo: {
         type:DataTypes.STRING(100),
         allowNull:true,
-        
     },
    
 })

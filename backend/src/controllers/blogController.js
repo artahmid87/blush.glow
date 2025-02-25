@@ -160,15 +160,9 @@ const getById = async (req, res, next) => {
 const updateBlogController = async (req, res, next) => {
   try {
 
-    console.log(id, title, description , CategoryId)
     const { id } = req.params; 
     const { title, description , CategoryId } = req?.body;
     
-
-    console.log(id, title, description , CategoryId)
-
-
-
     const blog = await Blog.findOne({
       where: {
         id: id

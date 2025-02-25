@@ -5,8 +5,15 @@ const Categories = sequelize.define('categories',{
     title: {
         type:DataTypes.STRING,
         allowNull:false
-    }
-   
+    },
+    icon: {
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+    shortInto: {
+        type:DataTypes.STRING(160),
+        allowNull:true,
+    },
 })
 
 
