@@ -14,6 +14,10 @@ const Categories = sequelize.define('categories',{
         type:DataTypes.STRING(160),
         allowNull:true,
     },
+    isActive: {
+        type:DataTypes.BOOLEAN,
+        defaultValue: true,
+    }
 })
 
 

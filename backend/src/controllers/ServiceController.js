@@ -74,7 +74,8 @@ const singleCategory = async (req, res, next) => {
         next(error)
     }
 }
-const updateCategories = async (req, res, next) => {
+
+const updateCategoriesController = async (req, res, next) => {
     try {
         const { id } = req.params;
         const { title, shortInto } = req?.body;
@@ -100,10 +101,10 @@ const updateCategories = async (req, res, next) => {
         await sharp(req.file.path)
             .resize({ width: 500 })
             .jpeg({ quality: 80 })
-            .toFile(req.file.destination + '/up-' + req.file.originalname);
+            .toFile(req.file.destination + '/uc-' + req.file.originalname);
 
         const data = await Categories.update(
-            { title, icon: 'up-' + req.file.originalname },
+            {title, shortInto,  icon: 'uc-' + req.file.originalname },
             { where: { id: id } }
         );
 
@@ -116,8 +117,8 @@ const updateCategories = async (req, res, next) => {
         });
 
 
-        fs.unlink(req.file.destination + '/' + categories.toJSON().file, (err) => {
-            console.log('this is from console log' + '/' + categories.toJSON().file)
+        fs.unlink(req.file.destination + '/' + categories.toJSON().icon, (err) => {
+            console.log('this is from console log' + '/' + categories.toJSON().icon)
             console.log('this is from console log' + req.file.destination)
             if (err) {
                 console.error('Failed to delete the old image:', err);
@@ -132,6 +133,35 @@ const updateCategories = async (req, res, next) => {
         next(error)
     }
 }
+
+
+
+const updateStatusController = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { isActive } = req.body;
+
+      
+        const category = await Categories.findOne({ where: { id } });
+
+        if (!category) {
+            return res.status(404).send("Category not found!");
+        }
+
+        if (isActive) {
+            await Categories.update(
+                { isActive },
+                { where: { id } }
+            );
+            return res.status(200).send({ message: "Status updated successfully!" });
+        }
+
+        return res.status(400).send({ message: "Nothing to update!" });
+    } catch (error) {
+        next(error);
+    }
+};
+
 
 const deleteCategories = async (req, res, next) => {
     try {
@@ -345,4 +375,4 @@ const deletePrice = async (req, res, next) => {
 
 
 
-module.exports = { CreateCategories, getCategories, updateCategories, deleteCategories, singleCategory, CreatePricePlan, deletePrice, getPrice, singlePricePlan, updatePricePlan }
+module.exports = { CreateCategories, getCategories, updateCategoriesController, deleteCategories, singleCategory, CreatePricePlan, deletePrice, getPrice, singlePricePlan, updatePricePlan, updateStatusController }

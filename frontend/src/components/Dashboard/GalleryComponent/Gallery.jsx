@@ -47,7 +47,7 @@ const Gallery = () => {
                   <td className="px-4 py-2 border border-gray-300">{item?.title?.slice(0, 50)}...</td>
                   <td className="px-4 py-2 border border-gray-300">
                     <img
-                      src={`https://blush.glow.api.ara-dreamhome.com/images/gallery_img/${item?.path}`}
+                      src={`http://localhost:5000/images/gallery_img/${item?.path}`}
                      alt={item?.title}
                       className="w-40 h-40 mx-auto object-cover"
                     />

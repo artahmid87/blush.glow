@@ -119,6 +119,23 @@ export const Api = createApi({
     }),
 
 
+//category update Update api
+updateStatus: builder.mutation({
+  query: ({id, statusUpdate}) => ({
+    url: `/updateStatus/${id}`,
+    method: 'PUT',
+    body: statusUpdate,
+  }),
+}),
+//category update Update api
+updateCategory: builder.mutation({
+  query: ({id, categoryUpdate}) => ({
+    url: `/updateCategory/${id}`,
+    method: 'PUT',
+    body: categoryUpdate,
+  }),
+}),
+
 
     //Category delete api
     deleteCategory: builder.mutation({
@@ -138,12 +155,12 @@ export const Api = createApi({
       }),
     }),
 
-    //  get category api
+    //  get price api
     findAllPrice: builder.query({
       query: () => '/findPrices'
     }),
 
-    //Category Update api
+    //price Update api
     updatePrices: builder.mutation({
       query: ({id, pricePut}) => ({
         url: `/updatePrices/${id}`,
@@ -276,6 +293,7 @@ export const {
   useDeleteCategoryMutation,
   useFindAllCategoriesQuery,
   useGetCategoryByIdQuery,
+  useUpdateCategoryMutation,
   useCreatePriceMutation,
   useFindAllPriceQuery,
   useUpdatePricesMutation,
@@ -291,6 +309,7 @@ export const {
   useDeleteHolidayMutation,
   useGetAllHolidayQuery,
   useGetHolidayByIdQuery,
+  useUpdateStatusMutation,
 } = Api
 
 
