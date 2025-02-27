@@ -3,15 +3,19 @@ import {
   useCreateBookingMutation,
   useFindAllCategoriesQuery,
   useFindAllPriceQuery,
+  useGetAllHolidayQuery,
 } from '@/redux/api/Api';
 import { DatePicker } from 'antd/dist/antd';
 import React, { useState, useRef, useEffect } from 'react';
-import moment from 'moment';
 import { BookingTime } from '../ui/data';
 import { toast } from 'react-toastify';
 import Container from '../ui/Container';
 import HeadingComponent from '../ui/reusableComponent/HeadingComponent';
-import { CalenderIcon, ClockIcon } from '../ui/icon';
+import {  ClockIcon } from '../ui/icon';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+
+dayjs.extend(isBetween);
 
 export const AppointmentBooking = () => {
   const [name, setName] = useState('');
@@ -32,6 +36,42 @@ export const AppointmentBooking = () => {
   const { data: categories } = useFindAllCategoriesQuery();
   const { data: prices } = useFindAllPriceQuery();
   const [booking, { isLoading }] = useCreateBookingMutation();
+
+
+  const { data: holiday } = useGetAllHolidayQuery();
+
+  const [fromHolidayDate, setFromHolidayDate] = useState([]);
+const [toHolidayDate, setToHolidayDate] = useState([]);
+
+useEffect(() => {
+  if (holiday) {
+    const fromDates = holiday.map(date => date?.fromDate ? dayjs(date?.fromDate) : null).filter(Boolean);  
+    const toDates = holiday.map(date => date?.toDate ? dayjs(date?.toDate) : null).filter(Boolean);  
+    setFromHolidayDate(fromDates);
+    setToHolidayDate(toDates);
+  }
+}, [holiday]);
+
+
+const disabledDateRanges = fromHolidayDate.length > 0 && toHolidayDate.length > 0
+  ? fromHolidayDate.map((start, index) => ({
+      start: start,
+      end: toHolidayDate[index],
+  }))
+  : [];  
+
+
+const disabledDate = (current) => {
+  const isInDisabledRange = disabledDateRanges.some((range) =>
+    current.isBetween(range.start, range.end, 'day', '[]')
+  );
+  const isPastDate = current && current.isBefore(dayjs().startOf('day'));
+
+  return isInDisabledRange || isPastDate;
+};
+
+
+
 
   useEffect(() => {
     if (subject) {
@@ -122,7 +162,7 @@ export const AppointmentBooking = () => {
           <div className="w-full md:w-1/2 py-2">
             <DatePicker
               format="YYYY-MM-DD"
-              disabledDate={(current) => moment().add(-1, 'days') >= current}
+              disabledDate={disabledDate}
               className="py-4 px-5 w-full border-4 border-primary outline-none"
               onChange={dateCollect}
               required
@@ -217,11 +257,14 @@ export const AppointmentBooking = () => {
                     required
                   >
                     <option value="">Select Category</option>
-                    {categories?.map((category) => (
-                      <option key={category.id} value={category.id}>
-                        {category.title}
-                      </option>
-                    ))}
+                    {categories?.filter(item => item.isActive).map((category) => (
+              <option key={category.id} value={category.id}>
+                {
+                  category.title
+                }
+               
+              </option>
+            ))}
                   </select>
                   {subject && (
                     <select

@@ -1,41 +1,50 @@
-'use client'
+"use client"; 
+import React, { useState, useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
 
-import { useEditor, EditorContent } from '@tiptap/react'
-import StarterKit from '@tiptap/starter-kit'
-import TextStyle from '@tiptap/extension-text-style'
-import Color from '@tiptap/extension-color'
-import Link from '@tiptap/extension-link'
-import Image from '@tiptap/extension-image'  // Correct the import here
-import Toolbar from './toolbar'
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-const TextEditor = () => {
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      TextStyle,
-      Color,
-      Image,  // Include the Image extension here
-      Link.configure({
-        openOnClick: true,
-        HTMLAttributes: {
-          target: '_blank',
-          rel: 'noopener noreferrer',
-        },
-      }),
+const TextEditor = React.forwardRef(({ value, onChange }, ref) => {
+  const [editorLoaded, setEditorLoaded] = useState(false);
+
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }, { font: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ align: [] }],
+      ["link"],
+      ["blockquote"],
+      [{ indent: "-1" }, { indent: "+1" }],
+      [{ direction: "rtl" }],
+      ["clean"],
     ],
-    content: '<p>Hello, this is a Tiptap editor!</p>',
-  })
+  };
 
-  if (!editor) {
-    return null
-  }
+  useEffect(() => {
+    setEditorLoaded(true);
+  }, []);
 
   return (
     <div>
-      <Toolbar editor={editor} />
-      <EditorContent editor={editor} />
+      {editorLoaded ? (
+        <ReactQuill
+          ref={ref}  // Pass ref here
+          theme="snow"
+          value={value}
+          onChange={onChange}
+          modules={modules}
+          placeholder="Write your blog content here..."
+        />
+      ) : (
+        <p>Loading editor...</p>
+      )}
     </div>
-  )
-}
+  );
+});
 
-export default TextEditor
+TextEditor.displayName = "TextEditor";  // Important for debugging
+
+export default TextEditor;

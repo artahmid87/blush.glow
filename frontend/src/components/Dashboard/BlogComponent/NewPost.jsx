@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import axios from 'axios';
 import { useCreatePostMutation, useFindAllBlogCategoriesQuery } from '@/redux/api/Api';
+import TextEditor from './TextEditor';
 
 const BlogPostForm = () => {
 
@@ -10,6 +10,7 @@ const BlogPostForm = () => {
   const [error, setError] = useState(null);
   const [CategoryId, setCategoryId] = useState("")
   const formRef = useRef()
+  
 
   const [postCreate ,{isLoading:loading , isSuccess , isError:isIssue}] = useCreatePostMutation()
 
@@ -42,8 +43,8 @@ const BlogPostForm = () => {
     <div className="flex justify-center items-center min-h-screen w-full bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full">
         <h1 className="text-2xl font-semibold mb-6 text-center">Blog Post</h1>
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 w-full">
-
+        <form ref={formRef} onSubmit={handleSubmit}  className="space-y-6 w-full">
+       
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Title:</label>
             <textarea
@@ -58,14 +59,8 @@ const BlogPostForm = () => {
           </div>
           <div>
             <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description:</label>
-            <textarea
-              rows="4" cols="50"
-              id="description"
-              name="description"
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description"
-              className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            ></textarea>
+            <TextEditor value={description} onChange={setDescription} />
+           
           </div>
           <div>
             <label htmlFor="images" className="block text-sm font-medium text-gray-700">Images:</label>

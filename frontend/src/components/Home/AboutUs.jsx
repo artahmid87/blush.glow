@@ -86,7 +86,7 @@ const AboutUs = () => {
 
           <div className="relative w-[400px] h-[400px] bg-[#c4ece5] rounded-full md:w-[370px] md:h-[370px] lg:w-[450px] lg:h-[450px] xl:w-[600px] xl:h-[600px]">
             <img
-              className="rounded-full w-full h-full border border-primary drop-shadow-2xl pb-[30px] pl-[30px]"
+              className="rounded-full w-full h-full border border-primary drop-shadow-2xl pb-[30px] pl-[30px] object-cover"
               src="/images/home/NazmaWork.jpg"
               alt=""
             />

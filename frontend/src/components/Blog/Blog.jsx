@@ -25,7 +25,8 @@ import Link from "next/link"
               <div key={item.id} className='relative w-full h-[400px] mb-20'>
                  {/* blog images */}
                 <img className='w-full h-[400px]' 
-                src={"https://blush.glow.api.ara-dreamhome.com/images/blog_img/"+item?.file} alt={item?.title}/>
+                src= {`http://localhost:5000/images/blog_img/${item?.file}`} alt={item?.title}/>
+               
                  <div className='absolute bottom-[-10%] left-0 w-[80%] h-[300px] bg-gray-100 p-6'>
 
                   {/*Upload date */}

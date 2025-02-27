@@ -51,7 +51,7 @@ const BlogCrud = () => {
             <div key={index} className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
               <h2 className="text-lg font-bold mb-2">{item.title.slice(0, 50)}...</h2>
               <img
-                src={"https://blush.glow.api.ara-dreamhome.com/images/blog_img/" + item.file}
+                src={`http://localhost:5000/images/blog_img/${item?.file}`}
                 alt={item.title}
                 className="w-full h-32 object-cover rounded-md mb-2"
               />
@@ -95,7 +95,7 @@ const BlogCrud = () => {
                   <td className="px-4 py-2 border border-gray-300">{item?.title?.slice(0, 50)}...</td>
                   <td className="px-4 py-2 border border-gray-300">
                     <img
-                      src={"https://blush.glow.api.ara-dreamhome.com/images/blog_img/" + item?.file}
+                      src={`http://localhost:5000/images/blog_img/${item?.file}`}
                       alt={item?.title}
                       className="w-16 h-16 mx-auto object-cover rounded-md"
                     />

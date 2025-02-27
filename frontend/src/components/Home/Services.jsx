@@ -9,12 +9,18 @@ import {Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import Link from "next/link";
+import { useFindAllCategoriesQuery } from "@/redux/api/Api";
 
 
 const Services = () => {
 
   const serviceRef = useRef(null);
   const headingRef = useRef(null);
+
+
+  const {data} = useFindAllCategoriesQuery()
+
+
 
 
   useEffect(() => {
@@ -93,12 +99,14 @@ const Services = () => {
 
      {/* home service data  slider  */}
      <div className="pb-20">
-    
+  
       <Swiper
         spaceBetween={20} 
         pagination = {{clickable: true}}
         autoplay={{ delay: 3000, disableOnInteraction: false }} 
         modules={[Autoplay, Pagination, Navigation]} 
+        slidesPerView="auto"
+        watchSlidesProgress
         breakpoints={{
       
           640: {
@@ -116,32 +124,33 @@ const Services = () => {
         }}
     
       >
-        {HomeServiceData?.map((item, i) => (
-          <SwiperSlide key={item.id} >
-            
-          <Link href={'/services/#price'}>      
-    
-            <div
-              className="group flex flex-col items-center p-6 bg-red transition-transform transform overflow-hidden text-justify"
-            >
-              <div className="cssPath group-hover:bg-primary transition-all duration-500 ease-in-out  group-hover:text-white text-primary py-10 px-10 relative">
-                <i className="opacity-20 text-[120px]">
-                  {item.icon}
-                </i>
-                <i className="absolute top-[14%] left-1/2 transform -translate-x-1/2 translate-y-1/2 text-[70px] ">
-                  {item.icon}
-                </i>
-              </div>
-              <div>
-                <h1 className="text-3xl text-center text-tertiary font-secondery py-6">
-                  {item.title}
-                </h1>
-                <p className="text-secondery justify-center mb-10 ">{item.details}</p>
-              </div>
-            </div>
-            </Link>  
-          </SwiperSlide>
-        ))}
+       {data?.filter(item => item.isActive).map((item) => (
+    <SwiperSlide key={item.id}>
+      <Link href={`/services#service`}>
+        <div
+          className="group flex flex-col items-center p-6 bg-red transition-transform transform overflow-hidden text-justify"
+        >
+          <div className="cssPath group-hover:bg-primary transition-all duration-500 ease-in-out group-hover:text-white text-primary py-10 px-10 relative">
+            <i className="opacity-20 text-[120px]">
+              <img className="w-[150px] h-[150px] bg-transparent"    src={`http://localhost:5000/images/service_img/${item?.icon}`} alt="icon" />
+            </i>
+            <i className="absolute top-[14%] left-1/2 transform -translate-x-1/2 translate-y-1/2 text-[70px]">
+            <img className="w-[100px] h-[100px]" src={`http://localhost:5000/images/service_img/${item?.icon}`} alt="icon" />
+            </i>
+          </div>
+          <div>
+            <h1 className="text-3xl text-center text-tertiary font-secondery py-6">
+              {item.title}
+            </h1>
+            <p className="text-secondery justify-center mb-10">
+              {item.shortInto}
+            </p>
+         
+          </div>
+        </div>
+      </Link>
+    </SwiperSlide>
+  ))}
       </Swiper>
     </div>
 

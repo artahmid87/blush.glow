@@ -27,25 +27,32 @@ const Form = () => {
   const [fromHolidayDate, setFromHolidayDate] = useState([]);
 const [toHolidayDate, setToHolidayDate] = useState([]);
 
-// Fetching holiday dates
+ useEffect(() => {
+    if (subject) {
+      const categoryPrices = prices?.filter(price => price.CategoryId === Number(subject));
+      setSelectedCategoryPrices(categoryPrices || []);
+      setPrice('');
+    }
+  }, [subject, prices]);
+
 useEffect(() => {
   if (holiday) {
-    const fromDates = holiday.map(date => date?.fromDate ? dayjs(date?.fromDate) : null).filter(Boolean);  // Handle undefined or null dates
-    const toDates = holiday.map(date => date?.toDate ? dayjs(date?.toDate) : null).filter(Boolean);  // Handle undefined or null dates
+    const fromDates = holiday.map(date => date?.fromDate ? dayjs(date?.fromDate) : null).filter(Boolean);  
+    const toDates = holiday.map(date => date?.toDate ? dayjs(date?.toDate) : null).filter(Boolean);  
     setFromHolidayDate(fromDates);
     setToHolidayDate(toDates);
   }
 }, [holiday]);
 
-// Create an array of date ranges
+
 const disabledDateRanges = fromHolidayDate.length > 0 && toHolidayDate.length > 0
   ? fromHolidayDate.map((start, index) => ({
       start: start,
       end: toHolidayDate[index],
   }))
-  : [];  // Ensure this array is only populated when the holiday data is valid
+  : [];  
 
-// Disable function
+
 const disabledDate = (current) => {
   const isInDisabledRange = disabledDateRanges.some((range) =>
     current.isBetween(range.start, range.end, 'day', '[]')
@@ -57,8 +64,8 @@ const disabledDate = (current) => {
 
 
   const disabledTime = () => {
-    const startHour = 9; // 9:00 AM
-    const endHour = 20;   // 8:00 PM
+    const startHour = 9; 
+    const endHour = 20;   
     const disabledHours = [];
 
     for (let i = 0; i < 24; i++) {
@@ -160,9 +167,12 @@ const disabledDate = (current) => {
             required
           >
             <option value="">Select Category</option>
-            {categories?.map((category) => (
+            {categories?.filter(item => item.isActive).map((category) => (
               <option key={category.id} value={category.id}>
-                {category.title}
+                {
+                  category.title
+                }
+               
               </option>
             ))}
           </select>

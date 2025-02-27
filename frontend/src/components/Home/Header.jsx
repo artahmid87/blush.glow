@@ -114,7 +114,7 @@ const Header = () => {
                 </p>
                 
               <div className='flex gap-4 flex-col xl:flex-row'>
-              <Link href={item?.link || "#"} className={`group hover:bg-primary bg-white transition-all flex  gap-2  items-center mt-10 py-4 pl-4 ${item.id == 1 ?' w-60 h-12 md:w-[260px] justify-start':'md:w-[170px] justify-start'} md:py-7 lg:h-14 lg:py-4 w-60 h-12 md:w-64 lg:h-16  rounded-full shadow-lg cursor-pointer `} ref={buttonRef}>
+              <Link href={item?.link || "#"} className={`group hover:bg-primary bg-white transition-all flex  gap-2  items-center mt-10 py-4 pl-4 ${item.id == 1 ?' w-60 h-12 md:w-[260px] justify-start':'md:w-[170px] justify-start'} md:py-7 md:lg:h-14 lg:py-4 w-60 h-12 md:w-64 lg:h-16  rounded-full shadow-lg cursor-pointer `} ref={buttonRef}>
                 
                 <span className="flex justify-center items-center text-2xl group-hover:text-primary text-white transition-all w-8 h-8 md:w-10 md:h-10 group-hover:bg-white bg-primary rounded-full  ">
                   {item.icon}
@@ -142,7 +142,7 @@ const Header = () => {
     
               <div className="relative z-[9] lg:w-full h-[600px] lg:h-[550px] -mb-60 invisible lg:visible">
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white flex justify-center items-center overflow-hidden">
-                  <img src={item.images} alt="Person" className="rounded-full w-[650px] h-[650px]" />
+                  <img src={item.images} alt="Person" className="rounded-full w-[650px] h-[650px] object-cover" />
                 </div>
 
                

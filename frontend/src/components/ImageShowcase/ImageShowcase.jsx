@@ -45,7 +45,7 @@ const ImageShowCase = () => {
             ref={(el) => (imageRefs.current[index] = el)} 
           >
             <img
-              src={`https://blush.glow.api.ara-dreamhome.com/images/gallery_img/${item.path}`}
+              src={`http://localhost:5000/images/gallery_img/${item.path}`}
               alt={item.title}
               className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
             />

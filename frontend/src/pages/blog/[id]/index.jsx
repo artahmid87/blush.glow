@@ -9,7 +9,7 @@ import { useRouter } from "next/router"
   const blogData =   useGetBlogByIdQuery(id)
   
   return (
-  <section className='mt-20'>
+  <section className='mt-20 bg-white'>
  
     <Header title = "Single Blog" />
     <BlogById blogData = {blogData}/>

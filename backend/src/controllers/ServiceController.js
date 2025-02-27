@@ -19,7 +19,7 @@ const CreateCategories = async (req, res, next) => {
 
         await sharp(req.file.path)
             .resize({ width: 500 })
-            .jpeg({ quality: 80 })
+            .png({ quality: 80 })
             .toFile(req.file.destination + '/op-' + req.file.originalname);
 
 
@@ -100,7 +100,7 @@ const updateCategoriesController = async (req, res, next) => {
 
         await sharp(req.file.path)
             .resize({ width: 500 })
-            .jpeg({ quality: 80 })
+            .png({ quality: 80 })
             .toFile(req.file.destination + '/uc-' + req.file.originalname);
 
         const data = await Categories.update(
@@ -214,6 +214,7 @@ const CreatePricePlan = async (req, res, next) => {
         await sharp(req.file.path)
             .resize({ width: 500 })
             .jpeg({ quality: 80 })
+            .png({ quality: 80 })
             .toFile(req.file.destination + '/op-' + req.file.originalname);
 
 
@@ -310,6 +311,7 @@ const updatePricePlan = async (req, res, next) => {
         await sharp(req.file.path)
             .resize({ width: 500 })
             .jpeg({ quality: 80 })
+            .png({ quality: 80 })
             .toFile(req.file.destination + '/up-' + req.file.originalname);
 
         await PricePlan.update(
