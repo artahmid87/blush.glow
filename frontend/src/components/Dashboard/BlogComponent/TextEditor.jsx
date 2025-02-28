@@ -31,7 +31,7 @@ const TextEditor = React.forwardRef(({ value, onChange }, ref) => {
     <div>
       {editorLoaded ? (
         <ReactQuill
-          ref={ref}  // Pass ref here
+          ref={ref}  
           theme="snow"
           value={value}
           onChange={onChange}
@@ -45,6 +45,6 @@ const TextEditor = React.forwardRef(({ value, onChange }, ref) => {
   );
 });
 
-TextEditor.displayName = "TextEditor";  // Important for debugging
+TextEditor.displayName = "TextEditor";  
 
 export default TextEditor;

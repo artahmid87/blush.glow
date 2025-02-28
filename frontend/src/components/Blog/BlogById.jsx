@@ -7,6 +7,7 @@ import DOMPurify from "dompurify";
 
 const BlogById = (props) => {
   const { data, isLoading, isError } = props.blogData;
+  
 
   const sanitizedDescription = DOMPurify.sanitize(data?.description);
 

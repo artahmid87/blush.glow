@@ -2,11 +2,13 @@ import { useDeleteBlogMutation, useGetBlogQuery } from '@/redux/api/Api';
 import { Button, Popconfirm } from 'antd/dist/antd';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import DOMPurify from "dompurify"; 
 
 const BlogCrud = () => {
   const { data, isLoading, isError, refetch } = useGetBlogQuery();
   const [deleteBlog] = useDeleteBlogMutation();
   const [isMobile, setIsMobile] = useState(false);
+    const sanitizedDescription = DOMPurify.sanitize(data?.description);
 
   console.log(data)
 
@@ -46,7 +48,7 @@ const BlogCrud = () => {
       {/* Content */}
       <div className={isMobile ? 'grid gap-4' : 'overflow-x-auto'}>
         {isMobile ? (
-          // Mobile view as cards
+       
           data?.map((item, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
               <h2 className="text-lg font-bold mb-2">{item.title.slice(0, 50)}...</h2>
@@ -55,7 +57,16 @@ const BlogCrud = () => {
                 alt={item.title}
                 className="w-full h-32 object-cover rounded-md mb-2"
               />
-              <p className="text-gray-700">{item.description.slice(0, 100)}...</p>
+              <p className="text-gray-700">
+              <div
+                className="prose max-w-none text-gray-700 text-justify"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(
+                    item?.description?.slice(0, 100)
+                  ),
+                }}
+              />
+                </p>
               <p className="text-gray-700">{item?.categories?.title}</p>
               <div className="flex justify-between mt-4">
                 <Link href={`/dashboard/updateBlog/${item.id}`}>
@@ -100,7 +111,18 @@ const BlogCrud = () => {
                       className="w-16 h-16 mx-auto object-cover rounded-md"
                     />
                   </td>
-                  <td className="px-4 py-2 border border-gray-300">{item?.description?.slice(0, 100)}</td>
+                   
+                  
+                  <td className="px-4 py-2 border prose border-gray-300" >
+                  <div
+                className="prose max-w-none text-gray-700 text-justify"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(
+                    item?.description?.slice(0, 100)
+                  ),
+                }}
+              />
+                    </td>
 
                   <td className="px-4 py-2 border border-gray-300">{item?.categories?.title}</td>
                   <td className="px-4 py-2 border border-gray-300">
@@ -128,7 +150,8 @@ const BlogCrud = () => {
             </tbody>
           </table>
         )}
-      </div>
+      </div >
+     
     </div>
   );
 };

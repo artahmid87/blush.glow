@@ -71,7 +71,7 @@ const Navbar = () => {
       name: 'Blush & Glow Beauty Bar',
       phone: '+1 (647)-607-2276',
       email: 'blushglowbar@gmail.com',
-      address: '5 Massey Square, East York, ON M4C 5L6, canada',
+      address: '858 Danforth Rd, Scarborough, ON M1K 1H5, Canada',
     };
 
     const vCard = `

@@ -46,6 +46,11 @@ export default function LoginPage() {
           className="border p-2 mb-4 w-full"
         />
         <button className="bg-blue-500 text-white p-2 w-full">Login</button>
+        <p>
+          {isLoading && <span>Loading...</span> }
+          {isSuccess && <span className='text-green-500 py-2'>Loging success</span> }
+          {isError && <span className='text-red-500 py-2'>Try Again</span> }
+        </p>
       </form>
     </div>
   );

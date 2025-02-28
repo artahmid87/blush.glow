@@ -12,11 +12,11 @@ if (typeof window !== "undefined") {
 }
 
 const ContactUs = () => {
-  const contactInfoRef = useRef(null); // Ref for contact details
-  const mapRef = useRef(null); // Ref for the map
+  const contactInfoRef = useRef(null); 
+  const mapRef = useRef(null); 
 
   useEffect(() => {
-    // Animate contact information (fade in and slide up)
+  
     gsap.fromTo(
       contactInfoRef.current,
       { opacity: 0, y: 50 },
@@ -33,7 +33,7 @@ const ContactUs = () => {
       }
     );
 
-    // Animate map iframe (fade in and slide up)
+    
     gsap.fromTo(
       mapRef.current,
       { opacity: 0, y: 50 },
@@ -121,7 +121,8 @@ const ContactUs = () => {
                 </span>
                 <span className="flex flex-col">
                 <span className=' text-[25px] pb-2 '>Address</span>
-                <a className='xl:text-[20px] text-[20px]' href="https://www.google.com/maps/place/Blush+%26+Glow+Beauty+Bar/@43.6961831,-79.2929566,17z/data=!4m14!1m7!3m6!1s0x38d840a6f5aec37:0x1292455a177a54ce!2sBlush+%26+Glow+Beauty+Bar!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v!3m5!1s0x38d840a6f5aec37:0x1292455a177a54ce!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"> 5 Massey Square, East York, ON M4C 5L6, Canada.</a>
+                <a className='xl:text-[20px] text-[20px]' href="https://www.google.com/maps/place/Blush+%26+Glow+Beauty+Bar/@43.6961831,-79.2929566,17z/data=!4m14!1m7!3m6!1s0x38d840a6f5aec37:0x1292455a177a54ce!2sBlush+%26+Glow+Beauty+Bar!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v!3m5!1s0x38d840a6f5aec37:0x1292455a177a54ce!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"> 858 Danforth Rd, Scarborough, ON M1K 1H5, Canada
+                </a>
 
                 </span>
               </p>
