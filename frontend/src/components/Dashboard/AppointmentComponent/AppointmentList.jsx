@@ -12,7 +12,7 @@ const AppointmentList = () => {
   const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Refetch data every 1 second
+
   useEffect(() => {
     const interval = setInterval(() => {
       refetch();
@@ -20,7 +20,6 @@ const AppointmentList = () => {
     return () => clearInterval(interval);
   }, [refetch]);
 
-  // Handle responsive view
   useEffect(() => {
     const handleResize = () => {
       setIsTabletOrMobile(window.innerWidth < 1024);
@@ -30,7 +29,7 @@ const AppointmentList = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Handle delete action
+
   const handleDelete = async (id) => {
     try {
       await deleteBooking(id).unwrap();
@@ -41,9 +40,10 @@ const AppointmentList = () => {
   };
 
 
-  const filteredData = data?.filter((record) =>
-    record.email.toLowerCase().includes(searchTerm) ||
-    record.phone.toLowerCase().includes(searchTerm)
+  const filteredData = data?.filter((item) =>
+  
+    item.email.toLowerCase().includes(searchTerm) ||
+    item.phone.toLowerCase().includes(searchTerm)
   );
 
   return (

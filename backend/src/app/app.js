@@ -5,7 +5,6 @@ const hpp = require('hpp');
 const compression = require('compression');
 const path = require('path'); 
 
-
 const { blogRouter } = require('../routers/BlogRouter.js'); 
 const Blog = require('../database/model/blog.db.js'); 
 const Appointment = require('../database/model/appointment.js'); 
@@ -62,13 +61,13 @@ app.use(express.static(path.join(__dirname, "../../public")));
 
 Categories.hasMany(PricePlan, {
     foreignKey: "CategoryId",
-    onDelete: "SET NULL",
+    onDelete: "CASCADE",
     as: "price",
   });
   
   PricePlan.belongsTo(Categories, {
     foreignKey: "CategoryId",
-    onDelete: "SET NULL",
+    onDelete: "CASCADE",
     as: "categories",
   });
 
