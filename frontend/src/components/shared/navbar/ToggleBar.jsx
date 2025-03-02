@@ -104,7 +104,7 @@ export default function ToggleBar() {
       {/* Menu Toggle Button */}
       <button
         onClick={toggleMenu}
-        className={`focus:outline-none text-2xl ${isOpen ? 'text-white z-50' : 'text-tertiary hover:bg-primary p-2 w-10 h-10 rounded-full hover:text-white transition-all duration-500 ease-in-out transform hover:rotate-180'}`}
+        className={`focus:outline-none text-2xl ${isOpen ? 'text-white z-50' : 'text-white hover:bg-primary p-2 w-10 h-10 rounded-full hover:text-white transition-all duration-500 ease-in-out transform hover:rotate-180'}`}
         type="button"
       >
         {isOpen ? <CloseIcon /> : <OpenIcon />}

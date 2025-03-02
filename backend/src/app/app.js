@@ -26,6 +26,9 @@ const { BlogCategoryRouter } = require('../routers/BlogCategoryRouter.js');
 const { PricePlan } = require('../database/model/price.db.js');
 const Holiday = require('../database/model/holiday.db.js');
 const { HolidayRouter } = require('../routers/HolidayRouter.js');
+const Certificate = require('../database/model/certificate.db.js');
+const { CertificateRouter } = require('../routers/CertificateRouter.js');
+
 
 app.use(cors());
 app.use(hpp()); 
@@ -96,6 +99,7 @@ CategoryBlog.hasMany(Blog, {
        await Categories.sync({ force: false }); 
        await PricePlan.sync({force:false})
        await Holiday.sync({force:false})
+       await Certificate.sync({force:false})
      
     } catch (error) {
       console.error('Error creating tables:', error);
@@ -112,5 +116,6 @@ app.use('/', serviceRouter);
 app.use('/', priceRouter); 
 app.use('/', BlogCategoryRouter); 
 app.use('/', HolidayRouter); 
+app.use('/', CertificateRouter); 
 
 module.exports = app; 

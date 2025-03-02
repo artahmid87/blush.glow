@@ -2,18 +2,17 @@ import React, { useEffect } from 'react';
 import Container from '../ui/Container';
 import HeadingComponent from '../ui/reusableComponent/HeadingComponent';
 import { useFindAllCategoriesQuery, useFindAllPriceQuery } from '@/redux/api/Api';
-import { useRouter } from 'next/router';
+
 
 const Services = () => {
   const { data: categories } = useFindAllCategoriesQuery();
   const { data: prices } = useFindAllPriceQuery();
 
-  // Filter active categories and map all associated prices to them
   const groupedPrices = categories
-    ?.filter(category => category.isActive) // Show only active categories
+    ?.filter(category => category.isActive) 
     .map(category => ({
       ...category,
-      prices: prices?.filter(price => price.CategoryId === category.id), // Show all prices under active categories
+      prices: prices?.filter(price => price.CategoryId === category.id), 
     }));
 
   const headingData = [
@@ -25,17 +24,6 @@ const Services = () => {
     },
   ];
 
-  const router = useRouter();
-
-  useEffect(() => {
-    if (router.asPath.includes('#')) {
-      const id = router.asPath.split('#')[1];
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [router.asPath]);
 
   return (
     <div className='overflow-hidden py-20 bg-white relative'>

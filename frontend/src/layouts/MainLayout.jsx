@@ -61,7 +61,10 @@ const MainLayout = ({ children }) => {
     "/dashboard/blog-category",
     "/dashboard/appointment",
     "/dashboard/holiday",
-    '/dashboard/updateStatus/[id]'
+    '/dashboard/updateStatus/[id]',
+    '/dashboard/certificate',
+    "/dashboard/uploadCertificate",
+    "/dashboard/certificate/[id]"
   ];
 
   const showNavbarFooter = !hiddenRoutes.includes(pathname);

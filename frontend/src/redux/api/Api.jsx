@@ -268,6 +268,39 @@ updateCategory: builder.mutation({
       }),
     }),
 
+     //certificate post api
+     uploadCertificate: builder.mutation({
+      query: (certificate) => ({
+        url: '/certificateupload',
+        method: 'POST',
+        body: certificate,
+      }),
+    }),
+    // certificate get api
+    getAllCertificate: builder.query({
+      query: () => '/getcertificate'
+    }),
+    // certificate get By ID api
+    getCertificateById: builder.query({
+      query: (id) => `/getcertificateById/${id}`
+    }),
+    //certificate Update api
+    updateCertificate: builder.mutation({
+      query: ({ id, certificateUpdate }) => ({
+        url: `/updatecertificate/${id}`,
+        method: 'PUT',
+        body: certificateUpdate,
+      }),
+    }),
+    //certificate delete api
+    deleteCertificate: builder.mutation({
+      query: (id) => ({
+        url: `/deletecertificate/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+
+
   })
 })
 
@@ -310,6 +343,11 @@ export const {
   useGetAllHolidayQuery,
   useGetHolidayByIdQuery,
   useUpdateStatusMutation,
+  useUploadCertificateMutation,
+  useGetAllCertificateQuery,
+  useGetCertificateByIdQuery,
+  useUpdateCertificateMutation,
+  useDeleteCertificateMutation
 } = Api
 
 

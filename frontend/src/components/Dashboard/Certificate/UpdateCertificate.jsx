@@ -1,28 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useGetGalleryByIdQuery, useUpdateGalleryMutation, } from '@/redux/api/Api';
+import { useGetCertificateByIdQuery, useUpdateCertificateMutation, } from '@/redux/api/Api';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-const UpdateGallery = () => {
+const UpdateCertificate = () => {
 
   const router =  useRouter()
   const id = router.query.id
-  const {data, isError:error, isLoading:loading} =   useGetGalleryByIdQuery(id)
+  const {data, isError:error, isLoading:loading} =   useGetCertificateByIdQuery(id)
 
   const [title, setTitle] = useState('')
-  const [path, setPath] = useState(null);
+  const [image, setImage] = useState(null);
   const formRef = useRef()
 
 
    useEffect(() => {
     if (data) {
       setTitle(data.title);
-      setPath(data.path);
+      setImage(data.image);
     }
   }, [data]);
 
+  console.log(title)
+  console.log(image)
 
-  const [updateGallery, { isLoading, isSuccess, isError }] = useUpdateGalleryMutation();
+
+  const [updateCertificate, { isLoading, isSuccess, isError }] = useUpdateCertificateMutation();
 
 
   const handleSubmit = async (e) => {
@@ -30,13 +33,13 @@ const UpdateGallery = () => {
   
     try {
       const formData = new FormData();
-      if (path) {
-        formData.append('path', path);
+      if (image) {
+        formData.append('image', image);
       }
       formData.append('title', title);
   
-      await updateGallery({ id, update: formData }).unwrap(); 
-      router.push('/dashboard/gallery');
+      await updateCertificate({ id, certificateUpdate: formData }).unwrap(); 
+      router.push('/dashboard/certificate');
     } catch (error) {
       console.error('Update failed', error);
     }
@@ -44,12 +47,12 @@ const UpdateGallery = () => {
   return (
     <div className="flex justify-center items-center min-h-screen  bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
-      <Link className='py-2 px-3 bg-blue-500 text-white' href={'/dashboard/gallery'}>Back To Dashboard</Link>
-        <h1 className="text-2xl font-semibold py-6 text-center">Update Gallery Image</h1>
+      <Link className='py-2 px-3 bg-blue-500 text-white' href={'/dashboard/certificate'}>Back To Dashboard</Link>
+        <h1 className="text-2xl font-semibold py-6 text-center">Update Certificate Image</h1>
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
       
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Description:</label>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Title:</label>
             <textarea 
               rows="4" cols="50"
               id="name"
@@ -62,13 +65,13 @@ const UpdateGallery = () => {
               ></textarea>
           </div>
           <div>
-            <label htmlFor="images" className="block text-sm font-medium text-gray-700">Images:</label>
+            <label htmlFor="images" className="block text-sm font-medium text-gray-700">Certificate:</label>
             <input
               type="file"
               id="images"
-              name="path"
+              name="image"
               onChange={(e) => {
-                setPath(e.target.files[0]);
+                setImage(e.target.files[0]);
               }}
               
               required
@@ -77,10 +80,10 @@ const UpdateGallery = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 "
           >
              {
-                isLoading ? (<h1>Uploading..</h1>) : (<h1>Submit</h1>)
+                isLoading ? (<h1 className='text-white'>Uploading..</h1>) : (<h1  className='text-white'>Submit</h1>)
               }          
           </button>
           <div>
@@ -98,4 +101,4 @@ const UpdateGallery = () => {
   );
 };
 
-export default UpdateGallery;
+export default UpdateCertificate;

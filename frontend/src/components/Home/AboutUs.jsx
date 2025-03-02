@@ -144,7 +144,7 @@ const AboutUs = () => {
             </p>
             <button
               onClick={() => router.push("/about/#treatment")}
-              className="py-[6px] md:py-[10px] px-8 lg:px-10 bg-[#fff] shadow-xl rounded-3xl flex justify-center items-center font-secondery md:text-xl mt-6"
+              className="py-[6px] md:py-[10px] text-tertiary px-8 lg:px-10 bg-[#fff] shadow-xl rounded-3xl flex justify-center items-center font-secondery md:text-xl mt-6"
             >
               <span className="bg-primary w-[40px] h-[40px] rounded-full mr-4 ml-[-20px] flex justify-center items-center text-white">
                 <RightArrowIcon />

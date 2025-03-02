@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { OpenIcon, DropdownIcon, BlogIcon, GalleryIcon, MakeUpIcon, AppointmentIcon, DashboardIcon, HolidayIcon } from '../ui/icon';
+import { OpenIcon, DropdownIcon, BlogIcon, GalleryIcon, MakeUpIcon, AppointmentIcon, DashboardIcon, HolidayIcon,CertificateIcon } from '../ui/icon';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,6 +63,13 @@ const Sidebar = () => {
             { name: 'Gallery List', href: '/dashboard/gallery' },
             { name: 'Post Gallery', href: '/dashboard/uploadGallery' },
           ])}
+          {renderDropdownMenu('cartificate', 'Certificate', CertificateIcon, [
+            { name: 'Certificate List', href: '/dashboard/certificate' },
+            { name: 'Post Certificate', href: '/dashboard/uploadCertificate' },
+          ])}
+
+
+
         </ul>
       </div>
     </nav>
