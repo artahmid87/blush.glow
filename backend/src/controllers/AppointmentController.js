@@ -20,7 +20,6 @@ const bookingController  = async (req, res, next) => {
       }
     });
     
-    // Check if both date and time match exactly
     if (exist && exist.date === date && exist.time === time) {
       return res.status(406).send("Not available");
     }

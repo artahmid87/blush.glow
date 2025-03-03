@@ -5,6 +5,7 @@ import HeadingComponent from '../ui/reusableComponent/HeadingComponent';
 import { useGetBlogQuery } from "@/redux/api/Api";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import ApiUrl from '../ui/APIURL';
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -85,7 +86,7 @@ const NewsFeed = () => {
         }}>
           <div ref={headingRef}>
             <HeadingComponent headingData={headingData} />
-             {/* middle animation */}
+       
           <div className=' banner animate-slide-left-right absolute top-0 left-1/2 w-full h-full -ml-10' style={{
             zIndex: -1
           }}>
@@ -107,7 +108,7 @@ const NewsFeed = () => {
                 className='relative w-full h-[400px] mb-10'
                 ref={addToBlogRefs}
               >
-                <img className='w-full h-[400px]' src={"https://blush.glow.api.ara-dreamhome.com/images/blog_img/" + item?.file} alt={item?.title} />
+                <img className='w-full h-[400px]' src={`${ApiUrl}/images/blog_img/${item?.file}`} alt={item?.title} />
 
                 <Link href={`blog/${item.id}/#blog`}>
                 <div className='absolute bottom-[-10%] left-0 w-[80%] h-[300px] bg-white p-6'>

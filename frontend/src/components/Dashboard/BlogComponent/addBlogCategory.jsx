@@ -1,9 +1,8 @@
-import { useCreateBlogCategoryMutation, useCreateCategoryMutation, useFindAllCategoriesQuery } from '@/redux/api/Api';
-import React, { useRef, useState } from 'react'
+import { useCreateBlogCategoryMutation,  } from '@/redux/api/Api';
+import React, { useState } from 'react'
 
  const AddBlogCatgory = () => {
   const [title, setTitle] = useState('')
-  const formRef = useRef()
 
   const [category ,{isLoading , isSuccess , isError}] = useCreateBlogCategoryMutation()
 

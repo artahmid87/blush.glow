@@ -1,3 +1,4 @@
+import ApiUrl from '@/components/ui/APIURL'
 import { useDeleteGalleryMutation, useGetAllGalleryQuery } from '@/redux/api/Api'
 import { Popconfirm, Button } from 'antd/dist/antd'
 import Link from 'next/link'
@@ -47,7 +48,7 @@ const Gallery = () => {
                   <td className="px-4 py-2 border border-gray-300">{item?.title?.slice(0, 50)}...</td>
                   <td className="px-4 py-2 border border-gray-300">
                     <img
-                      src={`http://localhost:5000/images/gallery_img/${item?.path}`}
+                      src={`${ApiUrl}/images/gallery_img/${item?.path}`}
                      alt={item?.title}
                       className="w-40 h-40 mx-auto object-cover"
                     />

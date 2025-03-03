@@ -26,7 +26,6 @@ export default function App({ Component, pageProps }) {
             <Layout>
               <Component {...pageProps} />
 
-              {/* toastify message */}
               <ToastContainer
                 position="bottom-right"
                 autoClose={8000}

@@ -12,6 +12,8 @@ const AppointmentList = () => {
   const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
+  console.log(data)
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -121,7 +123,7 @@ const AppointmentList = () => {
             <Column title="Phone" dataIndex="phone" key="phone" />
             <Column title="Date" dataIndex="date" key="date" />
             <Column title="Time" dataIndex="time" key="time" />
-            <Column title="Price" dataIndex="price" key="price" />
+            <Column title="Price $" dataIndex="price" key="price" />
             <Column title="Description" dataIndex="description" key="description" />
             <Column
               title="Action"

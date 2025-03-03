@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Container from '../ui/Container';
 import HeadingComponent from '../ui/reusableComponent/HeadingComponent';
 import { useFindAllCategoriesQuery, useFindAllPriceQuery } from '@/redux/api/Api';
+import ApiUrl from '../ui/APIURL';
 
 
 const Services = () => {
@@ -63,7 +64,7 @@ const Services = () => {
                     <div id='service'  className="flex items-center space-x-4">
                       <div className="w-20 h-20 rounded-md overflow-hidden flex-shrink-0">
                         <img
-                          src={`http://localhost:5000/images/service_img/${price.image}`}
+                          src={`${ApiUrl}/images/service_img/${price.image}`}
                           alt={price.title}
                           className="w-full h-full object-cover"
                         />

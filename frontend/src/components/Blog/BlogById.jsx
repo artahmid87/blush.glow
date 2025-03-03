@@ -1,3 +1,4 @@
+import ApiUrl from "../ui/APIURL";
 import Container from "../ui/Container";
 import Layout from "./Layout";
 import DOMPurify from "dompurify"; 
@@ -18,7 +19,7 @@ const BlogById = (props) => {
           <div key={data?.id}>
             <img
               className="w-full flex justify-center items-start lg:h-[500px]"
-              src={`http://localhost:5000/images/blog_img/${data?.file}`}
+              src={`${ApiUrl}/images/blog_img/${data?.file}`}
               alt={data?.title}
             />
             <p className="text-[16px] text-primary py-8">

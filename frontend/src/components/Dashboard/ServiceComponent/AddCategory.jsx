@@ -1,11 +1,10 @@
-import { useCreateCategoryMutation, useFindAllCategoriesQuery } from '@/redux/api/Api';
+import { useCreateCategoryMutation } from '@/redux/api/Api';
 import React, { useRef, useState } from 'react'
 
  const CrudCategory = () => {
   const [title, setTitle] = useState('')
   const [shortInto, setShortInto] = useState("")
   const [icon, setIcon] = useState(null);
-  const formRef = useRef()
 
   const [category ,{isLoading , isSuccess , isError}] = useCreateCategoryMutation()
 

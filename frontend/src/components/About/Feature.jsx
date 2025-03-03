@@ -6,7 +6,6 @@ import HeadingComponent from '../ui/reusableComponent/HeadingComponent'
 const Youtube = () => {
 
     // This is Headline Data pass with HaedingComponent as for create Reusable component 
-    // Component path  "../ui/reusableComponent/HeadingComponent"
     const headingData = [
         {
             headline: "Welcome",

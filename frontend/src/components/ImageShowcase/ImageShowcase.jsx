@@ -3,20 +3,11 @@ import { useGetAllGalleryQuery } from '@/redux/api/Api';
 import { gsap } from 'gsap';
 import Container from '../ui/Container';
 import HeadingComponent from '../ui/reusableComponent/HeadingComponent';
+import ApiUrl from '../ui/APIURL';
 
 const ImageShowCase = () => {
   const { data,isError, error, isLoading } = useGetAllGalleryQuery();
-  const imageRefs = useRef([]);
 
-  useEffect(() => {
-
-    gsap.from(imageRefs.current, {
-      opacity: 0,
-      y: 20,
-      duration: 0.5,
-      stagger: 0.2,
-    });
-  }, [data]); 
 
   const headingData = [
     {
@@ -29,7 +20,7 @@ const ImageShowCase = () => {
 
   return (
     <Container>
-    <div className=" bg-white py-20">
+    <div className="  py-20">
        {
         isLoading && (<div className="text-center py-20 text-7xl flex justify-center items-center"> Loading....</div>)
     }{
@@ -42,10 +33,9 @@ const ImageShowCase = () => {
           <div
             key={index}
             className="relative group overflow-hidden shadow-lg"
-            ref={(el) => (imageRefs.current[index] = el)} 
           >
             <img
-              src={`http://localhost:5000/images/gallery_img/${item.path}`}
+              src={`${ApiUrl}/images/gallery_img/${item.path}`}
               alt={item.title}
               className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
             />

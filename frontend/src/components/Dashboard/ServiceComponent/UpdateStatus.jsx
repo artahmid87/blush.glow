@@ -11,8 +11,6 @@ const UpdateStatus = () => {
 
   const [isActive, setIsActive] = useState(true)
 
-
-
   useEffect(() => {
     if (data) {
       setIsActive(data.isActive);

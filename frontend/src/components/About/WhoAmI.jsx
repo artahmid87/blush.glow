@@ -81,7 +81,7 @@ const WhoAmI = () => {
                 <div className="md:w-[49%]">
                     <div className="relative w-[300px] h-[300px] md:w-[320px] md:h-[320px] lg:w-[450px] lg:h-[450px] xl:w-[600px] xl:h-[600px] bg-[#c4ece5] rounded-full border-none" ref={imageRef}>
                         <img
-                            className="rounded-full w-full h-full border border-primary drop-shadow-2xl pb-[30px] pr-[30px]"
+                            className="rounded-full w-full h-full border border-primary drop-shadow-2xl pb-[30px] pr-[30px] object-cover"
                             src="/images/about/Nazma_Jahan.jpg"
                             alt="Beauty and Spa"
                         />

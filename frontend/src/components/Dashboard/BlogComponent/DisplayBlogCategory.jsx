@@ -1,4 +1,4 @@
-import { useDeleteBlogCategoryMutation, useDeleteCategoryMutation, useFindAllBlogCategoriesQuery, useFindAllCategoriesQuery } from '@/redux/api/Api';
+import { useDeleteBlogCategoryMutation, useFindAllBlogCategoriesQuery } from '@/redux/api/Api';
 import { Button, Popconfirm } from 'antd/dist/antd';
 import { useEffect } from 'react';
 
@@ -9,12 +9,12 @@ const DisplayBlogCategory = () => {
 
 
   useEffect(() => {
-   const interval = setInterval(() =>{
-    refetch()
-   }, 1000)
-   return () => clearInterval(interval)
+    const interval = setInterval(() => {
+      refetch()
+    }, 1000)
+    return () => clearInterval(interval)
   }, [refetch])
-  
+
 
 
   const handleDelete = async (id) => {
@@ -49,21 +49,21 @@ const DisplayBlogCategory = () => {
             <tr key={category.id} className="border-b border-gray-200">
               <td className="py-2 px-4 text-gray-700">{category.title}</td>
               <td className="px-4 flex flex-col md:flex-row justify-end gap-4 py-2">
-            
-                    <Popconfirm
-                      title="Delete the Image"
-                      description="Are you sure to delete this Category?"
-                      onConfirm={() => handleDelete(category.id)}
-                      okText="Yes"
-                      cancelText="No"
-                    >
-                      <Button
-                        className='px-4 py-1 bg-rose-500 rounded-3xl text-white hover:bg-white hover:text-red-500 transition-all'
-                      >
-                        Delete
-                      </Button>
-                    </Popconfirm>
-                  </td>
+
+                <Popconfirm
+                  title="Delete the Image"
+                  description="Are you sure to delete this Category?"
+                  onConfirm={() => handleDelete(category.id)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button
+                    className='px-4 py-1 bg-rose-500 rounded-3xl text-white hover:bg-white hover:text-red-500 transition-all'
+                  >
+                    Delete
+                  </Button>
+                </Popconfirm>
+              </td>
             </tr>
           ))}
         </tbody>

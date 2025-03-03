@@ -9,11 +9,9 @@ import HeadingComponent from "../ui/reusableComponent/HeadingComponent";
 
 const Review = () => {
 
-  // query
    const {data , isSuccess , isLoading , isError} = useReviewQuery()
 
  // This is Headline Data pass with HaedingComponent as for create Reusable component 
-  // Component path  "../ui/reusableComponent/HeadingComponent"
   const headingData = [
     {
       headline :"Review",

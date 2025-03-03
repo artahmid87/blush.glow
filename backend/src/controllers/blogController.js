@@ -222,7 +222,7 @@ fs.unlink(req.file.destination + '/' + blog.toJSON().file, (err) => {
   }
 };
 
-// Controller to delete a blog post
+
 const deleteBlog = async (req, res, next) => {
   try {
     const { id } = req.params; 

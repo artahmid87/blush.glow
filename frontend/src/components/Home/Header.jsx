@@ -95,7 +95,7 @@ const Header = () => {
     autoplay={{ delay: 7000 }}
     loop={true}
     speed={2000}
-    spaceBetween={100} // Adds space between slides
+    spaceBetween={100} 
     centeredSlides={true}
     navigation={true}
     modules={[Autoplay, Pagination, Navigation]}>

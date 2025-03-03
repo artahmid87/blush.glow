@@ -26,7 +26,7 @@ const Sidebar = () => {
         </button>
 
         <ul className={`flex-col w-full ${isOpen ? 'flex' : 'hidden'} lg:flex`}>
-          <li className="text-secondery">
+          <li className="text-[#232323]">
             <Link className="flex items-center" href="/dashboard">
               <DashboardIcon className="text-2xl mr-2" />
               <span className="text-2xl">Dashboard</span>
@@ -39,14 +39,14 @@ const Sidebar = () => {
             { name: 'Category', href: '/dashboard/category' },
           ])}
 
-          <li className="text-secondery">
+          <li className="text-[#232323]">
             <Link className="flex items-center" href="/dashboard/appointment">
               <AppointmentIcon className="text-2xl mr-2" />
               <span className="text-2xl">Appointment</span>
             </Link>
           </li>
 
-          <li className="text-secondery py-2 mt-1">
+          <li className="text-[#232323] py-2 mt-1">
             <Link className="flex items-center" href="/dashboard/holiday">
               <HolidayIcon className="text-2xl mr-2" />
               <span className="text-2xl">Holiday</span>
@@ -77,7 +77,7 @@ const Sidebar = () => {
 
   function renderDropdownMenu(key, label, Icon, links) {
     return (
-      <li className="py-2">
+      <li className="py-2 text-[#232323]">
         <div
           className={`flex items-center cursor-pointer ${activeMenu === key ? 'text-blue-500' : ''}`}
           onClick={() => toggleMenu(key)}

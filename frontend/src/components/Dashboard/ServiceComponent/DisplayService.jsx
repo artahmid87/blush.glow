@@ -1,3 +1,4 @@
+import ApiUrl from '@/components/ui/APIURL';
 import {  useDeletePriceMutation, useFindAllPriceQuery } from '@/redux/api/Api';
 import { Button, Popconfirm } from 'antd/dist/antd';
 import Link from 'next/link';
@@ -59,7 +60,7 @@ const DisplayService = () => {
              
               <h2 className="text-lg font-bold mb-2">{item.title}</h2>
               <img
-                src={"https://blush.glow.api.ara-dreamhome.com/images/service_img/" + item.image}
+                src={`${ApiUrl}/images/service_img/${item.image}`}
                 alt={item.title}
                 className="w-full h-32 object-cover rounded-md mb-2"
               />
@@ -104,7 +105,7 @@ const DisplayService = () => {
                 <tr key={index} className="text-center">
                     <td className="px-4 py-2 border border-gray-300">
                     <img
-                      src={"https://blush.glow.api.ara-dreamhome.com/images/service_img/" + item?.image}
+                      src={`${ApiUrl}/images/service_img/${item?.image}`}
                       alt={item?.title}
                       className="w-16 h-16 mx-auto object-cover rounded-md"
                     />

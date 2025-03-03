@@ -20,6 +20,7 @@ const Form = () => {
   const [selectedCategoryPrices, setSelectedCategoryPrices] = useState([]);
   const formRef = useRef();
 
+
   const { data: categories } = useFindAllCategoriesQuery();
   const { data: prices } = useFindAllPriceQuery();
   const { data: holiday } = useGetAllHolidayQuery();
@@ -98,7 +99,7 @@ const disabledDate = (current) => {
         name,
         email,
         phone,
-        price: priceTitle,
+        price,
         date,
         time,
         description
@@ -178,7 +179,7 @@ const disabledDate = (current) => {
           </select>
         </div>
 
-        {/* Pricing Select (shown only after category is selected) */}
+    
         {subject && (
           <div className="py-2">
             <select
@@ -188,7 +189,7 @@ const disabledDate = (current) => {
             >
               <option value="">Select Service</option>
               {selectedCategoryPrices.map((priceOption) => (
-                <option key={priceOption.id} value={priceOption.id}>
+                <option key={priceOption.id} value={`$ ${priceOption.price}`}>
                   {priceOption.title} - ${priceOption.price}
                 </option>
               ))}

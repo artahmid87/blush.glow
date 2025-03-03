@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { HomeServiceData } from "../ui/data";
 import Container from "../ui/Container";
 import HeadingComponent from "../ui/reusableComponent/HeadingComponent";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,18 +9,14 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import Link from "next/link";
 import { useFindAllCategoriesQuery } from "@/redux/api/Api";
-
+import ApiUrl from "../ui/APIURL";
 
 const Services = () => {
 
   const serviceRef = useRef(null);
   const headingRef = useRef(null);
 
-
   const {data} = useFindAllCategoriesQuery()
-
-
-
 
   useEffect(() => {
     gsap.fromTo(
@@ -132,10 +127,10 @@ const Services = () => {
         >
           <div className="cssPath group-hover:bg-primary transition-all duration-500 ease-in-out group-hover:text-white text-primary py-10 px-10 relative">
             <i className="opacity-20 text-[120px]">
-              <img className="w-[150px] h-[150px] bg-transparent"    src={`http://localhost:5000/images/service_img/${item?.icon}`} alt="icon" />
+              <img className="w-[150px] h-[150px] bg-transparent"    src={`${ApiUrl}/images/service_img/${item?.icon}`} alt="icon" />
             </i>
             <i className="absolute top-[14%] left-1/2 transform -translate-x-1/2 translate-y-1/2 text-[70px]">
-            <img className="w-[100px] h-[100px]" src={`http://localhost:5000/images/service_img/${item?.icon}`} alt="icon" />
+            <img className="w-[100px] h-[100px]" src={`${ApiUrl}/images/service_img/${item?.icon}`} alt="icon" />
             </i>
           </div>
           <div>
@@ -145,7 +140,6 @@ const Services = () => {
             <p className="text-secondery justify-center mb-10">
               {item.shortInto}
             </p>
-         
           </div>
         </div>
       </Link>
@@ -154,10 +148,8 @@ const Services = () => {
       </Swiper>
     </div>
 
-
       </Container>
       
-
       <div className='invisible lg:visible banner animate-slide-left-right absolute top-0 left-1/2 w-full h-full -ml-10' style={{
         zIndex: -1
       }}>

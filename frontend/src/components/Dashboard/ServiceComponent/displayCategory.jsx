@@ -1,3 +1,4 @@
+import ApiUrl from '@/components/ui/APIURL';
 import { useDeleteCategoryMutation, useFindAllCategoriesQuery } from '@/redux/api/Api';
 import { Button, Popconfirm } from 'antd/dist/antd';
 import Link from 'next/link';
@@ -38,7 +39,7 @@ const DisplayCategory = () => {
           <div key={category.id} className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center">
             <h3 className="text-gray-800 font-semibold truncate w-full text-center">{category.title}</h3>
             <img
-              src={`http://localhost:5000/images/service_img/${category?.icon}`}
+              src={`${ApiUrl}/images/service_img/${category?.icon}`}
               alt={category?.title}
               className="w-full h-32 object-cover my-2 rounded-lg"
             />

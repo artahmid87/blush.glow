@@ -98,7 +98,7 @@ const disabledDate = (current) => {
         name,
         email,
         phone,
-        price: priceTitle,
+        price,
         date,
         time,
         description,
@@ -274,7 +274,7 @@ const disabledDate = (current) => {
                     >
                       <option value="">Select Service</option>
                       {selectedCategoryPrices.map((priceOption) => (
-                        <option key={priceOption.id} value={priceOption.id}>
+                        <option key={priceOption.id} value={`$ ${priceOption.price}`}>
                           {priceOption.title} - ${priceOption.price}
                         </option>
                       ))}

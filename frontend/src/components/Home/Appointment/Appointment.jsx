@@ -15,7 +15,6 @@ const Appointment = () => {
   const scheduleRef = useRef(null);
 
   useEffect(() => {
-    // Form animation
     gsap.fromTo(
       formRef.current,
       { opacity: 0, x: -100 },
@@ -32,7 +31,6 @@ const Appointment = () => {
       }
     );
 
-    // Schedule animation
     gsap.fromTo(
       scheduleRef.current,
       { opacity: .9, x: 100 },
@@ -53,10 +51,10 @@ const Appointment = () => {
 
   return (
     <div
-      id='appointment'
+       id='Appointment'
       className='py-10 overflow-hidden bg-white'
     >
-      <Container>
+      <Container >
         <div
           className="flex flex-col lg:flex-row justify-between gap-4 mt-5 p-1 md:p-6 border-8 border-gray-100 relative"
           style={{

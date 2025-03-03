@@ -1,4 +1,4 @@
-import { CloseIcon, EmailIcon, FacebookIcon, InstagramIcon, LocationIcon, OpenIcon, PhoneIcon, RoadSign, YoutubeIcon } from '@/components/ui/icon';
+import { CloseIcon, EmailIcon, FacebookIcon, InstagramIcon, OpenIcon, PhoneIcon, RoadSign, YoutubeIcon } from '@/components/ui/icon';
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 

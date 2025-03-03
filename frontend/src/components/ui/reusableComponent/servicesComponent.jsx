@@ -59,7 +59,7 @@ const ServicesComponent = (props) => {
           props?.item?.pricingPlan?.map((item) => (
             <div key={item.name} className="flex justify-between items-center w-full font-secondery border-b border-gray-500" >
               <div className="flex py-4 gap-6">
-                {/* <img className="w-14 h-14 " src={item.image} alt="" /> */}
+      
                 <h1 className="text-xl text-center self-center">{item.name}</h1>
               </div>
               <div>

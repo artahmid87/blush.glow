@@ -4,6 +4,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import Container from "../ui/Container";
 import { DropdownIcon } from "../ui/icon";
+import ApiUrl from "../ui/APIURL";
 
 const BlogSidebar = () => {
   const { data: blogs, isLoading: blogsLoading, isError: blogsError } = useGetBlogQuery();
@@ -50,7 +51,7 @@ const BlogSidebar = () => {
   return (
     <Container>
       <div className="border-r border-[#ccc] bg-[#ffeeeb] w-full py-10 px-8">
-        {/* Loading and Error Handling */}
+     
         {blogsLoading && <div className="text-center py-20 text-7xl flex justify-center items-center">Loading...</div>}
         {blogsError && (
           <div className="text-center py-20 text-7xl flex justify-center items-center">
@@ -67,7 +68,7 @@ const BlogSidebar = () => {
                 <div>
                   <img
                     className="w-16 h-14 md:w-20 md:h-20"
-                    src={`https://blush.glow.api.ara-dreamhome.com/images/blog_img/${item.file}`}
+                    src={`${ApiUrl}/images/blog_img/${item.file}`}
                     alt={item.title}
                   />
                 </div>
@@ -88,14 +89,14 @@ const BlogSidebar = () => {
           ))}
         </div>
 
-        {/* Categories Dropdown */}
+     
         <div>
           <h3 className="font-secondery text-tertiary font-medium text-lg mt-8 underline decoration-slice decoration-primary underline-offset-8">
             Categories
           </h3>
           {groupedBlogs?.map((category) => (
             <div key={category.id}>
-              {/* Category Header with Toggle Icon */}
+          
               <div
                 onClick={() => toggleCategory(category.id)}
                 className="flex justify-between items-center cursor-pointer py-2"
@@ -104,7 +105,7 @@ const BlogSidebar = () => {
                 <DropdownIcon className={openCategory === category.id ? "rotate-180" : ""} />
               </div>
 
-              {/* Display Blogs for Selected Category */}
+         
               <div
                 ref={(el) => (contentRefs.current[category.id] = el)}
                 style={{
@@ -120,7 +121,7 @@ const BlogSidebar = () => {
                         <div>
                           <img
                             className="w-12 h-12 md:w-16 md:h-16"
-                            src={`https://blush.glow.api.ara-dreamhome.com/images/blog_img/${blog.file}`}
+                            src={`http://localhost:5000/images/blog_img/${blog.file}`}
                             alt={blog.title}
                           />
                         </div>

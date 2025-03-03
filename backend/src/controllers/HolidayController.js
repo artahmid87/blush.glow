@@ -3,11 +3,6 @@ const Holiday = require("../database/model/holiday.db");
 const OffdayController = async (req, res, next) =>{
     try {
         const {name , fromDate, toDate, fromTime , toTime} = req.body
-    
-    
-    // if(!name || !fromDate || !toDate || !fromTime || !toTime ){
-    //     return res.status(404).send("All Field are Required")
-    // }
   
      const Offday =  await Holiday.create({name, fromDate, toDate, fromTime , toTime})
      res.status(200).send({

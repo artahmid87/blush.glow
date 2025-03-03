@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { TimePicker } from 'antd/dist/antd';
-import moment from 'moment';
 
 const TimePickerComponent = ({ onTimeSelect }) => {
   const [time, setTime] = useState(null);
 
   const disabledTime = () => {
-    const startHour = 9; // 9:00 AM
-    const endHour = 20;   // 8:00 PM
+    const startHour = 9; 
+    const endHour = 20;  
     const disabledHours = [];
     const disabledMinutes = [];
     
@@ -32,7 +31,7 @@ const TimePickerComponent = ({ onTimeSelect }) => {
   const handleTimeChange = (value) => {
     setTime(value);
     if (onTimeSelect) {
-      onTimeSelect(value ? value.format('HH:mm') : null); // Format time for the database
+      onTimeSelect(value ? value.format('HH:mm') : null); 
     }
   };
 

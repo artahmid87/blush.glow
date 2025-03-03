@@ -23,7 +23,8 @@ const Schedule = () => {
       </div>
       <div className ="py-4">
       <h1 className='flex gap-4'><span className='flex justify-center items-center bg-primary w-10 h-10 rounded-full text-2xl text-white '><LocationIcon/></span><span className = "md:text-gray-800 text-white text-2xl md:text-4xl font-bold font-secondery pb-2">Location:</span></h1>
-      <p className ="md:text-gray-600 text-white text-[20px] md:text-3xl py-1 font-bold ml-14 font-secondery ">5 Massey Square, East York, ON M4C 5L6, canada</p>
+      <p className ="md:text-gray-600 text-white text-[20px] md:text-3xl py-1 font-bold ml-14 font-secondery ">858 Danforth Rd, Scarborough,
+      ON M1K 1H5, Canada.</p>
       </div>
 
 

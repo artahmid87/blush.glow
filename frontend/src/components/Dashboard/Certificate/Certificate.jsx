@@ -1,3 +1,4 @@
+import ApiUrl from '@/components/ui/APIURL';
 import { useDeleteCertificateMutation, useGetAllCertificateQuery } from '@/redux/api/Api';
 import { Popconfirm, Button } from 'antd/dist/antd';
 import Link from 'next/link';
@@ -40,7 +41,7 @@ const Certificate = () => {
             {/* Image */}
             <div className="w-full h-48 overflow-hidden rounded-lg">
               <img
-                src={`http://localhost:5000/images/certificate_img/${item.image}`}
+                src={`${ApiUrl}/images/certificate_img/${item.image}`}
                 alt={item.title}
                 className="w-full h-full object-cover"
               />
