@@ -98,8 +98,8 @@ const InformationData = () => {
                     { icon: <MakeUpIcon />, color: '#d5b4dc', title: 'Service', count: service?.length, link: 'dashboard/displayServices' },
                     { icon: <BlogIcon />, color: '#d5b4dc', title: 'Blog', count: blog?.length, link: 'dashboard/blog' },
                 ].map((item, index) => (
-                    <Link href={item.link}>
-                        <div key={index} className={`py-6 px-6 mt-4 rounded-md`} style={{ backgroundColor: item.color }}>
+                    <Link href={item.link} key={index}>
+                        <div  className={`py-6 px-6 mt-4 rounded-md`} style={{ backgroundColor: item.color }}>
                             <div className="flex flex-col items-center h-[70%]">
                                 <span className="bg-white p-8 text-blue-500 text-3xl rounded-full">
                                     {item.icon}
