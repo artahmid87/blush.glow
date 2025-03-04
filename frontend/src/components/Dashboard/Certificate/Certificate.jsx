@@ -7,12 +7,6 @@ import React, { useEffect } from 'react';
 const Certificate = () => {
   const { data, isSuccess, isError, isLoading, refetch } = useGetAllCertificateQuery();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      refetch();
-    }, 3000); 
-    return () => clearInterval(interval);
-  }, [refetch]);
 
   const [deleteCertificate] = useDeleteCertificateMutation();
 

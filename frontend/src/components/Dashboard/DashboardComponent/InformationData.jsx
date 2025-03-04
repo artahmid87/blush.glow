@@ -15,15 +15,6 @@ const InformationData = () => {
     const { data: service, refetch: serviceRefreash } = useFindAllPriceQuery();
     const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            bRefrash();
-            BookingRefreash();
-            galleryRefrash();
-            serviceRefreash();
-        }, 1000);
-        return () => clearInterval(interval);
-    }, [bRefrash, BookingRefreash, galleryRefrash, serviceRefreash]);
 
     useEffect(() => {
         const handleResize = () => {

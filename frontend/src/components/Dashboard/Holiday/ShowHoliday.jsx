@@ -6,13 +6,6 @@ import { useEffect } from "react";
 const ShowHoliday = () => {
     const { data, refetch } = useGetAllHolidayQuery();
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            refetch();
-        }, 1000);
-        return () => clearInterval(interval);
-    }, [refetch]);
-
     const [deleteHoliday] = useDeleteHolidayMutation();
 
     const handleDelete = async (id) => {

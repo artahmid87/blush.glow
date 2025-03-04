@@ -8,15 +8,6 @@ const DisplayBlogCategory = () => {
   const [deleteCategory] = useDeleteBlogCategoryMutation();
 
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      refetch()
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [refetch])
-
-
-
   const handleDelete = async (id) => {
     try {
       await deleteCategory(id).unwrap()

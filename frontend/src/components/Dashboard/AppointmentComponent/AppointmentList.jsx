@@ -12,10 +12,6 @@ const AppointmentList = () => {
   const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-
-
-  
-
   useEffect(() => {
     const handleResize = () => {
       setIsTabletOrMobile(window.innerWidth < 1024);
