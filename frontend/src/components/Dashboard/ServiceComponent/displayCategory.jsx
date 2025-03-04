@@ -8,12 +8,7 @@ const DisplayCategory = () => {
   const { data, isLoading, isError, refetch } = useFindAllCategoriesQuery();
   const [deleteCategory] = useDeleteCategoryMutation();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      refetch();
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [refetch]);
+
 
   const handleDelete = async (id) => {
     try {

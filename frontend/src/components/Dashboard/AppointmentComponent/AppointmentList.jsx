@@ -12,15 +12,9 @@ const AppointmentList = () => {
   const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-  console.log(data)
 
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      refetch();
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [refetch]);
+  
 
   useEffect(() => {
     const handleResize = () => {

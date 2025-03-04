@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useFindAllBlogCategoriesQuery, useUpdateBlogMutation } from '@/redux/api/Api';
+import TextEditor from './TextEditor';
+import Container from '@/components/ui/Container';
 
 const UpdateBlog = (props) => {
 
@@ -61,8 +63,9 @@ const UpdateBlog = (props) => {
   if (isError) return <p>Error loading blog data.</p>;
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
+<Container>
+<div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white shadow-lg rounded-lg p-8 max-w-6xl w-full">
         <Link className='py-2 px-3 bg-blue-500 text-white' href={'/dashboard/blog'}>Back to Dashboard</Link>
         <h1 className="text-2xl font-semibold mb-6 text-center pt-4">Update Blog Post</h1>
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
@@ -80,7 +83,7 @@ const UpdateBlog = (props) => {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description:</label>
             <textarea
               rows="4"
@@ -88,10 +91,12 @@ const UpdateBlog = (props) => {
               name="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              
               placeholder="Enter description"
               className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             ></textarea>
-          </div>
+          </div> */}
+              <TextEditor value={description} onChange={setDescription} />
 
           <div>
             <label htmlFor="file" className="block text-sm font-medium text-gray-700">Upload Image</label>
@@ -146,6 +151,7 @@ const UpdateBlog = (props) => {
         </form>
       </div>
     </div>
+</Container>
   );
 };
 

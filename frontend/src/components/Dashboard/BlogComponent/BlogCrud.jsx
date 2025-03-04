@@ -11,14 +11,6 @@ const BlogCrud = () => {
   const [isMobile, setIsMobile] = useState(false);
     const sanitizedDescription = DOMPurify.sanitize(data?.description);
 
-  console.log(data)
-
-  useEffect(() => {
-    const interval = setInterval(() =>{
-     refetch()
-    }, 1000)
-    return () => clearInterval(interval)
-   }, [refetch])
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,7 +46,7 @@ const BlogCrud = () => {
             <div key={index} className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
               <h2 className="text-lg font-bold mb-2">{item.title.slice(0, 50)}...</h2>
               <img
-                src={`${ApiUrl}/images/blog_img/${item?.file}`}
+                src={`http://localhost:5000/images/blog_img/${item?.file}`}
                 alt={item.title}
                 className="w-full h-32 object-cover rounded-md mb-2"
               />

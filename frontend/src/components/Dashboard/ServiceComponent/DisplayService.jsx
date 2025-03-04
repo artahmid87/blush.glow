@@ -7,12 +7,6 @@ import { useEffect, useState } from 'react';
 const DisplayService = () => {
   const { data, isLoading, isError, refetch } = useFindAllPriceQuery();
 
-  useEffect(() => {
-    const interval = setInterval(() =>{
-     refetch()
-    }, 1000)
-    return () => clearInterval(interval)
-   }, [refetch])
  
   const [deletePrice] = useDeletePriceMutation();
   const [isMobile, setIsMobile] = useState(false);
