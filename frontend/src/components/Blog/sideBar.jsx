@@ -5,23 +5,24 @@ import gsap from "gsap";
 import Container from "../ui/Container";
 import { DropdownIcon } from "../ui/icon";
 import ApiUrl from "../ui/APIURL";
+import Image from "next/image";
 
 const BlogSidebar = () => {
   const { data: blogs, isLoading: blogsLoading, isError: blogsError } = useGetBlogQuery();
-  const { data: categories, isLoading: categoriesLoading, isError: categoriesError } = useFindAllBlogCategoriesQuery();
+  const { data: categories } = useFindAllBlogCategoriesQuery();
   const [openCategory, setOpenCategory] = useState(null);
-  const contentRefs = useRef({}); 
-  
-  const groupedBlogs = categories?.map((category) => ({
+  const contentReference = useRef({});
+
+  const combinedBlog = categories?.map((category) => ({
     ...category,
     blogs: blogs?.filter((blog) => blog.CategoryId === category.id),
   }));
 
   const toggleCategory = (categoryId) => {
-    const content = contentRefs.current[categoryId];
+    const content = contentReference.current[categoryId];
 
     if (openCategory === categoryId) {
-      
+
       gsap.to(content, {
         height: 0,
         duration: 0.5,
@@ -29,16 +30,16 @@ const BlogSidebar = () => {
       });
       setOpenCategory(null);
     } else {
-   
+
       if (content) {
         gsap.set(content, { height: "auto" });
-        const fullHeight = content.scrollHeight;
+        const fullShow = content.scrollHeight;
 
         gsap.fromTo(
           content,
           { height: 0 },
           {
-            height: fullHeight,
+            height: fullShow,
             duration: 0.5,
             ease: "power3.out",
           }
@@ -51,7 +52,7 @@ const BlogSidebar = () => {
   return (
     <Container>
       <div className="border-r border-[#ccc] bg-[#ffeeeb] w-full py-10 px-8">
-     
+
         {blogsLoading && <div className="text-center py-20 text-7xl flex justify-center items-center">Loading...</div>}
         {blogsError && (
           <div className="text-center py-20 text-7xl flex justify-center items-center">
@@ -66,11 +67,16 @@ const BlogSidebar = () => {
             <Link key={item.id} href={`/blog/${item.id}/#blog`}>
               <div className="flex gap-4 py-4">
                 <div>
-                  <img
-                    className="w-16 h-14 md:w-20 md:h-20"
-                    src={`${ApiUrl}/images/blog_img/${item.file}`}
-                    alt={item.title}
-                  />
+                 
+                    <Image
+                            src={`${ApiUrl}/images/blog_img/${item.file}`}
+                            alt={item.title}
+                            width={500}
+                            height={500}
+                            priority
+                            className="w-16 h-14 md:w-20 md:h-20"
+                          />
+
                 </div>
                 <div>
                   <h1 className="text-tertiary font-secondery text-[16px] leading-snug">
@@ -89,14 +95,14 @@ const BlogSidebar = () => {
           ))}
         </div>
 
-     
+
         <div>
           <h3 className="font-secondery text-tertiary font-medium text-lg mt-8 underline decoration-slice decoration-primary underline-offset-8">
             Categories
           </h3>
-          {groupedBlogs?.map((category) => (
+          {combinedBlog?.map((category) => (
             <div key={category.id}>
-          
+
               <div
                 onClick={() => toggleCategory(category.id)}
                 className="flex justify-between items-center cursor-pointer py-2"
@@ -105,9 +111,9 @@ const BlogSidebar = () => {
                 <DropdownIcon className={openCategory === category.id ? "rotate-180" : ""} />
               </div>
 
-         
+
               <div
-                ref={(el) => (contentRefs.current[category.id] = el)}
+                ref={(el) => (contentReference.current[category.id] = el)}
                 style={{
                   height: openCategory === category.id ? "auto" : 0,
                   overflow: "hidden",
@@ -119,10 +125,14 @@ const BlogSidebar = () => {
                     <Link key={blog.id} href={`/blog/${blog.id}/#blog`}>
                       <div className="flex gap-4 py-2">
                         <div>
-                          <img
+
+
+                          <Image
+                            src={`${ApiUrl}/images/blog_img/${blog?.file}`} alt={blog?.title}
+                            width={300}
+                            height={300}
+                            priority
                             className="w-12 h-12 md:w-16 md:h-16"
-                            src={`http://localhost:5000/images/blog_img/${blog.file}`}
-                            alt={blog.title}
                           />
                         </div>
                         <div>

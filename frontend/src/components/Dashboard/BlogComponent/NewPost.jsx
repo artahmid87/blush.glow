@@ -7,14 +7,13 @@ const BlogPostForm = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [file, setFile] = useState(null);
-  const [error, setError] = useState(null);
   const [CategoryId, setCategoryId] = useState("")
-  const formRef = useRef()
+  const [error, setError] = useState(null);
+  const formReference = useRef()
   
-
   const [postCreate ,{isLoading:loading , isSuccess , isError:isIssue}] = useCreatePostMutation()
 
-  const {data, isLoading, isError} =  useFindAllBlogCategoriesQuery()
+  const {data, isError} =  useFindAllBlogCategoriesQuery()
 
   const handleSubmit = async (e) => {
     try {
@@ -43,7 +42,7 @@ const BlogPostForm = () => {
     <div className="flex justify-center items-center min-h-screen w-full bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full">
         <h1 className="text-2xl font-semibold mb-6 text-center">Blog Post</h1>
-        <form ref={formRef} onSubmit={handleSubmit}  className="space-y-6 w-full">
+        <form ref={formReference} onSubmit={handleSubmit}  className="space-y-6 w-full">
        
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Title:</label>
@@ -51,7 +50,6 @@ const BlogPostForm = () => {
               rows="4" cols="50"
               id="name"
               name="title"
-              // value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter your title"
               className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -94,8 +92,6 @@ const BlogPostForm = () => {
               >{item.title}</option>
             ))
           }
-         
-       
         </select>
    
       </div>

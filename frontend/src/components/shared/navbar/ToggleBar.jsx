@@ -1,6 +1,7 @@
 import { CloseIcon, EmailIcon, FacebookIcon, InstagramIcon, OpenIcon, PhoneIcon, RoadSign, YoutubeIcon } from '@/components/ui/icon';
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 export default function ToggleBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +39,15 @@ export default function ToggleBar() {
       >
         <nav className="py-4 px-8">
           <div>
-            <img className='py-10' src="/images/home/logo.png" alt="" />
+        
+            <Image
+                 src="/images/home/logo.png"
+                  alt="Logo"
+                  width={300}
+                  height={300}
+                  priority
+                  className='py-10'
+                />
             <p className="text-[18px] text-secondery py-4 text-center">
               We take a bottom-line approach to each project. Our clients consistently see increased traffic, enhanced brand loyalty and new leads thanks to our work.
             </p>

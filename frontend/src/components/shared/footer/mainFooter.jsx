@@ -1,5 +1,6 @@
 import Container from '@/components/ui/Container';
 import { CalenderIcon, EmailIcon, FacebookIcon, InstagramIcon, LocationIcon, PhoneIcon, YoutubeIcon } from '@/components/ui/icon';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -11,7 +12,7 @@ export default function MainFooter() {
   const path = '/'
 
   return (
-    <footer className= "text-black bg-white py-14 relative">
+    <footer className="text-black bg-white py-14 relative">
 
       <Container>
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 lg:h-[60vh]" style={{
@@ -20,9 +21,17 @@ export default function MainFooter() {
 
           {/* About Us Section */}
           <div>
-          <img className='-ml-2 mb-2 w-full h-14' src="/images/home/logo.png" alt="Logo" />
-        
-            <p className="flex  gap-2 text-sm md:text-xl mt-2"><span className="mt-1"><LocationIcon /></span><span><a href=" https://www.google.com/maps/place/Blush+%26+Glow+Beauty+Bar/@43.6961831,-79.2929566,17z/data=!4m14!1m7!3m6!1s0x38d840a6f5aec37:0x1292455a177a54ce!2sBlush+%26+Glow+Beauty+Bar!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v!3m5!1s0x38d840a6f5aec37:0x1292455a177a54ce!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D">858 Danforth Rd, Scarborough, <br/>  ON M1K 1H5, Canada.</a></span></p>
+
+            <Image
+              src="/images/home/logo.png"
+              alt="Logo"
+              width={500}
+              height={500}
+              priority
+              className='-ml-2 mb-2 w-full h-14'
+            />
+
+            <p className="flex  gap-2 text-sm md:text-xl mt-2"><span className="mt-1"><LocationIcon /></span><span><a href=" https://www.google.com/maps/place/Blush+%26+Glow+Beauty+Bar/@43.6961831,-79.2929566,17z/data=!4m14!1m7!3m6!1s0x38d840a6f5aec37:0x1292455a177a54ce!2sBlush+%26+Glow+Beauty+Bar!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v!3m5!1s0x38d840a6f5aec37:0x1292455a177a54ce!8m2!3d43.6961831!4d-79.2929566!16s%2Fg%2F11s1sbcm3v?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D">858 Danforth Rd, Scarborough, <br />  ON M1K 1H5, Canada.</a></span></p>
             <p className="flex  gap-2 py-4 text-sm md:text-xl"><span className="mt-1"><PhoneIcon /></span><a href="tel:+1-647-607-2276"> +1 (647)-607-2276</a></p>
             <p className="flex  gap-2 text-sm md:text-xl"><span className="mt-1"><EmailIcon /></span><a href="mailto:blushglowbar@gmail.com">blushglowbar@gmail.com</a></p>
 
@@ -54,7 +63,7 @@ export default function MainFooter() {
           <div className='md:ml-24'>
             <h2 className={`${pathname !== path ? 'text-white' : ' text-tertiary'}text-lg md:text-4xl font-semibold mb-8 font-secondery`}>Quick Links</h2>
             <ul className="space-y-2 text-sm md:text-xl">
-        
+
               <li><Link className="hover:underline" href="/about"> About </Link></li>
               <li><Link className="hover:underline" href="/imageShowcase"> Gallery </Link></li>
               <li><Link className="hover:underline" href="/blog">Blog</Link></li>
@@ -63,9 +72,9 @@ export default function MainFooter() {
               <li><Link className="hover:underline" href="/terms-conditions">Terms & Conditions</Link></li>
             </ul>
           </div>
-         
 
-        
+
+
 
           {/* Map Section */}
           <div className="w-full ">
@@ -81,21 +90,40 @@ export default function MainFooter() {
         </div>
       </Container>
       <div className=' w-[100%] absolute -top-[120px] left-0' style={{
-                zIndex:9
-            }}> <img className='w-full h-32' src="/images/about/2.png" alt="" /></div>
+        zIndex: 9
+      }}> 
+      
+      <Image
+             src="/images/about/2.png"
+              alt=""
+              width={500}
+              height={500}
+              priority
+             className='w-full h-32'
+            />
+      
+      </div>
 
 
       <div className='invisible md:visible banner animate-slide-left-right absolute -top-0 left-0 -ml-20 py-6' style={{
         zIndex: 0
       }}>
-        <img src="/images/home/footer.png" alt="" />
+     
+        <Image
+           src="/images/home/footer.png"
+              alt=""
+              width={300}
+              height={300}
+              priority
+           
+            />
       </div>
 
       {/* Copyright Section */}
       <div className="mt-8 border-t border-gray-700 pt-4 px-4 text-center text-md">
         © All rights reserved. This Website Design & Develop by Paradise Solution
       </div>
-     
+
     </footer>
   );
 }

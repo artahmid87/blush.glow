@@ -4,7 +4,6 @@ import { useBookingListQuery, useGetBookingByIdQuery } from '@/redux/api/Api'
 import React from 'react'
 
 const Schedule = () => {
-  const {data} = useBookingListQuery()
 
 
   return (

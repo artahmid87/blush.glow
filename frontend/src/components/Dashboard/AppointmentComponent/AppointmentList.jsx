@@ -9,12 +9,12 @@ const { Column } = Table;
 const AppointmentList = () => {
   const { data, isLoading, isError, refetch } = useBookingListQuery();
   const [deleteBooking] = useDeleteBookingMutation();
-  const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
+  const [tabMobileView, setTabMobileView] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const handleResize = () => {
-      setIsTabletOrMobile(window.innerWidth < 1024);
+      setTabMobileView(window.innerWidth < 1024);
     };
     window.addEventListener('resize', handleResize);
     handleResize();
@@ -59,8 +59,8 @@ const AppointmentList = () => {
       </div>
 
       {/* Content */}
-      <div className={isTabletOrMobile ? 'overflow-x-auto' : ''}>
-        {isTabletOrMobile ? (
+      <div className={tabMobileView ? 'overflow-x-auto' : ''}>
+        {tabMobileView ? (
           // Mobile View
           <div className="grid gap-4">
             {filteredData?.map((record) => (
@@ -105,7 +105,7 @@ const AppointmentList = () => {
             dataSource={filteredData}
             pagination={{ pageSize: 20 }}
             className="w-full"
-            scroll={{ x: isTabletOrMobile ? '100%' : undefined }}
+            scroll={{ x: tabMobileView ? '100%' : undefined }}
             rowKey="id"
           >
             <Column title="Name" dataIndex="name" key="name" />

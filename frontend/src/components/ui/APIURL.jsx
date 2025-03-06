@@ -1,3 +1,3 @@
-const ApiUrl = process.env.NEXT_PUBLIC_API_URL;
+const ApiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
 export default ApiUrl

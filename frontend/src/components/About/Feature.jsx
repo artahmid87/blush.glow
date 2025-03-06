@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../ui/Container'
 import HeadingComponent from '../ui/reusableComponent/HeadingComponent'
+import Image from 'next/image'
 
 
 const Youtube = () => {
@@ -19,14 +20,30 @@ const Youtube = () => {
         <div className='bg-[#fff0f0] pb-10 pt-24 relative'>
             <div className='w-[100%] absolute top-0 left-0 ' style={{
                 zIndex: 99
-            }}> <img className='w-full h-44' src="/images/home/9.png" alt="" />
+            }}>
+                <Image
+                    src="/images/home/9.png"
+                    alt=""
+                    width={100}
+                    height={100}
+                    priority
+                    className='w-full h-44'
+                />
             </div>
             <Container>
                 <div className="relative">
                     {/* headline */}
                     <HeadingComponent headingData={headingData} />
                     <div className='banner animate-slide-left-right absolute top-0 left-1/2  -ml-10'>
-                        <img className="opacity-20" src="/images/home/2.png" alt="" />
+
+                        <Image
+                            src="/images/home/2.png"
+                            alt=""
+                            width={100}
+                            height={100}
+                            priority
+                            className="opacity-20"
+                        />
                     </div>
 
                     <div className='flex flex-col lg:flex-row justify-between items-center gap-4 '>

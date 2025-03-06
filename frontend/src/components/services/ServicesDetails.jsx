@@ -3,6 +3,7 @@ import Container from '../ui/Container';
 import HeadingComponent from '../ui/reusableComponent/HeadingComponent';
 import { useFindAllCategoriesQuery, useFindAllPriceQuery } from '@/redux/api/Api';
 import ApiUrl from '../ui/APIURL';
+import Image from 'next/image';
 
 
 const Services = () => {
@@ -10,10 +11,10 @@ const Services = () => {
   const { data: prices } = useFindAllPriceQuery();
 
   const groupedPrices = categories
-    ?.filter(category => category.isActive) 
+    ?.filter(category => category.isActive)
     .map(category => ({
       ...category,
-      prices: prices?.filter(price => price.CategoryId === category.id), 
+      prices: prices?.filter(price => price.CategoryId === category.id),
     }));
 
   const headingData = [
@@ -29,7 +30,15 @@ const Services = () => {
   return (
     <div className='overflow-hidden py-20 bg-white relative'>
       <div className='invisible lg:visible banner animate-slide-top-bottom absolute top-24 -right-4 w-60 h-60'>
-        <img src="/images/service/14.png" alt="" />
+       
+        <Image
+         src="/images/service/14.png"
+          alt=""
+          width={300}
+          height={300}
+          priority
+          
+        />
       </div>
 
       <Container>
@@ -61,17 +70,22 @@ const Services = () => {
                     className="flex items-center justify-between p-4 border-b border-gray-400"
                   >
                     {/* Service Item */}
-                    <div id='service'  className="flex items-center space-x-4">
+                    <div id='service' className="flex items-center space-x-4">
                       <div className="w-20 h-20 rounded-md overflow-hidden flex-shrink-0">
-                        <img
+                        
+
+                        <Image
                           src={`${ApiUrl}/images/service_img/${price.image}`}
                           alt={price.title}
+                          width={500}
+                          height={500}
+                          priority
                           className="w-full h-full object-cover"
                         />
                       </div>
 
                       <div>
-                        <h3  className="text-xl font-medium font-secondery capitalize">
+                        <h3 className="text-xl font-medium font-secondery capitalize">
                           {price.title}
                         </h3>
                         <h3 className="text-sm font-primary text-secondery">
@@ -80,10 +94,10 @@ const Services = () => {
                       </div>
                     </div>
 
-                    <div  className="text-lg font-semibold text-gray-700" >
+                    <div className="text-lg font-semibold text-gray-700" >
                       ${price.price}
                     </div>
-                    
+
                   </div>
                 ))}
               </div>

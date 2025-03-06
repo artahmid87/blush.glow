@@ -5,7 +5,7 @@ const UploadImg = () => {
 
   const [title, setTitle] = useState('')
   const [path, setPath] = useState(null);
-  const formRef = useRef()
+  const formReference = useRef()
 
   const [gallery ,{isLoading , isSuccess , isError}] = useUploadGalleryMutation()
 
@@ -28,7 +28,7 @@ const UploadImg = () => {
     <div className="flex justify-center items-center min-h-screen  bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
         <h1 className="text-2xl font-semibold mb-6 text-center">Upload Gallery Image</h1>
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+        <form ref={formReference} onSubmit={handleSubmit} className="space-y-6">
       
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Description:</label>

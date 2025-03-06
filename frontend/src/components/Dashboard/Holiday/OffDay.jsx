@@ -1,11 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { DatePicker, TimePicker } from 'antd';
-import { BookingTime } from '@/components/ui/data';
 import dayjs from 'dayjs';
 import { useCreateHolidayMutation } from '@/redux/api/Api';
 import { toast } from 'react-toastify';
 import Container from '@/components/ui/Container';
-const format = 'HH:mm';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -13,7 +11,7 @@ const Form = () => {
   const [toDate, setToDate] = useState(null);
   const [fromTime, setFromTime] = useState('');
   const [toTime, setToTime] = useState('');
-  const formRef = useRef();
+  const formReference = useRef();
 
   const [holiday, { isLoading }] = useCreateHolidayMutation();
 
@@ -29,23 +27,13 @@ const Form = () => {
         toTime,
       }).unwrap();
 
-      formRef.current.reset();
+      formReference.current.reset();
       setName('');
       setFromDate(null);
       setToDate(null);
       setFromTime('');
       setToTime('');
 
-      toast.success('Holiday has been set', {
-        position: "bottom-right",
-        autoClose: 8000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-      });
     } catch (err) {
       console.error('Holiday set failed', err);
       toast.error('Failed to set holiday');
@@ -77,10 +65,10 @@ const Form = () => {
     };
   };
 
-  const FromTimeCollec = (time, timeString) => {
+  const fromTimeSet = (time, timeString) => {
     setFromTime(timeString);
   };
-  const ToTimeCollec = (time, timeString) => {
+  const toTimeSet = (time, timeString) => {
     setToTime(timeString);
   };
 
@@ -88,7 +76,7 @@ const Form = () => {
     <div>
       <Container>
         <h1 className='bg-primary py-2 text-center text-white text-2xl font-bold'>Holiday</h1>
-        <form ref={formRef} onSubmit={handleHoliday} className='py-6'>
+        <form ref={formReference} onSubmit={handleHoliday} className='py-6'>
           <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
             {/* Name */}
             <div className="w-full py-2">
@@ -136,7 +124,7 @@ const Form = () => {
               <TimePicker
                 format="hh:mm A"
                 value={fromTime ? dayjs(fromTime, 'HH:mm') : null}
-                onChange={FromTimeCollec}
+                onChange={fromTimeSet}
                 showNow={false}
                 disabledTime={disabledTime}
                 minuteStep={30}
@@ -151,7 +139,7 @@ const Form = () => {
               <TimePicker
                 format="hh:mm A"
                 value={toTime ? dayjs(toTime, 'HH:mm') : null}
-                onChange={ToTimeCollec}
+                onChange={toTimeSet}
                 showNow={false}
                 disabledTime={disabledTime}
                 minuteStep={30}

@@ -3,6 +3,7 @@ import Container from "../ui/Container"
 import Link from "next/link"
 import BlogSidebar from "./sideBar"
 import ApiUrl from "../ui/APIURL"
+import Image from "next/image"
 
 const Blog = () => {
   const { data, isLoading, isError } = useGetBlogQuery()
@@ -23,8 +24,14 @@ const Blog = () => {
                 data?.map((item) => (
                   <div key={item.id} className='relative w-full h-[400px] mb-20'>
                     {/* blog images */}
-                    <img className='w-full h-[400px]'
-                      src={`${ApiUrl}/images/blog_img/${item?.file}`} alt={item?.title} />
+                   
+                 
+                        <Image
+                            src={`${ApiUrl}/images/blog_img/${item?.file}`} alt={item?.title}
+                            width={500}
+                            height={500}
+                            priority
+                        />
 
                     <div className='absolute bottom-[-10%] left-0 w-[80%] h-[300px] bg-gray-100 p-6'>
 

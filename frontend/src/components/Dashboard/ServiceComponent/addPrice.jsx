@@ -10,7 +10,7 @@ const AddPrice = () => {
   const [image, setImage] = useState(null);
 
 
-  const {data, isLoading, isError} =  useFindAllCategoriesQuery()
+  const {data} =  useFindAllCategoriesQuery()
   
   const [pricePlan ,{isLoading:loading , isSuccess , isError:isIssue}] = useCreatePriceMutation()
 

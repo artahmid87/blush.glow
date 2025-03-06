@@ -7,7 +7,7 @@ const UpdateCertificate = () => {
 
   const router =  useRouter()
   const id = router.query.id
-  const {data, isError:error, isLoading:loading} =   useGetCertificateByIdQuery(id)
+  const {data} =   useGetCertificateByIdQuery(id)
 
   const [title, setTitle] = useState('')
   const [image, setImage] = useState(null);
@@ -20,10 +20,6 @@ const UpdateCertificate = () => {
       setImage(data.image);
     }
   }, [data]);
-
-  console.log(title)
-  console.log(image)
-
 
   const [updateCertificate, { isLoading, isSuccess, isError }] = useUpdateCertificateMutation();
 

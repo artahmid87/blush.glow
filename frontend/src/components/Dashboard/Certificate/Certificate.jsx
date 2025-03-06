@@ -1,6 +1,7 @@
 import ApiUrl from '@/components/ui/APIURL';
 import { useDeleteCertificateMutation, useGetAllCertificateQuery } from '@/redux/api/Api';
 import { Popconfirm, Button } from 'antd/dist/antd';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 
@@ -34,17 +35,21 @@ const Certificate = () => {
           <div key={item.id} className="bg-white shadow-lg rounded-lg p-4 border">
             {/* Image */}
             <div className="w-full h-48 overflow-hidden rounded-lg">
-              <img
+
+              <Image
                 src={`${ApiUrl}/images/certificate_img/${item.image}`}
                 alt={item.title}
-                className="w-full h-full object-cover"
+                width={500}
+                height={500}
+                priority
+                className="w-full h-full "
               />
             </div>
 
             {/* Title */}
             <h2 className="text-lg font-semibold text-center mt-2">{item?.title?.slice(0, 25)}...</h2>
 
-           
+
 
             {/* Actions */}
             <div className="flex justify-between items-center mt-3">

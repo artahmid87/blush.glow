@@ -7,7 +7,7 @@ const UpdateCategory = () => {
 
   const router =  useRouter()
   const id = router.query.id
-  const {data, isError:error, isLoading:loading} =   useGetCategoryByIdQuery(id)
+  const {data} =   useGetCategoryByIdQuery(id)
 
 
     const [title, setTitle] = useState('')
@@ -36,12 +36,10 @@ const UpdateCategory = () => {
       if (file) {
         formData.append('icon', icon);
       }
-      
+
       formData.append('title', title);
       formData.append('shortInto', shortInto);
    
-
-
       await updateCategory({ id, categoryUpdate:formData }).unwrap();
 
       router.push('/dashboard/category');

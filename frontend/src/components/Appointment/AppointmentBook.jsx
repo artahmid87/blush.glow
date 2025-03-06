@@ -27,8 +27,8 @@ export const AppointmentBooking = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [selectedCategoryPrices, setSelectedCategoryPrices] = useState([]);
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  const formRef = useRef(null);
+  const [formVisible, setFormVisible] = useState(false);
+  const formReference = useRef(null);
 
   const [test, setTest] = useState('')
 
@@ -53,7 +53,7 @@ useEffect(() => {
 }, [holiday]);
 
 
-const disabledDateRanges = fromHolidayDate.length > 0 && toHolidayDate.length > 0
+const selectedDateForHoly = fromHolidayDate.length > 0 && toHolidayDate.length > 0
   ? fromHolidayDate.map((start, index) => ({
       start: start,
       end: toHolidayDate[index],
@@ -61,8 +61,8 @@ const disabledDateRanges = fromHolidayDate.length > 0 && toHolidayDate.length > 
   : [];  
 
 
-const disabledDate = (current) => {
-  const isInDisabledRange = disabledDateRanges.some((range) =>
+const disabledDates = (current) => {
+  const isInDisabledRange = selectedDateForHoly.some((range) =>
     current.isBetween(range.start, range.end, 'day', '[]')
   );
   const isPastDate = current && current.isBefore(dayjs().startOf('day'));
@@ -104,8 +104,8 @@ const disabledDate = (current) => {
         description,
       }).unwrap();
 
-      formRef.current.reset();
-      setIsFormVisible(false);
+      formReference.current.reset();
+      setFormVisible(false);
 
       toast.success('You will receive a confirmation Email!', {
         position: 'bottom-right',
@@ -136,7 +136,7 @@ const disabledDate = (current) => {
    
     setDate(selectedDate);
     setTime(selectedTime);
-    setIsFormVisible(true);
+    setFormVisible(true);
   };
 
   const headingData = [
@@ -162,7 +162,7 @@ const disabledDate = (current) => {
           <div className="w-full md:w-1/2 py-2">
             <DatePicker
               format="YYYY-MM-DD"
-              disabledDate={disabledDate}
+              disabledDate={disabledDates}
               className="py-4 px-5 w-full border-4 border-primary outline-none"
               onChange={dateCollect}
               required
@@ -183,23 +183,23 @@ const disabledDate = (current) => {
               
               </span></h1>
             <div className="py-4 px-5 w-full border-b border-primary text-secondary outline-none h-[500px] overflow-scroll">
-              {BookingTime?.map((timeOption) => {
+              {BookingTime?.map((time) => {
                 const isBooked = Collectdate?.some(
-                  (booking) => booking.date === date && booking.time === timeOption
+                  (booking) => booking.date === date && booking.time === time
                 );
 
                 return (
                   <div
-                    key={timeOption}
+                    key={time}
                     className={`cursor-pointer py-4 flex flex-col md:flex-row justify-between items-center border-b border-gray-300 hover:bg-gray-100 transition-all duration-500 ease-in-out px-6 ${isBooked && 'hidden'
                       }`}
                     onClick={() =>
-                      !isBooked && handleBooking(date, timeOption)
+                      !isBooked && handleBooking(date, time)
                     }
                   >
                     <div className=''>
                       <h1 className='text-primary font-secondery text-3xl text-center lg:text-start'>Time Slot</h1>
-                     <div className='flex py-2 text-[20px]'>    <span className='text-primary mt-1'><ClockIcon/></span><span className='ml-4  font-semibold text-secondery'> {timeOption} </span></div>
+                     <div className='flex py-2 text-[20px]'>    <span className='text-primary mt-1'><ClockIcon/></span><span className='ml-4  font-semibold text-secondery'> {time} </span></div>
                       <p className='ml-8  text-secondery mb-4 lg:mb-0'>1 spaces available</p>
                     </div>
                     <div>
@@ -220,7 +220,7 @@ const disabledDate = (current) => {
           </div>
         )}
 
-        {isFormVisible && (
+        {formVisible && (
           <div className="fixed top-10 inset-0 flex items-center justify-center bg-black bg-opacity-50  w-full"
           style={{
             zIndex: 999
@@ -228,7 +228,7 @@ const disabledDate = (current) => {
             <div className="bg-white px-6 py-4 rounded shadow-lg max-w-md w-full">
               <h2 className="text-2xl font-semibold mb-4 text-primary font-secondery text-center"> Appointment</h2>
               <p className='text-secondery'>Submit your details & You will get a confirmation Mail.</p>
-              <form ref={formRef} onSubmit={handleAppoinment} className="space-y-4">
+              <form ref={formReference} onSubmit={handleAppoinment} className="space-y-4">
                 <input
                   type="text"
                   placeholder="Name"
@@ -304,7 +304,7 @@ const disabledDate = (current) => {
                   <button
                     type="button"
                     className="bg-secondery text-white px-4 py-2 rounded hover:bg-white hover:text-secondery font-semibold transition-all duration-300 ease-in-out "
-                    onClick={() => setIsFormVisible(false)}
+                    onClick={() => setFormVisible(false)}
                   >
                     Cancel
                   </button>

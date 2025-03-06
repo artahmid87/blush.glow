@@ -1,11 +1,12 @@
 import ApiUrl from '@/components/ui/APIURL';
 import {  useDeletePriceMutation, useFindAllPriceQuery } from '@/redux/api/Api';
 import { Button, Popconfirm } from 'antd/dist/antd';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const DisplayService = () => {
-  const { data, isLoading, isError, refetch } = useFindAllPriceQuery();
+  const { data, refetch } = useFindAllPriceQuery();
 
  
   const [deletePrice] = useDeletePriceMutation();
@@ -52,12 +53,15 @@ const DisplayService = () => {
           data?.map((item, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
              
-              <h2 className="text-lg font-bold mb-2">{item.title}</h2>
-              <img
-                src={`${ApiUrl}/images/service_img/${item.image}`}
-                alt={item.title}
-                className="w-full h-32 object-cover rounded-md mb-2"
-              />
+              <h2 className="text-lg font-bold mb-2">{item.title}</h2>         
+            <Image
+               src={`${ApiUrl}/images/service_img/${item.image}`}
+               alt={item.title}
+              width={300}
+              height={300}
+              priority
+             className="w-full h-32 object-cover rounded-md mb-2"
+            />
               <p className="text-gray-700">{item.price}</p>
               <p className="text-gray-700">{item.shortInfo}</p>
               <p className="text-gray-700">{item?.categories?.title}</p>
@@ -98,11 +102,16 @@ const DisplayService = () => {
               {data?.map((item, index) => (
                 <tr key={index} className="text-center">
                     <td className="px-4 py-2 border border-gray-300">
-                    <img
-                      src={`${ApiUrl}/images/service_img/${item?.image}`}
-                      alt={item?.title}
-                      className="w-16 h-16 mx-auto object-cover rounded-md"
-                    />
+                   
+            <Image
+               src={`${ApiUrl}/images/service_img/${item.image}`}
+               alt={item.title}
+              width={300}
+              height={300}
+              priority
+           className="w-16 h-16 mx-auto object-cover rounded-md"
+            />
+
                   </td>
                   <td className="px-4 py-2 border border-gray-300">{item?.title}</td>
                 

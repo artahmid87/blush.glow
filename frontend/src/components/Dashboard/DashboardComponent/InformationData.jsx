@@ -3,22 +3,23 @@ import { useBookingListQuery, useFindAllPriceQuery, useGetAllGalleryQuery, useGe
 import React, { useEffect, useState } from 'react'
 import { Table } from 'antd/dist/antd'; import Link from 'next/link';
 import ApiUrl from '@/components/ui/APIURL';
+import Image from 'next/image';
 ;
 
 const { Column } = Table;
 
 const InformationData = () => {
 
-    const { data: blog, refetch: bRefrash } = useGetBlogQuery();
-    const { data: book, refetch: BookingRefreash } = useBookingListQuery();
-    const { data: gallery, refetch: galleryRefrash } = useGetAllGalleryQuery();
-    const { data: service, refetch: serviceRefreash } = useFindAllPriceQuery();
-    const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
+    const { data: blog, } = useGetBlogQuery();
+    const { data: book, } = useBookingListQuery();
+    const { data: gallery, } = useGetAllGalleryQuery();
+    const { data: service, } = useFindAllPriceQuery();
+    const [tabMobile, setTabMobile] = useState(false);
 
 
     useEffect(() => {
         const handleResize = () => {
-            setIsTabletOrMobile(window.innerWidth < 1024);
+            setTabMobile(window.innerWidth < 1024);
         };
         window.addEventListener('resize', handleResize);
         handleResize();
@@ -27,13 +28,12 @@ const InformationData = () => {
 
 
 
-    const latestBookings = Array.isArray(book) ? [...book].reverse().slice(0, 4) : [];
+    const latestBook = Array.isArray(book) ? [...book].reverse().slice(0, 4) : [];
 
     return (
         <div className="space-y-4">
             <Link href={'dashboard/appointment'}>
-            {/* bg-[#8a8dff] */}
-                <div className="bg-[#0cb2ef28] p-6 mt-4 rounded-md"> 
+                <div className="bg-[#0cb2ef28] p-6 mt-4 rounded-md">
                     <div className="flex flex-wrap lg:flex-nowrap">
                         <div className="w-full lg:w-1/3 flex flex-col items-center mb-4 lg:mb-0">
                             <span className="bg-white p-8 text-blue-500 text-3xl rounded-full">
@@ -46,9 +46,9 @@ const InformationData = () => {
                         </div>
 
                         <div className="w-full lg:w-2/3 overflow-x-auto">
-                            {isTabletOrMobile ? (
+                            {tabMobile ? (
                                 <div className="grid gap-4">
-                                    {latestBookings?.map((record) => (
+                                    {latestBook?.map((record) => (
                                         <div key={record.id} className="bg-gray-100 p-4 rounded-lg shadow-md">
                                             <h2 className="text-lg font-bold mb-2">{record.name}</h2>
                                             <p><strong>Email:</strong> {record.email}</p>
@@ -63,7 +63,7 @@ const InformationData = () => {
                                 </div>
                             ) : (
                                 <Table
-                                    dataSource={latestBookings}
+                                    dataSource={latestBook}
                                     pagination={false}
                                     className="w-full"
                                     scroll={{ x: '100%' }}
@@ -90,7 +90,7 @@ const InformationData = () => {
                     { icon: <BlogIcon />, color: '#d5b4dc', title: 'Blog', count: blog?.length, link: 'dashboard/blog' },
                 ].map((item, index) => (
                     <Link href={item.link} key={index}>
-                        <div  className={`py-6 px-6 mt-4 rounded-md`} style={{ backgroundColor: item.color }}>
+                        <div className={`py-6 px-6 mt-4 rounded-md`} style={{ backgroundColor: item.color }}>
                             <div className="flex flex-col items-center h-[70%]">
                                 <span className="bg-white p-8 text-blue-500 text-3xl rounded-full">
                                     {item.icon}
@@ -123,9 +123,13 @@ const InformationData = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
                                 {gallery?.slice(0, 4).map((item, index) => (
                                     <div key={index} className="flex">
-                                        <img
+
+                                        <Image
                                             src={`${ApiUrl}/images/gallery_img/${item?.path}`}
                                             alt={item?.title}
+                                            width={500}
+                                            height={500}
+                                            priority
                                             className="w-full h-40 object-cover rounded-md"
                                         />
                                     </div>

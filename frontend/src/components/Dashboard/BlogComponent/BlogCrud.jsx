@@ -2,19 +2,20 @@ import { useDeleteBlogMutation, useGetBlogQuery } from '@/redux/api/Api';
 import { Button, Popconfirm } from 'antd/dist/antd';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import DOMPurify from "dompurify"; 
+import DOMPurify from "dompurify";
 import ApiUrl from '@/components/ui/APIURL';
+import Image from 'next/image';
 
 const BlogCrud = () => {
   const { data, isLoading, isError, refetch } = useGetBlogQuery();
   const [deleteBlog] = useDeleteBlogMutation();
-  const [isMobile, setIsMobile] = useState(false);
-    const sanitizedDescription = DOMPurify.sanitize(data?.description);
+  const [mobile, setMobile] = useState(false);
+  const sanitizedDescription = DOMPurify.sanitize(data?.description);
 
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setMobile(window.innerWidth < 768);
     };
     window.addEventListener('resize', handleResize);
     handleResize();
@@ -39,27 +40,32 @@ const BlogCrud = () => {
       </div>
 
       {/* Content */}
-      <div className={isMobile ? 'grid gap-4' : 'overflow-x-auto'}>
-        {isMobile ? (
-       
+      <div className={mobile ? 'grid gap-4' : 'overflow-x-auto'}>
+        {mobile ? (
+
           data?.map((item, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
               <h2 className="text-lg font-bold mb-2">{item.title.slice(0, 50)}...</h2>
-              <img
-                src={`http://localhost:5000/images/blog_img/${item?.file}`}
+
+
+              <Image
+                src={`${ApiUrl}/images/blog_img/${item?.file}`}
                 alt={item.title}
+                width={300}
+                height={300}
+                priority
                 className="w-full h-32 object-cover rounded-md mb-2"
               />
               <p className="text-gray-700">
-              <div
-                className="prose max-w-none text-gray-700 text-justify"
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(
-                    item?.description?.slice(0, 100)
-                  ),
-                }}
-              />
-                </p>
+                <div
+                  className="prose max-w-none text-gray-700 text-justify"
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      item?.description?.slice(0, 100)
+                    ),
+                  }}
+                />
+              </p>
               <p className="text-gray-700">{item?.categories?.title}</p>
               <div className="flex justify-between mt-4">
                 <Link href={`/dashboard/updateBlog/${item.id}`}>
@@ -82,7 +88,7 @@ const BlogCrud = () => {
             </div>
           ))
         ) : (
-          // Desktop and Tablet view as a table
+          // Desktop and Tablet
           <table className="min-w-full table-auto border-collapse border border-gray-200">
             <thead>
               <tr className="bg-gray-200">
@@ -98,24 +104,30 @@ const BlogCrud = () => {
                 <tr key={index} className="text-center">
                   <td className="px-4 py-2 border border-gray-300">{item?.title?.slice(0, 50)}...</td>
                   <td className="px-4 py-2 border border-gray-300">
-                    <img
+
+
+                    <Image
                       src={`${ApiUrl}/images/blog_img/${item?.file}`}
-                      alt={item?.title}
+                      alt={item.title}
+                      width={500}
+                      height={500}
+                      priority
                       className="w-16 h-16 mx-auto object-cover rounded-md"
                     />
+
                   </td>
-                   
-                  
+
+
                   <td className="px-4 py-2 border prose border-gray-300" >
-                  <div
-                className="prose max-w-none text-gray-700 text-justify"
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(
-                    item?.description?.slice(0, 100)
-                  ),
-                }}
-              />
-                    </td>
+                    <div
+                      className="prose max-w-none text-gray-700 text-justify"
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(
+                          item?.description?.slice(0, 100)
+                        ),
+                      }}
+                    />
+                  </td>
 
                   <td className="px-4 py-2 border border-gray-300">{item?.categories?.title}</td>
                   <td className="px-4 py-2 border border-gray-300">
@@ -144,7 +156,7 @@ const BlogCrud = () => {
           </table>
         )}
       </div >
-     
+
     </div>
   );
 };

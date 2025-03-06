@@ -11,13 +11,13 @@ if (typeof window !== "undefined") {
 }
 
 const ContactUs = () => {
-  const contactInfoRef = useRef(null); 
-  const mapRef = useRef(null); 
+  const contactInfoReference = useRef(null); 
+  const mapReference = useRef(null); 
 
   useEffect(() => {
   
     gsap.fromTo(
-      contactInfoRef.current,
+      contactInfoReference.current,
       { opacity: 0, y: 50 },
       {
         opacity: 1,
@@ -25,7 +25,7 @@ const ContactUs = () => {
         duration: 1,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: contactInfoRef.current,
+          trigger: contactInfoReference.current,
           start: "top 80%",
           toggleActions: "play none none reverse",
         },
@@ -34,7 +34,7 @@ const ContactUs = () => {
 
     
     gsap.fromTo(
-      mapRef.current,
+      mapReference.current,
       { opacity: 0, y: 50 },
       {
         opacity: 1,
@@ -42,7 +42,7 @@ const ContactUs = () => {
         duration: 1,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: mapRef.current,
+          trigger: mapReference.current,
           start: "top 80%",
           toggleActions: "play none none reverse",
           scrub:true,
@@ -67,7 +67,7 @@ const ContactUs = () => {
 
         <div className="flex flex-wrap flex-col justify-center items-center md:flex-row py-8">
           {/* Contact Information Section */}
-          <div className="gap-20 w-full md:w-[48%]" ref={contactInfoRef}>
+          <div className="gap-20 w-full md:w-[48%]" ref={contactInfoReference}>
           
           <div
          
@@ -137,7 +137,7 @@ const ContactUs = () => {
           </div>
 
           {/* Map Section */}
-          <div className="w-full md:w-[48%] border-4 border-gray-100 p-6" ref={mapRef}>
+          <div className="w-full md:w-[48%] border-4 border-gray-100 p-6" ref={mapReference}>
           <div  className='bg-[#fff6f4] p-2 md:p-8 w-full border-8 border-white'>
             <h1 className='text-3xl lg:text-4xl text-tertiary font-secondery py-6'>
             Appointment

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { OpenIcon, DropdownIcon, BlogIcon, GalleryIcon, MakeUpIcon, AppointmentIcon, DashboardIcon, HolidayIcon,CertificateIcon } from '../ui/icon';
+import Image from 'next/image';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,13 @@ const Sidebar = () => {
     <nav className="lg:h-[100dvh] bg-white border-r border-gray-400 text-secondery p-6">
       <div className="flex flex-col items-center lg:w-60">
         <div className="py-10">
-          <img src="/images/home/logo.png" alt="Logo" />
+          <Image
+              src="/images/home/logo.png"
+               alt="Logo"
+              width={300}
+              height={300}
+              priority
+            />
         </div>
 
         <button
@@ -33,7 +40,7 @@ const Sidebar = () => {
             </Link>
           </li>
 
-          {renderDropdownMenu('services', 'Services', MakeUpIcon, [
+          {DropdownMenu('services', 'Services', MakeUpIcon, [
             { name: 'Service List', href: '/dashboard/displayServices' },
             { name: 'Add Service', href: '/dashboard/addPrice' },
             { name: 'Category', href: '/dashboard/category' },
@@ -53,17 +60,17 @@ const Sidebar = () => {
             </Link>
           </li>
 
-          {renderDropdownMenu('blog', 'Blog', BlogIcon, [
+          {DropdownMenu('blog', 'Blog', BlogIcon, [
             { name: 'List of Blog', href: '/dashboard/blog' },
             { name: 'Create Blog Post ', href: '/dashboard/newPost' },
             { name: 'Blog Category', href: '/dashboard/blog-category' },
           ])}
 
-          {renderDropdownMenu('gallery', 'Gallery', GalleryIcon, [
+          {DropdownMenu('gallery', 'Gallery', GalleryIcon, [
             { name: 'Gallery List', href: '/dashboard/gallery' },
             { name: 'Post Gallery', href: '/dashboard/uploadGallery' },
           ])}
-          {renderDropdownMenu('cartificate', 'Certificate', CertificateIcon, [
+          {DropdownMenu('cartificate', 'Certificate', CertificateIcon, [
             { name: 'Certificate List', href: '/dashboard/certificate' },
             { name: 'Post Certificate', href: '/dashboard/uploadCertificate' },
           ])}
@@ -75,7 +82,7 @@ const Sidebar = () => {
     </nav>
   );
 
-  function renderDropdownMenu(key, label, Icon, links) {
+  function DropdownMenu(key, label, Icon, links) {
     return (
       <li className="py-2 text-[#232323]">
         <div

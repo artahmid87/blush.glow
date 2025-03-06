@@ -7,7 +7,7 @@ const UpdateStatus = () => {
 
   const router = useRouter()
   const id = router.query.id
-  const { data, isError: error, isLoading: loading } = useGetCategoryByIdQuery(id)
+  const { data} = useGetCategoryByIdQuery(id)
 
   const [isActive, setIsActive] = useState(true)
 

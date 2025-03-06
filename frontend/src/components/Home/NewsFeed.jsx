@@ -6,6 +6,7 @@ import { useGetBlogQuery } from "@/redux/api/Api";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import ApiUrl from '../ui/APIURL';
+import Image from 'next/image';
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -14,14 +15,14 @@ if (typeof window !== "undefined") {
 const NewsFeed = () => {
   const { data, isLoading, isError } = useGetBlogQuery();
 
-  const headingRef = useRef(null);
-  const blogRefs = useRef([]);
+  const headingReference = useRef(null);
+  const blogReference = useRef([]);
 
-  blogRefs.current = [];
+  blogReference.current = [];
 
   const addToBlogRefs = (el) => {
-    if (el && !blogRefs.current.includes(el)) {
-      blogRefs.current.push(el);
+    if (el && !blogReference.current.includes(el)) {
+      blogReference.current.push(el);
     }
   };
 
@@ -38,7 +39,7 @@ const NewsFeed = () => {
   useEffect(() => {
 
     gsap.fromTo(
-      headingRef.current,
+      headingReference.current,
       { opacity: 0, y: 50 },
       {
         opacity: 1,
@@ -46,7 +47,7 @@ const NewsFeed = () => {
         duration: 1.2,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: headingRef.current,
+          trigger: headingReference.current,
           start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
@@ -54,7 +55,7 @@ const NewsFeed = () => {
     );
 
 
-    blogRefs.current.forEach((blog, index) => {
+    blogReference.current.forEach((blog, index) => {
       gsap.fromTo(
         blog,
         { opacity: 0, y: 50 },
@@ -68,7 +69,7 @@ const NewsFeed = () => {
             trigger: blog,
             start: 'top 80%',
             toggleActions: 'play none none reverse',
-            scrub:true,
+            scrub: true,
           },
         }
       );
@@ -77,21 +78,38 @@ const NewsFeed = () => {
 
   return (
     <div className='py-32 bg-[#fff6f4] relative'>
-            <div className='w-[100%] absolute top-0 left-0 ' style={{
+      <div className='w-[100%] absolute top-0 left-0 ' style={{
         zIndex: 99
-      }}> <img className='w-full h-52' src="/images/home/9.png" alt="" /></div>
+      }}>   <Image
+          src="/images/home/9.png"
+          alt="Person"
+          width={200}
+          height={200}
+          priority
+          className='w-full h-52'
+        />
+
+      </div>
       <Container>
         <div className="relative" style={{
-          zIndex:99
+          zIndex: 99
         }}>
-          <div ref={headingRef}>
+          <div ref={headingReference}>
             <HeadingComponent headingData={headingData} />
-       
-          <div className=' banner animate-slide-left-right absolute top-0 left-1/2 w-full h-full -ml-10' style={{
-            zIndex: -1
-          }}>
-            <img className="opacity-20" src="/images/home/2.png" alt="" />
-          </div>
+
+            <div className=' banner animate-slide-left-right absolute top-0 left-1/2 w-full h-full -ml-10' style={{
+              zIndex: -1
+            }}>
+
+              <Image
+                src="/images/home/2.png"
+                alt="Person"
+                width={100}
+                height={100}
+                priority
+                className="opacity-20"
+              />
+            </div>
           </div>
           <div className='grid grid-cols-1 place-items-center place-content-center md:grid-cols-2 lg:grid-cols-3 gap-6 py-10'>
             {isLoading && (
@@ -108,24 +126,31 @@ const NewsFeed = () => {
                 className='relative w-full h-[400px] mb-10'
                 ref={addToBlogRefs}
               >
-                <img className='w-full h-[400px]' src={`${ApiUrl}/images/blog_img/${item?.file}`} alt={item?.title} />
+
+                <Image
+                  src={`${ApiUrl}/images/blog_img/${item?.file}`} alt={item?.title}
+                  width={500}
+                  height={500}
+                  priority
+                  className='w-full h-[400px]'
+                />
 
                 <Link href={`blog/${item.id}/#blog`}>
-                <div className='absolute bottom-[-10%] left-0 w-[80%] h-[300px] bg-white p-6'>
-                  <p className="text-[16px] text-primary pt-4 ">
-                    {new Date(item.createdAt).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </p>
-                  <h1 className='mt-4 text-tertiary text-2xl font-secondery pb-8'>
-                    {item.title.slice(0, 70)}...
-                  </h1>
-                  <Link href={`blog/${item.id}/#blog`} className='underline text-gray-400 font-secondery text-2xl'>
-                    Learn More
-                  </Link>
-                </div>
+                  <div className='absolute bottom-[-10%] left-0 w-[80%] h-[300px] bg-white p-6'>
+                    <p className="text-[16px] text-primary pt-4 ">
+                      {new Date(item.createdAt).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </p>
+                    <h1 className='mt-4 text-tertiary text-2xl font-secondery pb-8'>
+                      {item.title.slice(0, 70)}...
+                    </h1>
+                    <Link href={`blog/${item.id}/#blog`} className='underline text-gray-400 font-secondery text-2xl'>
+                      Learn More
+                    </Link>
+                  </div>
                 </Link>
               </div>
             ))}
@@ -133,9 +158,17 @@ const NewsFeed = () => {
         </div>
       </Container>
       <div className='invisible lg:visible banner animate-slide-top-bottom absolute top-1/2 -left-4 w-80 h-80' style={{
-        zIndex:0
+        zIndex: 0
       }}>
-        <img src="/images/home/16.png" alt="" />
+
+        <Image
+          src="/images/home/16.png"
+          alt=""
+          width={500}
+          height={500}
+          priority
+
+        />
       </div>
     </div>
   );

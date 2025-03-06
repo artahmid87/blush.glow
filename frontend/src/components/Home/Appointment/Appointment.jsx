@@ -8,15 +8,14 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
-
 const Appointment = () => {
 
-  const formRef = useRef(null);
+  const formReference = useRef(null);
   const scheduleRef = useRef(null);
 
   useEffect(() => {
     gsap.fromTo(
-      formRef.current,
+      formReference.current,
       { opacity: 0, x: -100 },
       {
         opacity: 1,
@@ -24,7 +23,7 @@ const Appointment = () => {
         duration: 1.2,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: formRef.current,
+          trigger: formReference.current,
           start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
@@ -85,7 +84,7 @@ const Appointment = () => {
           >
 
             <div
-              ref={formRef}
+              ref={formReference}
               className="bg-[#fff6f4] p-2 md:p-8 w-full lg:w-[58%] border-8 border-white"
             >
               <h1 className="text-3xl lg:text-4xl text-tertiary font-secondery py-6">

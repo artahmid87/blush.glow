@@ -1,11 +1,12 @@
 import ApiUrl from '@/components/ui/APIURL'
 import { useDeleteGalleryMutation, useGetAllGalleryQuery } from '@/redux/api/Api'
 import { Popconfirm, Button } from 'antd/dist/antd'
+import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
 
 const Gallery = () => {
-  const { data, isSuccess, isError, isLoading, refetch } = useGetAllGalleryQuery()
+  const { data, refetch } = useGetAllGalleryQuery()
 
 
   const [deleteGallery] = useDeleteGalleryMutation();
@@ -41,9 +42,13 @@ const Gallery = () => {
                 <tr key={item.id} className="text-center">
                   <td className="px-4 py-2 border border-gray-300">{item?.title?.slice(0, 50)}...</td>
                   <td className="px-4 py-2 border border-gray-300">
-                    <img
+
+                    <Image
                       src={`${ApiUrl}/images/gallery_img/${item?.path}`}
-                     alt={item?.title}
+                      alt="A beautiful scenery"
+                      width={300}
+                      height={300}
+                      priority
                       className="w-40 h-40 mx-auto object-cover"
                     />
                   </td>

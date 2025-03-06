@@ -8,8 +8,8 @@ const UpdatePrice = () => {
     const router = useRouter()
     const id = router.query.id
 
-    const { data, isError: error, isLoading: loading } = useGetPriceByIdQuery(id)
-    const { data: caregory, isError: issue } = useFindAllCategoriesQuery()
+    const { data } = useGetPriceByIdQuery(id)
+    const { data: caregory } = useFindAllCategoriesQuery()
 
 
 

@@ -1,10 +1,11 @@
 import Container from '@/components/ui/Container';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router'; 
+import { useRouter } from 'next/router';
 import ToggleBar from './ToggleBar';
 import { CloseIcon, DownArrowIcon, EmailIcon, FacebookIcon, InstagramIcon, LocationIcon, OpenIcon, PhoneIcon, YoutubeIcon } from '@/components/ui/icon';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 gsap.config({ nullTargetWarn: false, trialWarn: false });
 
@@ -122,14 +123,14 @@ END:VCARD
       {/* mobile view top menu  */}
       <div className='fixed top-0 left-0 w-full py-3 flex flex-col justify-between items-center z-[1000] bg-[#d9d2d2] md:hidden'>
         <div className='flex justify-center items-center'>
-         <div className='flex gap-4 items-center'>
-         <li className='flex gap-1 text-[12px]'>
-            <span className="mt-[2px]"><PhoneIcon /></span><a href="tel:+1-647-607-2276"> +1 (647)-607-2276</a>
-          </li>
-          <button onClick={saveContact} className='border-primary border px-2 py-0.5 rounded-lg hover:bg-[#e1e1e1] transition-all duration-300 ease-in-out  text-[12px]'>
-            Save Contact
-          </button>
-         </div>
+          <div className='flex gap-4 items-center'>
+            <li className='flex gap-1 text-[12px]'>
+              <span className="mt-[2px]"><PhoneIcon /></span><a href="tel:+1-647-607-2276"> +1 (647)-607-2276</a>
+            </li>
+            <button onClick={saveContact} className='border-primary border px-2 py-0.5 rounded-lg hover:bg-[#e1e1e1] transition-all duration-300 ease-in-out  text-[12px]'>
+              Save Contact
+            </button>
+          </div>
         </div>
       </div>
 
@@ -143,7 +144,15 @@ END:VCARD
           <div className="container mx-auto flex justify-between items-center md:mt-4 lg:mt-0">
             <div>
               <Link href="/">
-                <img className='invisible md:visible w-[300px] md:w-full md:-ml-4 lg:-ml-0 h-14' src="/images/home/logo.png" alt="Logo" />
+
+                <Image
+                  src="/images/home/logo.png"
+                  alt="Logo"
+                  width={300}
+                  height={300}
+                  priority
+                  className='invisible md:visible w-[300px] md:w-full md:-ml-4 lg:-ml-0 h-14'
+                />
               </Link>
             </div>
             <div className="hidden md:flex mr-4 space-x-4 text-xl">
@@ -158,7 +167,15 @@ END:VCARD
             </div>
             <div className="md:hidden  w-full h-6 flex justify-between">
               <Link className="w-[200px] h-6 -ml-28" href="/">
-                <img className='visible md:invisible' src="/images/home/logo.png" alt="Logo" />
+              <Image
+                 src="/images/home/logo.png"
+                 alt="Logo"
+                  width={300}
+                  height={300}
+                  priority
+                  className='visible md:invisible' 
+                />
+               
               </Link>
               <button onClick={toggleMenu} className="text-white bg-primary w-8 h-8 focus:outline-none text-2xl flex justify-center items-center" type="button">
                 {isOpen ? <CloseIcon /> : <OpenIcon />}

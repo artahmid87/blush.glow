@@ -7,7 +7,7 @@ const UpdateGallery = () => {
 
   const router =  useRouter()
   const id = router.query.id
-  const {data, isError:error, isLoading:loading} =   useGetGalleryByIdQuery(id)
+  const {data} =   useGetGalleryByIdQuery(id)
 
   const [title, setTitle] = useState('')
   const [path, setPath] = useState(null);

@@ -5,7 +5,7 @@ const Uploadcertificate = () => {
 
   const [title, setTitle] = useState('')
   const [image, setImage] = useState(null);
-  const formRef = useRef()
+  const formReference = useRef()
 
   const [certificate ,{isLoading , isSuccess , isError}] = useUploadCertificateMutation()
 
@@ -28,7 +28,7 @@ const Uploadcertificate = () => {
     <div className="flex justify-center items-center min-h-screen  bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
         <h1 className="text-2xl font-semibold mb-6 text-center">Upload Certificate Image</h1>
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+        <form ref={formReference} onSubmit={handleSubmit} className="space-y-6">
       
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Title:</label>

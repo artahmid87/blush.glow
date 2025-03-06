@@ -11,9 +11,9 @@ const UpdateBlog = (props) => {
   const router = useRouter()
   const id = router.query.id
 
-  const { data, isLoading, isError } = props.blogData;
+  const { data, isError } = props.blogData;
 
-  const { data: caregory, isError: issue } = useFindAllBlogCategoriesQuery()
+  const { data: caregory, } = useFindAllBlogCategoriesQuery()
 
 
   const [updateBlog, { isLoading:Loading, isSuccess, isError:IsError }] = useUpdateBlogMutation();
@@ -83,19 +83,6 @@ const UpdateBlog = (props) => {
             />
           </div>
 
-          {/* <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description:</label>
-            <textarea
-              rows="4"
-              id="description"
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              
-              placeholder="Enter description"
-              className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            ></textarea>
-          </div> */}
               <TextEditor value={description} onChange={setDescription} />
 
           <div>

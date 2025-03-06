@@ -18,7 +18,7 @@ const Form = () => {
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [selectedCategoryPrices, setSelectedCategoryPrices] = useState([]);
-  const formRef = useRef();
+  const formReference = useRef();
 
 
   const { data: categories } = useFindAllCategoriesQuery();
@@ -46,7 +46,7 @@ useEffect(() => {
 }, [holiday]);
 
 
-const disabledDateRanges = fromHolidayDate.length > 0 && toHolidayDate.length > 0
+const disabledDates = fromHolidayDate.length > 0 && toHolidayDate.length > 0
   ? fromHolidayDate.map((start, index) => ({
       start: start,
       end: toHolidayDate[index],
@@ -55,12 +55,12 @@ const disabledDateRanges = fromHolidayDate.length > 0 && toHolidayDate.length > 
 
 
 const disabledDate = (current) => {
-  const isInDisabledRange = disabledDateRanges.some((range) =>
+  const DisabledRange = disabledDates.some((range) =>
     current.isBetween(range.start, range.end, 'day', '[]')
   );
   const isPastDate = current && current.isBefore(dayjs().startOf('day'));
 
-  return isInDisabledRange || isPastDate;
+  return DisabledRange || isPastDate;
 };
 
 
@@ -105,7 +105,7 @@ const disabledDate = (current) => {
         description
       }).unwrap();
 
-      formRef.current.reset();
+      formReference.current.reset();
 
       toast.success('You will receive a confirmation Email!', {
         position: "bottom-right",
@@ -126,7 +126,7 @@ const disabledDate = (current) => {
     }
   };
   return (
-    <form ref={formRef} onSubmit={handleAppoinment} className='py-6'>
+    <form ref={formReference} onSubmit={handleAppoinment} className='py-6'>
     <div className="flex flex-col gap-4 md:flex-row justify-between items-center">
       <div className="w-full py-2">
         <input
