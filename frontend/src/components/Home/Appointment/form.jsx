@@ -166,6 +166,7 @@ const disabledDate = (current) => {
             className="py-4 px-5 w-full border-b border-primary text-secondery outline-none"
             onChange={(e) => setSubject(e.target.value)}
             required
+            aria-label="Choose an option"
           >
             <option value="">Select Category</option>
             {categories?.filter(item => item.isActive).map((category) => (
@@ -186,6 +187,7 @@ const disabledDate = (current) => {
               className="py-4 px-5 w-full border-b border-primary text-secondery outline-none"
               onChange={(e) => setPrice(e.target.value)}
               required
+              aria-label="Choose an option"
             >
               <option value="">Select Service</option>
               {selectedCategoryPrices.map((priceOption) => (

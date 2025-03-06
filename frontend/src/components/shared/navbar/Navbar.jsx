@@ -177,7 +177,7 @@ END:VCARD
                 />
                
               </Link>
-              <button onClick={toggleMenu} className="text-white bg-primary w-8 h-8 focus:outline-none text-2xl flex justify-center items-center" type="button">
+              <button aria-label="Toggle" onClick={toggleMenu} className="text-white bg-primary w-8 h-8 focus:outline-none text-2xl flex justify-center items-center" type="button">
                 {isOpen ? <CloseIcon /> : <OpenIcon />}
               </button>
             </div>

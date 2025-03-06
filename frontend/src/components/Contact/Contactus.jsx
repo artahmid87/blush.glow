@@ -152,6 +152,7 @@ const ContactUs = () => {
               className="w-full h-[400px]"
               allowFullScreen=""
               loading="lazy"
+              title="Google map"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
        </div>

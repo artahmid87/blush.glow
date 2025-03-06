@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const Loading = () => {
-  const circlesRef = useRef([[], [], []]); 
+  const circlesReference = useRef([[], [], []]); 
 
   useEffect(() => {
 
-    circlesRef.current.forEach((layer, layerIndex) => {
+    circlesReference.current.forEach((layer, layerIndex) => {
       layer.forEach((circle, circleIndex) => {
         if (circle) {
           gsap.to(circle, {
@@ -34,7 +34,7 @@ const Loading = () => {
             {[...Array(4)].map((_, circleIndex) => (
               <div
                 key={circleIndex}
-                ref={(el) => (circlesRef.current[layerIndex][circleIndex] = el)}
+                ref={(el) => (circlesReference.current[layerIndex][circleIndex] = el)}
                 className="absolute w-full h-full rounded-full bg-primary opacity-50"
                 style={{
                   transform: `scale(${1 + layerIndex * 0.3})`, 

@@ -255,6 +255,7 @@ const disabledDates = (current) => {
                     className="py-4 px-5 w-full border-b border-primary outline-none overflow-hidden"
                     onChange={(e) => setSubject(e.target.value)}
                     required
+                    aria-label="Choose an option"
                   >
                     <option value="">Select Category</option>
                     {categories?.filter(item => item.isActive).map((category) => (
@@ -271,6 +272,7 @@ const disabledDates = (current) => {
                       className="py-4 px-5 border-b border-primary outline-none overflow-hidden"
                       onChange={(e) => setPrice(e.target.value)}
                       required
+                      aria-label="Choose an option"
                     >
                       <option value="">Select Service</option>
                       {selectedCategoryPrices.map((priceOption) => (

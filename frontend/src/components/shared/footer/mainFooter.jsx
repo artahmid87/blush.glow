@@ -83,6 +83,7 @@ export default function MainFooter() {
               className="w-full h-full md:h-[60%]"
               allowFullScreen=""
               loading="lazy"
+              title="Google Map"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>

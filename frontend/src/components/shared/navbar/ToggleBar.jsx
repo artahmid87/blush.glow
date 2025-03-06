@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function ToggleBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const sidebarRef = useRef(null);
+  const sidebarReference = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -13,14 +13,14 @@ export default function ToggleBar() {
 
   useEffect(() => {
     if (isOpen) {
-      gsap.to(sidebarRef.current, {
+      gsap.to(sidebarReference.current, {
         x: 0,
         opacity: 1,
         duration: 0.5,
         ease: 'power3.out',
       });
     } else {
-      gsap.to(sidebarRef.current, {
+      gsap.to(sidebarReference.current, {
         x: -1000,
         opacity: 0,
         duration: 0.5,
@@ -33,7 +33,7 @@ export default function ToggleBar() {
     <>
       {/* Sidebar */}
       <div
-        ref={sidebarRef}
+        ref={sidebarReference}
         className="fixed invisible md:visible top-0 left-[-30px] h-full w-[40%] bg-white text-tertiary"
         style={{ zIndex: '9999' }}
       >
