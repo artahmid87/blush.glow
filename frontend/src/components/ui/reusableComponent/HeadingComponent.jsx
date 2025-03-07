@@ -47,7 +47,7 @@ const HeadingComponent = (props) => {
           className="text-center py-5 flex flex-col justify-center items-center w-full mb-5"
           ref={addToRefs} 
         >
-          <h1 className="text-2xl text-primary italic font-secondery">{item.headline}</h1>
+          <h3 className="text-2xl text-primary italic font-secondery">{item.headline}</h3>
           <h1 className="text-4xl md:text-6xl font-bold font-secondery py-4">
             <span>{item.title1} </span> 
             <span className="text-primary">{item.title2}</span>

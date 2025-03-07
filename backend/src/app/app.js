@@ -30,7 +30,7 @@ const Certificate = require('../database/model/certificate.db.js');
 const { CertificateRouter } = require('../routers/CertificateRouter.js');
 
 
-app.use(cors());
+app.use(cors({origin: "http://localhost:3000",}));
 app.use(hpp()); 
 app.use(cookieParser()); 
 

@@ -28,7 +28,7 @@ const Header = (props) => {
             <h1 className='w-full lg:text-[70px] text-[60px] text-center text-tertiary font-secondery font-bold'>{title}</h1>
             <div className='flex gap-4'>
               <Link className='text-primary font-semibold text-lg ' href={'/'}>HOME /</Link>
-              <h1 className='text-tertiary font-semibold text-lg ml-[-5px]'>{title}</h1>
+              <h2 className='text-tertiary font-semibold text-lg ml-[-5px]'>{title}</h2>
             </div>
           </div>
 

@@ -12,6 +12,9 @@ const BlogById = (props) => {
 
 
   const description = DOMPurify.sanitize(data?.description);
+  if(isLoading ){
+    return <h2 className="text-2xl flex justify-center items-center">Loading...</h2>
+  }
 
   return (
     <Layout>

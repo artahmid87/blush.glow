@@ -72,7 +72,7 @@ export default function BookingSteps() {
                         <div className="absolute top-[-30%] w-full  flex flex-col justify-center items-center">
                             <div className="md:w-[80px] md:h-[80px] w-[50px] h-[50px] bg-[#D49696] mb-1 rounded-md text-center uppercase">
                                 <h1 className="md:text-[18px] text-center md:mb-[10px] text-[10px]">step</h1>
-                                <h1 className="md:text-[40px] text-[20px]">01</h1>
+                                <h2 className="md:text-[40px] text-[20px]">01</h2>
                             </div>
                             <div className="w-[80px] h-[80px] bg-[#D49696] rotate-180"
                                 style={{ clipPath: "polygon(50% 85%, 0 100%, 99% 100%)" }}></div>
@@ -94,7 +94,7 @@ export default function BookingSteps() {
                         <div className="absolute top-[-20%] w-full  flex flex-col justify-center items-center lg:top-[60%] lg:rotate-180">
                             <div className="md:w-[80px] md:h-[80px] w-[50px] h-[50px] bg-[#D49696] mb-1 rounded-md text-center uppercase lg:rotate-180">
                                 <h1 className="md:text-[18px] text-center md:mb-[10px] text-[10px]">step</h1>
-                                <h1 className="md:text-[40px] text-[20px]">02</h1>
+                                <h3 className="md:text-[40px] text-[20px]">02</h3>
                             </div>
                             <div className="w-[80px] h-[80px] bg-[#D49696] rotate-180"
                                 style={{ clipPath: "polygon(50% 85%, 0 100%, 99% 100%)" }}></div>
@@ -141,7 +141,7 @@ export default function BookingSteps() {
                                 style={{ clipPath: "polygon(50% 85%, 0 100%, 99% 100%)" }}></div>
                         </div>
                         <div className="mb-10">
-                            <h1 className="text-[25px] md:text-[30px] pt-[50px] text-tertiary font-secondery pb-4">Give us Your valuable Review</h1>
+                            <h4 className="text-[25px] md:text-[30px] pt-[50px] text-tertiary font-secondery pb-4">Give us Your valuable Review</h4>
                             <p className="text-[16px] py-[10px] text-gray-500">
                                 Give us Your valuable review at <span className=' font-bold cursor-auto text-[#000001bd] '> <a href="">Google</a></span> & <span className=' font-bold cursor-auto text-[#000001bd] '><a href="https://www.facebook.com/Blushglowbeautybar/services">Facebook</a></span>
                             </p>

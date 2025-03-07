@@ -40,7 +40,7 @@ const InformationData = () => {
                                 <AppointmentIcon />
                             </span>
                             <div className="flex justify-between font-semibold mt-4 gap-1 text-black">
-                                <span>Appointment</span>
+                                <h1>Appointment</h1>
                                 <span>{book?.length}</span>
                             </div>
                         </div>
@@ -126,6 +126,7 @@ const InformationData = () => {
 
                                         <Image
                                             src={`${ApiUrl}/images/gallery_img/${item?.path}`}
+                                            
                                             alt={item?.title}
                                             width={500}
                                             height={500}

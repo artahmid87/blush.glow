@@ -13,10 +13,10 @@ const ProfessionalGoal = () => {
     }
   ];
   return (
-    <section>
+    <section className='bg-white'>
       <Container>
         <HeadingComponent headingData={headingData} />
-        <div className='relative'>
+        <div className='relative pb-6'>
           <div className='invisible lg:visible banner animate-slide-top-bottom absolute top-0 -right-4 w-60 h-60'>
 
             <Image

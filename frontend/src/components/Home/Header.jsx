@@ -109,9 +109,9 @@ const Header = () => {
                       <span>{item.title1}</span>
                       <span className="text-primary ml-4">{item.title2}</span>
                     </h1>
-                    <p className="mt-8 h-16 text-center lg:text-start md:text-xl lg:text-lg text-tertiary" ref={descriptionReference}>
+                    <h2 className="mt-8 h-16 text-center lg:text-start md:text-xl lg:text-lg text-tertiary" ref={descriptionReference}>
                       {item.describe}
-                    </p>
+                    </h2>
 
                     <div className='flex gap-4 flex-col xl:flex-row'>
                       <Link href={item?.link || "#"} className={`group hover:bg-primary bg-white transition-all flex  gap-2  items-center mt-10 py-4 pl-4 ${item.id == 1 ? ' w-60 h-12 md:w-[260px] justify-start' : 'md:w-[170px] justify-start'} md:py-7 md:lg:h-14 lg:py-4 w-60 h-12 md:w-64 lg:h-16  rounded-full shadow-lg cursor-pointer `} ref={buttonReference}>

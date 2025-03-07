@@ -56,7 +56,7 @@ const BlogSidebar = () => {
         {blogsLoading && <div className="text-center py-20 text-7xl flex justify-center items-center">Loading...</div>}
         {blogsError && (
           <div className="text-center py-20 text-7xl flex justify-center items-center">
-            <h1>Something Went Wrong!</h1> <h1>Please try again</h1>
+            <h2>Something Went Wrong!</h2> <h4>Please try again</h4>
           </div>
         )}
 

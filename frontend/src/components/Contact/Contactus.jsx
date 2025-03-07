@@ -87,9 +87,9 @@ const ContactUs = () => {
             <p className="text-[18px] pr-[20px] text-gray-500 ">
               For any inquiries or to get in touch with us, feel free to use the following contact details:
             </p>
-            <h1 className="font-secondery text-5xl text-primary font-semibold py-6">
+            <h2 className="font-secondery text-5xl text-primary font-semibold py-6">
               Blush & Glow Beauty Bar
-            </h1>
+            </h2>
             <p className="flex  gap-4 py-6">
                 <span className="  xl:text-[60px] text-[50px] font-thin">
                 <PhoneIcon />

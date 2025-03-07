@@ -58,9 +58,9 @@ const Services = () => {
           {groupedPrices?.map(category => (
             <div key={category.id} className="mb-10" id={`#${categories.title}`}>
               {/* Category Section */}
-              <h2 className="text-3xl text-center md:text-start font-bold uppercase mb-6 font-secondery text-primary">
+              <h1 className="text-3xl text-center md:text-start font-bold uppercase mb-6 font-secondery text-primary">
                 {category.title}
-              </h2>
+              </h1>
 
               {/* Services within each active category */}
               <div className="space-y-6">
@@ -85,9 +85,9 @@ const Services = () => {
                       </div>
 
                       <div>
-                        <h3 className="text-xl font-medium font-secondery capitalize">
+                        <h2 className="text-xl font-medium font-secondery capitalize">
                           {price.title}
-                        </h3>
+                        </h2>
                         <h3 className="text-sm font-primary text-secondery">
                           {price.shortInfo}
                         </h3>

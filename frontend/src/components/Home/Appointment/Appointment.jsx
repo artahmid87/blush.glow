@@ -63,7 +63,7 @@ const Appointment = () => {
 
           <div
             style={{
-              backgroundImage: 'url(images/home/appoinmentImg.jpg)',
+              backgroundImage: 'url(images/home/1.jpg)',
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
@@ -87,9 +87,9 @@ const Appointment = () => {
               ref={formReference}
               className="bg-[#fff6f4] p-2 md:p-8 w-full lg:w-[58%] border-8 border-white"
             >
-              <h1 className="text-3xl lg:text-4xl text-tertiary font-secondery py-6">
+              <h2 className="text-3xl lg:text-4xl text-tertiary font-secondery py-6">
                 Appointment
-              </h1>
+              </h2>
               <p className="text-secondery mb-6">
                 Submit your details & You will get a confirmation Mail.
               </p>

@@ -45,7 +45,7 @@ const UpdateStatus = () => {
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
         <Link className='bg-blue-600 text-white py-2 px-6 mb-2' href={'/dashboard/category'}>Back To Dashboard</Link>
         <h1 className="text-2xl font-semibold my-6 text-center">Update Category Status</h1>
-        <h1 > <span>Status:</span> <span className={`${data?.isActive ? "text-green-500" : "text-red-500"}`}>{data?.isActive ? "Active" : "Inactive"}</span></h1>
+        <h2 > <span>Status:</span> <span className={`${data?.isActive ? "text-green-500" : "text-red-500"}`}>{data?.isActive ? "Active" : "Inactive"}</span></h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
 
