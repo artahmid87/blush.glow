@@ -13,14 +13,14 @@ const storage = multer.diskStorage({
 
 
 const fileFilter = (req, file, cb) => {
-  const fileTypes = /jpeg|jpg|png/;
+  const fileTypes = /jpeg|jpg|png|webp/;
   const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
 
   if (extname && mimeType) {
     return cb(null, true);
   } else {
-    cb(new Error('Only images (jpeg, jpg, png) are allowed'));
+    cb(new Error('Only images (jpeg, jpg, png,webp) are allowed'));
   }
 };
 
@@ -28,7 +28,7 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // Limit file size to 5MB
+  limits: { fileSize: 5 * 1024 * 1024 }, 
   fileFilter: fileFilter,
 });
 
@@ -45,14 +45,14 @@ const memory = multer.diskStorage({
 
 
 const imagesFilter = (req, file, cb) => {
-  const fileTypes = /jpeg|jpg|png/;
+  const fileTypes = /jpeg|jpg|png|webp/;
   const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
 
   if (extname && mimeType) {
     return cb(null, true);
   } else {
-    cb(new Error('Only images (jpeg, jpg, png) are allowed'));
+    cb(new Error('Only images (jpeg, jpg, png,webp) are allowed'));
   }
 };
 
@@ -60,7 +60,7 @@ const imagesFilter = (req, file, cb) => {
 
 const gallery = multer({
   storage: memory,
-  limits: { fileSize: 5 * 1024 * 1024 }, // Limit file size to 5MB
+  limits: { fileSize: 5 * 1024 * 1024 }, 
   fileFilter: imagesFilter,
 });
 
@@ -76,14 +76,14 @@ const location = multer.diskStorage({
 
 
 const filterImg = (req, file, cb) => {
-  const fileTypes = /jpeg|jpg|png/;
+  const fileTypes = /jpeg|jpg|png|webp/;
   const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
 
   if (extname && mimeType) {
     return cb(null, true);
   } else {
-    cb(new Error('Only images (jpeg, jpg, png) are allowed'));
+    cb(new Error('Only images (jpeg, jpg, png,webp) are allowed'));
   }
 };
 
@@ -91,8 +91,7 @@ const filterImg = (req, file, cb) => {
 
 const service_img = multer({
   storage: location,
-  limits: { fileSize: 2 * 1024 * 1024 }, // Limit file size to 5MB
-  fileFilter: filterImg,
+  limits: { fileSize: 2 * 1024 * 1024 }, 
 });
 
 
@@ -107,14 +106,14 @@ const disk = multer.diskStorage({
 
 
 const certificateFilter = (req, file, cb) => {
-  const fileTypes = /jpeg|jpg|png/;
+  const fileTypes = /jpeg|jpg|png|webp/;
   const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimeType = fileTypes.test(file.mimetype);
 
   if (extname && mimeType) {
     return cb(null, true);
   } else {
-    cb(new Error('Only images (jpeg, jpg, png) are allowed'));
+    cb(new Error('Only images (jpeg, jpg, png, webp) are allowed'));
   }
 };
 
@@ -122,7 +121,7 @@ const certificateFilter = (req, file, cb) => {
 
 const certificate_img = multer({
   storage: disk,
-  limits: { fileSize: 5 * 1024 * 1024 }, // Limit file size to 5MB
+  limits: { fileSize: 5 * 1024 * 1024 }, 
   fileFilter: certificateFilter,
 });
 

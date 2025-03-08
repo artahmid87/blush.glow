@@ -46,17 +46,17 @@ export default function BookingSteps() {
 
     return (
         <div id="booking" className="py-10 bg-[#ffffff] relative">
-            <div className='visible md:invisible w-[100%] h-5 absolute -top-0 left-0 rotate-180' style={{
+            <div className='visible md:invisible w-[100%] h-5 absolute -top-5 left-0 rotate-180' style={{
                 zIndex: 99
             }}>
-                <Image
+                {/* <Image
                     src="/images/home/9.png"
                     alt=""
                     width={500}
                     height={500}
                     priority
-                    className='w-full h-44'
-                />
+                    className='w-full h-52'
+                /> */}
             </div>
             <Container>
                 <div ref={headingReference}>

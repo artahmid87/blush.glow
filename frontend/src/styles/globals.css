@@ -24,6 +24,7 @@ body{
 
 }
 
+
 .circular-text{
     animation: circularText 12s linear infinite;
 }

@@ -90,7 +90,9 @@ const Header = () => {
   }, []);
 
   return (
-    <section className='bg-[#f5f5f5] relative overflow-hidden'>
+    <section  className='bg-[#f5f5f5] relative overflow-hidden'
+    
+    >
       <Swiper slidesPerView={1}
         autoplay={{ delay: 7000 }}
         loop={true}
@@ -100,7 +102,7 @@ const Header = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}>
         {data.map((item, index) => (
-          <SwiperSlide key={item.id}>
+          <SwiperSlide key={item.id} id='heading'>
             <Container>
               <div className="relative xl:py-20 md:mb-10 bg-cover bg-top mt-20 ">
                 <div className="flex justify-center lg:justify-between lg:items-start" ref={el => (slidesReference.current[index] = el)}>
@@ -170,7 +172,7 @@ const Header = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className='invisible md:visible w-[100%] absolute -bottom-6 left-0' style={{
+      <div className=' w-[100%] absolute bottom-0  md:-bottom-4 left-0' style={{
         zIndex: 9
       }}>
         <Image
@@ -179,7 +181,7 @@ const Header = () => {
           width={200}
           height={200}
           priority
-          className='w-full md:h-28'
+          className='w-full h-28 md:h-44'
         />
       </div>
     </section>
@@ -187,3 +189,4 @@ const Header = () => {
 };
 
 export default Header;
+
