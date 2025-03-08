@@ -25,7 +25,7 @@ const Header = (props) => {
       <Container>
         <div className='flex justify-center md:justify-evenly md:items-center '>
           <div className=' flex flex-col justify-center items-center lg:-ml-32 z-40'>
-            <h1 className='w-full lg:text-[70px] text-[60px] text-center text-tertiary font-secondery font-bold'>{title}</h1>
+            <h1 className='w-full lg:text-[70px] text-[55px] text-center text-tertiary font-secondery font-bold'>{title}</h1>
             <div className='flex gap-4'>
               <Link className='text-primary font-semibold text-lg ' href={'/'}>HOME /</Link>
               <h2 className='text-tertiary font-semibold text-lg ml-[-5px]'>{title}</h2>

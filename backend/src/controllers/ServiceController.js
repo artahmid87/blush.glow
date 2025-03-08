@@ -18,8 +18,9 @@ const CreateCategories = async (req, res, next) => {
         }
 
         await sharp(req.file.path)
-            .resize({ width: 500 })
-            .png({ quality: 80 })
+            .jpeg({ quality: 60 })
+            .webp({ quality: 60 })
+            .png({ quality: 60 })
             .toFile(req.file.destination + '/op-' + req.file.originalname);
 
 
@@ -99,12 +100,13 @@ const updateCategoriesController = async (req, res, next) => {
 
 
         await sharp(req.file.path)
-            .resize({ width: 500 })
-            .png({ quality: 80 })
+            .jpeg({ quality: 60 })
+            .webp({ quality: 60 })
+            .png({ quality: 60 })
             .toFile(req.file.destination + '/uc-' + req.file.originalname);
 
         const data = await Categories.update(
-            {title, shortInto,  icon: 'uc-' + req.file.originalname },
+            { title, shortInto, icon: 'uc-' + req.file.originalname },
             { where: { id: id } }
         );
 
@@ -141,7 +143,7 @@ const updateStatusController = async (req, res, next) => {
         const { id } = req.params;
         const { isActive } = req.body;
 
-      
+
         const category = await Categories.findOne({ where: { id } });
 
         if (!category) {
@@ -170,25 +172,25 @@ const deleteCategories = async (req, res, next) => {
 
         const singleCategory = await Categories.findOne({
             where: {
-              id: id
+                id: id
             }
-          });
+        });
 
-          if (!singleCategory) {
-            return res.status(404).send("Blog not found!"); 
-          }
+        if (!singleCategory) {
+            return res.status(404).send("Blog not found!");
+        }
 
 
         await singleCategory.destroy();
 
 
-         fs.unlink(path.join(__dirname, '..', '..', 'public', 'images','service_img', singleCategory.icon), (err) => {
-              if (err) {
-                  console.error('Failed to delete the old image:', err);
-              } else {
-                  console.log('Old image deleted successfully.');
-              }
-          });
+        fs.unlink(path.join(__dirname, '..', '..', 'public', 'images', 'service_img', singleCategory.icon), (err) => {
+            if (err) {
+                console.error('Failed to delete the old image:', err);
+            } else {
+                console.log('Old image deleted successfully.');
+            }
+        });
 
 
         return res.status(200).send("Category deleted successfully!");
@@ -212,9 +214,9 @@ const CreatePricePlan = async (req, res, next) => {
         }
 
         await sharp(req.file.path)
-            .resize({ width: 500 })
-            .jpeg({ quality: 80 })
-            .png({ quality: 80 })
+            .jpeg({ quality: 60 })
+            .webp({ quality: 60 })
+            .png({ quality: 60 })
             .toFile(req.file.destination + '/op-' + req.file.originalname);
 
 
@@ -309,9 +311,9 @@ const updatePricePlan = async (req, res, next) => {
 
 
         await sharp(req.file.path)
-            .resize({ width: 500 })
-            .jpeg({ quality: 80 })
-            .png({ quality: 80 })
+            .jpeg({ quality: 60 })
+            .webp({ quality: 60 })
+            .png({ quality: 60 })
             .toFile(req.file.destination + '/up-' + req.file.originalname);
 
         await PricePlan.update(

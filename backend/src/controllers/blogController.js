@@ -82,9 +82,10 @@ const blogController = async (req, res, next) => {
       });
     }
 
-    await sharp(req.file.path)
-    .resize({ width: 500 })   
-    .jpeg({ quality: 80 })    
+    await sharp(req.file.path)   
+    .jpeg({ quality: 60 }) 
+    .webp({ quality: 60 })  
+    .png({ quality: 60 })  
     .toFile(req.file.destination +  '/op-' + req.file.originalname);      
 
 
@@ -184,9 +185,10 @@ const updateBlogController = async (req, res, next) => {
   }
 
   
-  await sharp(req.file.path)
-  .resize({ width: 500 })   
-  .jpeg({ quality: 80 })   
+  await sharp(req.file.path) 
+  .jpeg({ quality: 60 }) 
+  .webp({ quality: 60 })  
+  .png({ quality: 60 })   
   .toFile(req.file.destination + '/up-'  + req.file.originalname);
 
 const data =  await Blog.update(
@@ -259,7 +261,6 @@ module.exports = {
   getById, 
   deleteBlog, 
   updateBlogController,
-  // categories
   CreateCategories,
   getCategories,
   singleCategory,

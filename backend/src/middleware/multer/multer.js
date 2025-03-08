@@ -64,7 +64,7 @@ const gallery = multer({
   fileFilter: imagesFilter,
 });
 
-// gallery multer
+// service multer
 const location = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, '..', '..', '..', 'public', 'images', 'service_img'))

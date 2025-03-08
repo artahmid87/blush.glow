@@ -9,7 +9,9 @@ const UploadCertificate = async (req, res, next) => {
     try {
 
         await sharp(req.file.path) 
-            .jpeg({ quality: 80 })    
+            .jpeg({ quality: 60 }) 
+            .webp({ quality: 60 })  
+            .png({ quality: 60 })   
             .toFile(req.file.destination +  '/op-' + req.file.originalname);      
 
       
@@ -91,8 +93,9 @@ const updateCertificate = async (req, res, next) => {
 
 
         await sharp(req.file.path)  
-            .jpeg({ quality: 80 })   
-            .png({quality: 80 })
+        .jpeg({ quality: 60 }) 
+        .webp({ quality: 60 })  
+        .png({ quality: 60 }) 
             .toFile(req.file.destination + '/up-' + req.file.originalname);
 
         await Certificate.update(

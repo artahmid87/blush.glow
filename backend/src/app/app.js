@@ -74,8 +74,6 @@ Categories.hasMany(PricePlan, {
     as: "categories",
   });
 
-
-
 CategoryBlog.hasMany(Blog, {
     foreignKey: 'CategoryId',
     onDelete: 'SET NULL',
@@ -106,7 +104,7 @@ CategoryBlog.hasMany(Blog, {
     }
   })();
 
-// All router handling from here
+// All router handling from here 
 app.use('/', blogRouter); 
 app.use('/appointment', AppointmentRouter); 
 app.use('/admin', adminRouter); 
